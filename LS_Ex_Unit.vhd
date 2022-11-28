@@ -60,6 +60,7 @@ begin
                 -- Storing opr1 to output
 				elsif unsigned(Opcode) = 7 then
 					dest <= add(opr1, opr2);
+                    Z <= or_reduce(dest);
 				-- LW
                 -- Storing opr1 + opr2 to output
 				elsif unsigned(Opcode) = 5 then
@@ -68,7 +69,7 @@ begin
                 -- Storing opr1 + opr2 to output
 				end if;
 			-- OR all bits and write in Z
-				Z <= or_reduce(dest);
+				
 			end if;
 		end if;
 
