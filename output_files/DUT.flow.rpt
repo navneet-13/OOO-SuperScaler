@@ -1,5 +1,5 @@
 Flow report for DUT
-Mon Nov 28 15:23:21 2022
+Mon Nov 28 16:42:46 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------+
 ; Flow Summary                                                        ;
 +-----------------------+---------------------------------------------+
-; Flow Status           ; Flow Failed - Mon Nov 28 15:23:21 2022      ;
+; Flow Status           ; Flow Failed - Mon Nov 28 16:42:46 2022      ;
 ; Quartus Prime Version ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name         ; DUT                                         ;
 ; Top-level Entity Name ; DUT                                         ;
@@ -56,7 +56,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/28/2022 15:23:11 ;
+; Start date & time ; 11/28/2022 16:42:36 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DUT                 ;
 +-------------------+---------------------+
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------+---------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                 ; Value                           ; Default Value ; Entity Name ; Section Id                        ;
 +---------------------------------+---------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID           ; 211375644775983.166962919124260 ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID           ; 211375644775983.166963395613240 ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                             ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                             ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                             ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -77,6 +77,7 @@ https://fpgasoftware.intel.com/eula.
 ; EDA_TIME_SCALE                  ; 1 ps                            ; --            ; --          ; eda_simulation                    ;
 ; MAX_CORE_JUNCTION_TEMP          ; 85                              ; --            ; --          ; --                                ;
 ; MIN_CORE_JUNCTION_TEMP          ; 0                               ; --            ; --          ; --                                ;
+; POWER_PRESET_COOLING_SOLUTION   ; No Heat Sink With Still Air     ; --            ; --          ; --                                ;
 ; PROJECT_OUTPUT_DIRECTORY        ; output_files                    ; --            ; --          ; --                                ;
 +---------------------------------+---------------------------------+---------------+-------------+-----------------------------------+
 
@@ -86,8 +87,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4760 MB             ; 00:00:25                           ;
-; Total                ; 00:00:10     ; --                      ; --                  ; 00:00:25                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4758 MB             ; 00:00:24                           ;
+; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:24                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

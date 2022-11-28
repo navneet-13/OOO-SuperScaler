@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Mon Nov 28 15:23:21 2022
+Mon Nov 28 16:42:46 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Mon Nov 28 15:23:21 2022           ;
+; Analysis & Synthesis Status ; Failed - Mon Nov 28 16:42:46 2022           ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
 ; Top-level Entity Name       ; DUT                                         ;
@@ -138,7 +138,7 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Nov 28 15:23:11 2022
+    Info: Processing started: Mon Nov 28 16:42:35 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -147,9 +147,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file main_re
     Info (12023): Found entity 1: register_file File: D:/CS 683/Project/OOO-SuperScaler/Main_register_file.vhdl Line: 6
 Error (12007): Top-level design entity "DUT" is undefined
 Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 4760 megabytes
-    Error: Processing ended: Mon Nov 28 15:23:21 2022
-    Error: Elapsed time: 00:00:10
-    Error: Total CPU time (on all processors): 00:00:25
+    Error: Peak virtual memory: 4758 megabytes
+    Error: Processing ended: Mon Nov 28 16:42:46 2022
+    Error: Elapsed time: 00:00:11
+    Error: Total CPU time (on all processors): 00:00:24
 
 
