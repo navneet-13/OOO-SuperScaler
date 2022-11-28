@@ -14,7 +14,7 @@ use work.all;
 entity alu_LS is 
 	generic(
 		operand_width : integer:= 16;
-		opcode: integer:= 4
+		sel_line: integer:= 4
 	);
 	port (
 		opr1: in std_logic_vector(operand_width-1 downto 0); 
