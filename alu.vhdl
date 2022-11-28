@@ -21,6 +21,7 @@ entity alu is
 		opr2: in std_logic_vector(operand_width-1 downto 0);
 		dest: out std_logic_vector(operand_width-1 downto 0);
 		opcode: in std_logic_vector(sel_line-1 downto 0);
+		cin, zin; in std_logic;
 		enable, reset: in std_logic;
 		C, Z: out std_logic
 	);
@@ -78,19 +79,19 @@ begin
 			if enable = '1' then
 			   -- NAND
 				if sel = "000100" then
-					dest <= opr1 and opr2;
-					dest_temp <= opr1 and opr2;
+					dest <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
+					dest_temp <= add_temp(operand_width-1 downto 0);
 				-- XOR
-				elsif unsigned(sel) = 1 then
+				elsif sel = "000101" then
 					dest <= opr1 xor opr2;
 					dest_temp <= opr1 xor opr2;
 				-- ADD
-				elsif unsigned(sel) = 2 then
+				elsif sel = "" then
 					dest <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
 					dest_temp <= add_temp(operand_width-1 downto 0);
 					C <= add_temp(operand_width);
 				--- ADL
-				elsif unsigned(sel) = 3 then
+				elsif sel = "" then
 					dest <= adl_temp(operand_width-1 downto 0);
 					dest_temp <= adl_temp(operand_width-1 downto 0);
 					C <= adl_temp(operand_width);
