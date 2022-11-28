@@ -75,6 +75,19 @@ type registerFile is array(0 to 31) of std_logic_vector(22 downto 0);
 	 end if;
 	 end if;
 	end process;
+	clr_rst: process(clear, reset)
+	begin
+	if(reset = '1') then
+	l1: for k in 0 to 31 loop
+	 registers(k) <= (others => '0');
+	 end loop l1; 
+	 
+	elsif (clear = '1') then
+	l2: for k in 0 to 31 loop
+	registers(k)(6 downto 0) <= "0000000";
+	end loop l2; 
+	end if; 
+	end process;
 	end behavioural;
 	
 
