@@ -1,5 +1,5 @@
 Flow report for DUT
-Mon Nov 28 20:36:02 2022
+Mon Nov 28 23:31:57 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------+
 ; Flow Summary                                                        ;
 +-----------------------+---------------------------------------------+
-; Flow Status           ; Flow Failed - Mon Nov 28 20:36:02 2022      ;
+; Flow Status           ; Flow Failed - Mon Nov 28 23:31:57 2022      ;
 ; Quartus Prime Version ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name         ; DUT                                         ;
 ; Top-level Entity Name ; DUT                                         ;
@@ -56,7 +56,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/28/2022 20:35:52 ;
+; Start date & time ; 11/28/2022 23:31:47 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DUT                 ;
 +-------------------+---------------------+
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------+--------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                 ; Value                          ; Default Value ; Entity Name ; Section Id                        ;
 +---------------------------------+--------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID           ; 10995770589203.166964795204396 ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID           ; 10995770589203.166965850718152 ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                            ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                            ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                            ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -87,8 +87,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4758 MB             ; 00:00:26                           ;
-; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:26                           ;
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4758 MB             ; 00:00:21                           ;
+; Total                ; 00:00:10     ; --                      ; --                  ; 00:00:21                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

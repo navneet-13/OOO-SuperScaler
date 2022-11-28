@@ -29,13 +29,13 @@ ARCHITECTURE arch OF LUT IS
 	variable sign_ext_imm : std_logic_vector(15 downto 0);
 	TYPE LUT_type is array (0 to 32) of std_logic_vector(34 downto 0);
 	variable LUT: LUT_type := (OTHERS => (OTHERS => '0'));
-	variable present, head : integer; -- present in look up table 
+	
 BEGIN
 	
 	PROCESS (read_en, write_en, predict, PC_given, inst)
 	BEGIN
 		if (read_en = '1') then
-		L1 : for i in 0 to 32 loop
+		for i in 0 to 32 loop
 			if(LUT(i)(34 downto 19) = PC_given) then
 				if(inst(15 downto 12) = "1000") then --- beq inst
 				
@@ -62,29 +62,13 @@ BEGIN
 				elsif(inst(15 downto 12) = "1010" or inst(15 downto 12) = "1011") then
 					-- conditional jump instruction, predict address, 
 					Branch_addr <= LUT(i)(15 downto 0);
+				else
+					Branch_addr <= PC_given + 1;
 				end if;
-				present := 1;
-				exit;
 			end if;
 		end loop;
+		end if;
 		
-			if(inst(15 downto 12) = "1000" or inst(15 downto 12) = "1001"
-				or inst(15 downto 12) = "1010" or inst(15 downto 12) = "1011") then
-				if(present = 0) then
-					present := 1;
-					LUT(head)(34 downto 19) := PC_given;
-					LUT(head)(18 downto 17) := "10";
-					Branch_addr <= PC_given+1;
-					if(head = 31) then
-						head := 0;
-					else
-						head := head + 1;
-					end if;
-				end if;
-			else
-				Branch_addr <= PC_given + 1;
-			end if;
-		end if;	
 		if(write_en = '1') then
 			for i in 0 to 32 loop
 				if(LUT(i)(34 downto 19) = PC_given) then
