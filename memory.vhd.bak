@@ -14,7 +14,7 @@ port(
  RAM_WR_1: in std_logic; -- Write enable 1
  RAM_WR_2: in std_logic; -- Write enable 2
  RAM_CLOCK: in std_logic; -- clock input for RAM
- RAM_DATA_OUT_1: out std_logic_vector(15 downto 0); -- Data output 1 of RAM
+ RAM_DATA_OUT_1: out std_logic_vector(15 downto 0) -- Data output 1 of RAM
  RAM_DATA_OUT_2: out std_logic_vector(15 downto 0) -- Data output 2 of RAM
 );
 end Multiple_port_RAM_VHDL;
@@ -97,7 +97,7 @@ begin
  if(rising_edge(RAM_CLOCK)) then
  if(RAM_WR_1='1') then -- when write enable = 1, 
  -- write input data into RAM at the provided address
- RAM(to_integer(unsigned(RAM_ADDR_Write_1))) <= RAM_DATA_IN_1;
+ RAM(to_integer(unsigned(RAM_ADDR_1))) <= RAM_DATA_IN_1;
  -- The index of the RAM array type needs to be integer so
  -- converts RAM_ADDR from std_logic_vector -> Unsigned -> Interger using numeric_std library
  end if;
@@ -106,7 +106,7 @@ begin
  if(rising_edge(RAM_CLOCK)) then
     if(RAM_WR_2='1') then -- when write enable = 1, 
     -- write input data into RAM at the provided address
-    RAM(to_integer(unsigned(RAM_ADDR_Write_2))) <= RAM_DATA_IN_2;
+    RAM(to_integer(unsigned(RAM_ADDR_2))) <= RAM_DATA_IN_2;
     -- The index of the RAM array type needs to be integer so
     -- converts RAM_ADDR from std_logic_vector -> Unsigned -> Interger using numeric_std library
     end if;
@@ -114,6 +114,6 @@ begin
 
 end process;
  -- Data to be read out 
- RAM_DATA_OUT_1 <= RAM(to_integer(unsigned(RAM_ADDR_Read_1)));
- RAM_DATA_OUT_2 <= RAM(to_integer(unsigned(RAM_ADDR_Read_2)));
+ RAM_DATA_OUT_1 <= RAM(to_integer(unsigned(RAM_ADDR_1)));
+ RAM_DATA_OUT_2 <= RAM(to_integer(unsigned(RAM_ADDR_2)));
 end Behavioral;

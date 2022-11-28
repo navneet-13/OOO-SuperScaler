@@ -43,6 +43,7 @@ architecture beh of alu_LS is
 				sum(operand_width) := carry(operand_width-1);
 			return sum;
 	end function add;
+	signal dest_temp : std_logic_vector(operand_width-1 downto 0) := (others => '0');
 	
 begin
 	
@@ -59,8 +60,9 @@ begin
 				-- LHI
                 -- Storing opr1 to output
 				elsif unsigned(Opcode) = 7 then
-					dest <= add(opr1, opr2);
-                    Z <= or_reduce(dest);
+					dest_temp <= add(opr1, opr2);
+					dest <= dest_temp;
+               Z <= or_reduce(dest_temp);
 				-- LW
                 -- Storing opr1 + opr2 to output
 				elsif unsigned(Opcode) = 5 then
