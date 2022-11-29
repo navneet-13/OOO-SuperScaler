@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.math_real.all;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use ieee.numeric_std.all;
 use ieee.std_logic_misc.all;
 
@@ -19,7 +20,8 @@ entity alu is
 	port (
 		opr1: in std_logic_vector(operand_width-1 downto 0);
 		opr2: in std_logic_vector(operand_width-1 downto 0);
-		dest: out std_logic_vector(operand_width-1 downto 0);
+		dest: in std_logic_vector(operand_width-1 downto 0);
+		output: out std_logic_vector(operand_width-1 downto 0);
 		opcode: in std_logic_vector(sel_line-1 downto 0);
 		cin, zin; in std_logic;
 		enable, reset: in std_logic;
@@ -83,10 +85,11 @@ begin
 					dest_temp <= add_temp(operand_width-1 downto 0);
 				-- XOR
 				elsif sel = "000101" then
+					if C = '1';  
 					dest <= opr1 xor opr2;
 					dest_temp <= opr1 xor opr2;
 				-- ADD
-				elsif sel = "" then
+				elsif sel = "000110" then
 					dest <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
 					dest_temp <= add_temp(operand_width-1 downto 0);
 					C <= add_temp(operand_width);

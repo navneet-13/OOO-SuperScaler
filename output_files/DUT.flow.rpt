@@ -1,5 +1,5 @@
 Flow report for DUT
-Mon Nov 28 18:11:18 2022
+Mon Nov 28 19:52:59 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------+
 ; Flow Summary                                                        ;
 +-----------------------+---------------------------------------------+
-; Flow Status           ; Flow Failed - Mon Nov 28 18:11:18 2022      ;
+; Flow Status           ; Flow Failed - Mon Nov 28 19:52:59 2022      ;
 ; Quartus Prime Version ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name         ; DUT                                         ;
 ; Top-level Entity Name ; DUT                                         ;
@@ -56,30 +56,30 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/28/2022 18:11:06 ;
+; Start date & time ; 11/28/2022 19:52:47 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DUT                 ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                    ;
-+---------------------------------+---------------------------------+---------------+-------------+-----------------------------------+
-; Assignment Name                 ; Value                           ; Default Value ; Entity Name ; Section Id                        ;
-+---------------------------------+---------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID           ; 211375645165222.166963926614008 ; --            ; --          ; --                                ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                             ; --            ; --          ; eda_board_design_timing           ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                             ; --            ; --          ; eda_board_design_boundary_scan    ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                             ; --            ; --          ; eda_board_design_signal_integrity ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                             ; --            ; --          ; eda_board_design_symbol           ;
-; EDA_OUTPUT_DATA_FORMAT          ; Vhdl                            ; --            ; --          ; eda_simulation                    ;
-; EDA_SIMULATION_TOOL             ; ModelSim-Altera (VHDL)          ; <None>        ; --          ; --                                ;
-; EDA_TIME_SCALE                  ; 1 ps                            ; --            ; --          ; eda_simulation                    ;
-; MAX_CORE_JUNCTION_TEMP          ; 85                              ; --            ; --          ; --                                ;
-; MIN_CORE_JUNCTION_TEMP          ; 0                               ; --            ; --          ; --                                ;
-; POWER_PRESET_COOLING_SOLUTION   ; No Heat Sink With Still Air     ; --            ; --          ; --                                ;
-; PROJECT_OUTPUT_DIRECTORY        ; output_files                    ; --            ; --          ; --                                ;
-+---------------------------------+---------------------------------+---------------+-------------+-----------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                  ;
++---------------------------------+-------------------------------+---------------+-------------+-----------------------------------+
+; Assignment Name                 ; Value                         ; Default Value ; Entity Name ; Section Id                        ;
++---------------------------------+-------------------------------+---------------+-------------+-----------------------------------+
+; COMPILER_SIGNATURE_ID           ; 1098661419798.166964536713172 ; --            ; --          ; --                                ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                           ; --            ; --          ; eda_board_design_timing           ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                           ; --            ; --          ; eda_board_design_boundary_scan    ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                           ; --            ; --          ; eda_board_design_signal_integrity ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST ; Off                           ; --            ; --          ; eda_board_design_symbol           ;
+; EDA_OUTPUT_DATA_FORMAT          ; Vhdl                          ; --            ; --          ; eda_simulation                    ;
+; EDA_SIMULATION_TOOL             ; ModelSim-Altera (VHDL)        ; <None>        ; --          ; --                                ;
+; EDA_TIME_SCALE                  ; 1 ps                          ; --            ; --          ; eda_simulation                    ;
+; MAX_CORE_JUNCTION_TEMP          ; 85                            ; --            ; --          ; --                                ;
+; MIN_CORE_JUNCTION_TEMP          ; 0                             ; --            ; --          ; --                                ;
+; POWER_PRESET_COOLING_SOLUTION   ; No Heat Sink With Still Air   ; --            ; --          ; --                                ;
+; PROJECT_OUTPUT_DIRECTORY        ; output_files                  ; --            ; --          ; --                                ;
++---------------------------------+-------------------------------+---------------+-------------+-----------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -87,8 +87,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4763 MB             ; 00:00:22                           ;
-; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:22                           ;
+; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4752 MB             ; 00:00:30                           ;
+; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:30                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -97,7 +97,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-LEN0SCE  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; LAPTOP-9GBTQG0T  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
