@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 USE ieee.numeric_std.ALL;
+use ieee.std_logic_unsigned.ALL;
 
 -- A 64x8 Multiple-port RAM in VHDL
 entity Multiple_port_RAM_VHDL is
@@ -11,9 +12,14 @@ port(
  RAM_ADDR_Write_2: in std_logic_vector(15 downto 0); -- Address_2 to write RAM
  RAM_DATA_IN_1: in std_logic_vector(15 downto 0); -- 16 bit Data_1 to write into RAM
  RAM_DATA_IN_2: in std_logic_vector(15 downto 0); -- 16 bit Data_2 to write into RAM
+ PC_Instr: in std_logic_vector(15 downto 0);--PC address
+
  RAM_WR_1: in std_logic; -- Write enable 1
  RAM_WR_2: in std_logic; -- Write enable 2
  RAM_CLOCK: in std_logic; -- clock input for RAM
+
+ instr_out_1: out std_logic_vector(15 downto 0);
+ instr_out_2: out std_logic_vector(15 downto 0);
  RAM_DATA_OUT_1: out std_logic_vector(15 downto 0); -- Data output 1 of RAM
  RAM_DATA_OUT_2: out std_logic_vector(15 downto 0) -- Data output 2 of RAM
 );
@@ -116,4 +122,7 @@ end process;
  -- Data to be read out 
  RAM_DATA_OUT_1 <= RAM(to_integer(unsigned(RAM_ADDR_Read_1)));
  RAM_DATA_OUT_2 <= RAM(to_integer(unsigned(RAM_ADDR_Read_2)));
+
+ instr_out_1 <= RAM(to_integer(unsigned(PC_Instr)));
+ instr_out_2 <= RAM(to_integer(unsigned(PC_Instr + 1)));
 end Behavioral;

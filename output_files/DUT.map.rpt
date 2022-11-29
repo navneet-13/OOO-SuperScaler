@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Mon Nov 28 18:11:18 2022
+Tue Nov 29 22:20:50 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -10,7 +10,16 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |decoder
+ 12. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -37,11 +46,15 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Mon Nov 28 18:11:18 2022           ;
+; Analysis & Synthesis Status ; Successful - Tue Nov 29 22:20:50 2022       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
-; Top-level Entity Name       ; DUT                                         ;
+; Top-level Entity Name       ; Decoder                                     ;
 ; Family                      ; MAX V                                       ;
+; Total logic elements        ; 3,945                                       ;
+; Total pins                  ; 519                                         ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
 
 
@@ -51,7 +64,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; 5M1270ZT144C5      ;                    ;
-; Top-level entity name                                            ; DUT                ; DUT                ;
+; Top-level entity name                                            ; decoder            ; DUT                ;
 ; Family name                                                      ; MAX V              ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -132,30 +145,820 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                            ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+; decoder.vhd                      ; yes             ; User VHDL File               ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd            ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; f:/quartus/quartus/libraries/megafunctions/lpm_divide.tdf               ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; f:/quartus/quartus/libraries/megafunctions/abs_divider.inc              ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; f:/quartus/quartus/libraries/megafunctions/sign_div_unsign.inc          ;         ;
+; aglobal201.inc                   ; yes             ; Megafunction                 ; f:/quartus/quartus/libraries/megafunctions/aglobal201.inc               ;         ;
+; db/lpm_divide_n5o.tdf            ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_divide_n5o.tdf  ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/abs_divider_4dg.tdf ;         ;
+; db/alt_u_div_hle.tdf             ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/alt_u_div_hle.tdf   ;         ;
+; db/add_sub_i4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_i4c.tdf     ;         ;
+; db/add_sub_j4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_j4c.tdf     ;         ;
+; db/add_sub_36c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_36c.tdf     ;         ;
+; db/add_sub_46c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_46c.tdf     ;         ;
+; db/add_sub_56c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_56c.tdf     ;         ;
+; db/add_sub_66c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_66c.tdf     ;         ;
+; db/add_sub_76c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_76c.tdf     ;         ;
+; db/add_sub_86c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_86c.tdf     ;         ;
+; db/add_sub_96c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_96c.tdf     ;         ;
+; db/add_sub_a6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_a6c.tdf     ;         ;
+; db/add_sub_b6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_b6c.tdf     ;         ;
+; db/add_sub_c6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_c6c.tdf     ;         ;
+; db/add_sub_k4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf     ;         ;
+; db/add_sub_d6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_d6c.tdf     ;         ;
+; db/add_sub_e6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_e6c.tdf     ;         ;
+; db/add_sub_f6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_f6c.tdf     ;         ;
+; db/add_sub_g6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_g6c.tdf     ;         ;
+; db/add_sub_h6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_h6c.tdf     ;         ;
+; db/add_sub_i6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_i6c.tdf     ;         ;
+; db/add_sub_j6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_j6c.tdf     ;         ;
+; db/add_sub_k6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k6c.tdf     ;         ;
+; db/add_sub_l6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_l6c.tdf     ;         ;
+; db/add_sub_m6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_m6c.tdf     ;         ;
+; db/add_sub_l4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_l4c.tdf     ;         ;
+; db/add_sub_n6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_n6c.tdf     ;         ;
+; db/add_sub_o6c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_o6c.tdf     ;         ;
+; db/add_sub_m4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_m4c.tdf     ;         ;
+; db/add_sub_n4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_n4c.tdf     ;         ;
+; db/add_sub_o4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_o4c.tdf     ;         ;
+; db/add_sub_p4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_p4c.tdf     ;         ;
+; db/add_sub_q4c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_q4c.tdf     ;         ;
+; db/add_sub_26c.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_26c.tdf     ;         ;
+; db/lpm_abs_tb9.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf     ;         ;
+; db/add_sub_tte.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_tte.tdf     ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 3945  ;
+;     -- Combinational with no register       ; 3685  ;
+;     -- Register only                        ; 122   ;
+;     -- Combinational with a register        ; 138   ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 1136  ;
+;     -- 3 input functions                    ; 1296  ;
+;     -- 2 input functions                    ; 1211  ;
+;     -- 1 input functions                    ; 180   ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 2653  ;
+;     -- arithmetic mode                      ; 1292  ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 16    ;
+;     -- asynchronous clear/load mode         ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 260   ;
+; Total logic cells in carry chains           ; 1418  ;
+; I/O pins                                    ; 519   ;
+; Maximum fan-out node                        ; CLOCK ;
+; Maximum fan-out                             ; 260   ;
+; Total fan-out                               ; 11841 ;
+; Average fan-out                             ; 2.65  ;
++---------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                         ;
++-----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node              ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                                         ; Entity Name     ; Library Name ;
++-----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |Decoder                                ; 3945 (475)  ; 260          ; 0          ; 519  ; 0            ; 3685 (215)   ; 122 (122)         ; 138 (138)        ; 1418 (192)      ; 0 (0)      ; |Decoder                                                                                                                    ; Decoder         ; work         ;
+;    |lpm_divide:Mod0|                    ; 1735 (0)    ; 0            ; 0          ; 0    ; 0            ; 1735 (0)     ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0                                                                                                    ; lpm_divide      ; work         ;
+;       |lpm_divide_n5o:auto_generated|   ; 1735 (0)    ; 0            ; 0          ; 0    ; 0            ; 1735 (0)     ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated                                                                      ; lpm_divide_n5o  ; work         ;
+;          |abs_divider_4dg:divider|      ; 1735 (32)   ; 0            ; 0          ; 0    ; 0            ; 1735 (32)    ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider                                              ; abs_divider_4dg ; work         ;
+;             |add_sub_tte:compl_add_rem| ; 33 (33)     ; 0            ; 0          ; 0    ; 0            ; 33 (33)      ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|add_sub_tte:compl_add_rem                    ; add_sub_tte     ; work         ;
+;             |alt_u_div_hle:divider|     ; 1609 (1027) ; 0            ; 0          ; 0    ; 0            ; 1609 (1027)  ; 0 (0)             ; 0 (0)            ; 580 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider                        ; alt_u_div_hle   ; work         ;
+;                |add_sub_26c:add_sub_9|  ; 12 (12)     ; 0            ; 0          ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 0 (0)            ; 12 (12)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_26c:add_sub_9  ; add_sub_26c     ; work         ;
+;                |add_sub_36c:add_sub_10| ; 13 (13)     ; 0            ; 0          ; 0    ; 0            ; 13 (13)      ; 0 (0)             ; 0 (0)            ; 13 (13)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_36c:add_sub_10 ; add_sub_36c     ; work         ;
+;                |add_sub_46c:add_sub_11| ; 14 (14)     ; 0            ; 0          ; 0    ; 0            ; 14 (14)      ; 0 (0)             ; 0 (0)            ; 14 (14)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_46c:add_sub_11 ; add_sub_46c     ; work         ;
+;                |add_sub_56c:add_sub_12| ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 15 (15)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_56c:add_sub_12 ; add_sub_56c     ; work         ;
+;                |add_sub_66c:add_sub_13| ; 16 (16)     ; 0            ; 0          ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 16 (16)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_66c:add_sub_13 ; add_sub_66c     ; work         ;
+;                |add_sub_76c:add_sub_14| ; 17 (17)     ; 0            ; 0          ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 17 (17)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_76c:add_sub_14 ; add_sub_76c     ; work         ;
+;                |add_sub_86c:add_sub_15| ; 18 (18)     ; 0            ; 0          ; 0    ; 0            ; 18 (18)      ; 0 (0)             ; 0 (0)            ; 18 (18)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_86c:add_sub_15 ; add_sub_86c     ; work         ;
+;                |add_sub_96c:add_sub_16| ; 19 (19)     ; 0            ; 0          ; 0    ; 0            ; 19 (19)      ; 0 (0)             ; 0 (0)            ; 19 (19)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_96c:add_sub_16 ; add_sub_96c     ; work         ;
+;                |add_sub_a6c:add_sub_17| ; 20 (20)     ; 0            ; 0          ; 0    ; 0            ; 20 (20)      ; 0 (0)             ; 0 (0)            ; 20 (20)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_a6c:add_sub_17 ; add_sub_a6c     ; work         ;
+;                |add_sub_b6c:add_sub_18| ; 21 (21)     ; 0            ; 0          ; 0    ; 0            ; 21 (21)      ; 0 (0)             ; 0 (0)            ; 21 (21)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_b6c:add_sub_18 ; add_sub_b6c     ; work         ;
+;                |add_sub_c6c:add_sub_19| ; 22 (22)     ; 0            ; 0          ; 0    ; 0            ; 22 (22)      ; 0 (0)             ; 0 (0)            ; 22 (22)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_c6c:add_sub_19 ; add_sub_c6c     ; work         ;
+;                |add_sub_d6c:add_sub_20| ; 23 (23)     ; 0            ; 0          ; 0    ; 0            ; 23 (23)      ; 0 (0)             ; 0 (0)            ; 23 (23)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_d6c:add_sub_20 ; add_sub_d6c     ; work         ;
+;                |add_sub_e6c:add_sub_21| ; 24 (24)     ; 0            ; 0          ; 0    ; 0            ; 24 (24)      ; 0 (0)             ; 0 (0)            ; 24 (24)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_e6c:add_sub_21 ; add_sub_e6c     ; work         ;
+;                |add_sub_f6c:add_sub_22| ; 25 (25)     ; 0            ; 0          ; 0    ; 0            ; 25 (25)      ; 0 (0)             ; 0 (0)            ; 25 (25)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_f6c:add_sub_22 ; add_sub_f6c     ; work         ;
+;                |add_sub_g6c:add_sub_23| ; 26 (26)     ; 0            ; 0          ; 0    ; 0            ; 26 (26)      ; 0 (0)             ; 0 (0)            ; 26 (26)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_g6c:add_sub_23 ; add_sub_g6c     ; work         ;
+;                |add_sub_h6c:add_sub_24| ; 27 (27)     ; 0            ; 0          ; 0    ; 0            ; 27 (27)      ; 0 (0)             ; 0 (0)            ; 27 (27)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_h6c:add_sub_24 ; add_sub_h6c     ; work         ;
+;                |add_sub_i6c:add_sub_25| ; 28 (28)     ; 0            ; 0          ; 0    ; 0            ; 28 (28)      ; 0 (0)             ; 0 (0)            ; 28 (28)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_i6c:add_sub_25 ; add_sub_i6c     ; work         ;
+;                |add_sub_j6c:add_sub_26| ; 29 (29)     ; 0            ; 0          ; 0    ; 0            ; 29 (29)      ; 0 (0)             ; 0 (0)            ; 29 (29)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_j6c:add_sub_26 ; add_sub_j6c     ; work         ;
+;                |add_sub_k4c:add_sub_2|  ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2  ; add_sub_k4c     ; work         ;
+;                |add_sub_k6c:add_sub_27| ; 30 (30)     ; 0            ; 0          ; 0    ; 0            ; 30 (30)      ; 0 (0)             ; 0 (0)            ; 30 (30)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k6c:add_sub_27 ; add_sub_k6c     ; work         ;
+;                |add_sub_l4c:add_sub_3|  ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 6 (6)           ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_l4c:add_sub_3  ; add_sub_l4c     ; work         ;
+;                |add_sub_l6c:add_sub_28| ; 31 (31)     ; 0            ; 0          ; 0    ; 0            ; 31 (31)      ; 0 (0)             ; 0 (0)            ; 31 (31)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_l6c:add_sub_28 ; add_sub_l6c     ; work         ;
+;                |add_sub_m4c:add_sub_4|  ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 7 (7)           ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_m4c:add_sub_4  ; add_sub_m4c     ; work         ;
+;                |add_sub_m6c:add_sub_29| ; 32 (32)     ; 0            ; 0          ; 0    ; 0            ; 32 (32)      ; 0 (0)             ; 0 (0)            ; 32 (32)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_m6c:add_sub_29 ; add_sub_m6c     ; work         ;
+;                |add_sub_n4c:add_sub_5|  ; 8 (8)       ; 0            ; 0          ; 0    ; 0            ; 8 (8)        ; 0 (0)             ; 0 (0)            ; 8 (8)           ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_n4c:add_sub_5  ; add_sub_n4c     ; work         ;
+;                |add_sub_n6c:add_sub_30| ; 33 (33)     ; 0            ; 0          ; 0    ; 0            ; 33 (33)      ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_n6c:add_sub_30 ; add_sub_n6c     ; work         ;
+;                |add_sub_o4c:add_sub_6|  ; 9 (9)       ; 0            ; 0          ; 0    ; 0            ; 9 (9)        ; 0 (0)             ; 0 (0)            ; 9 (9)           ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_o4c:add_sub_6  ; add_sub_o4c     ; work         ;
+;                |add_sub_o6c:add_sub_31| ; 34 (34)     ; 0            ; 0          ; 0    ; 0            ; 34 (34)      ; 0 (0)             ; 0 (0)            ; 34 (34)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_o6c:add_sub_31 ; add_sub_o6c     ; work         ;
+;                |add_sub_p4c:add_sub_7|  ; 10 (10)     ; 0            ; 0          ; 0    ; 0            ; 10 (10)      ; 0 (0)             ; 0 (0)            ; 10 (10)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_p4c:add_sub_7  ; add_sub_p4c     ; work         ;
+;                |add_sub_q4c:add_sub_8|  ; 11 (11)     ; 0            ; 0          ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 0 (0)            ; 11 (11)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_q4c:add_sub_8  ; add_sub_q4c     ; work         ;
+;             |lpm_abs_tb9:my_abs_num|    ; 61 (61)     ; 0            ; 0          ; 0    ; 0            ; 61 (61)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num                       ; lpm_abs_tb9     ; work         ;
+;    |lpm_divide:Mod1|                    ; 1735 (0)    ; 0            ; 0          ; 0    ; 0            ; 1735 (0)     ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1                                                                                                    ; lpm_divide      ; work         ;
+;       |lpm_divide_n5o:auto_generated|   ; 1735 (0)    ; 0            ; 0          ; 0    ; 0            ; 1735 (0)     ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated                                                                      ; lpm_divide_n5o  ; work         ;
+;          |abs_divider_4dg:divider|      ; 1735 (32)   ; 0            ; 0          ; 0    ; 0            ; 1735 (32)    ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider                                              ; abs_divider_4dg ; work         ;
+;             |add_sub_tte:compl_add_rem| ; 33 (33)     ; 0            ; 0          ; 0    ; 0            ; 33 (33)      ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|add_sub_tte:compl_add_rem                    ; add_sub_tte     ; work         ;
+;             |alt_u_div_hle:divider|     ; 1609 (1027) ; 0            ; 0          ; 0    ; 0            ; 1609 (1027)  ; 0 (0)             ; 0 (0)            ; 580 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider                        ; alt_u_div_hle   ; work         ;
+;                |add_sub_26c:add_sub_9|  ; 12 (12)     ; 0            ; 0          ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 0 (0)            ; 12 (12)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_26c:add_sub_9  ; add_sub_26c     ; work         ;
+;                |add_sub_36c:add_sub_10| ; 13 (13)     ; 0            ; 0          ; 0    ; 0            ; 13 (13)      ; 0 (0)             ; 0 (0)            ; 13 (13)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_36c:add_sub_10 ; add_sub_36c     ; work         ;
+;                |add_sub_46c:add_sub_11| ; 14 (14)     ; 0            ; 0          ; 0    ; 0            ; 14 (14)      ; 0 (0)             ; 0 (0)            ; 14 (14)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_46c:add_sub_11 ; add_sub_46c     ; work         ;
+;                |add_sub_56c:add_sub_12| ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 15 (15)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_56c:add_sub_12 ; add_sub_56c     ; work         ;
+;                |add_sub_66c:add_sub_13| ; 16 (16)     ; 0            ; 0          ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 16 (16)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_66c:add_sub_13 ; add_sub_66c     ; work         ;
+;                |add_sub_76c:add_sub_14| ; 17 (17)     ; 0            ; 0          ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 17 (17)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_76c:add_sub_14 ; add_sub_76c     ; work         ;
+;                |add_sub_86c:add_sub_15| ; 18 (18)     ; 0            ; 0          ; 0    ; 0            ; 18 (18)      ; 0 (0)             ; 0 (0)            ; 18 (18)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_86c:add_sub_15 ; add_sub_86c     ; work         ;
+;                |add_sub_96c:add_sub_16| ; 19 (19)     ; 0            ; 0          ; 0    ; 0            ; 19 (19)      ; 0 (0)             ; 0 (0)            ; 19 (19)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_96c:add_sub_16 ; add_sub_96c     ; work         ;
+;                |add_sub_a6c:add_sub_17| ; 20 (20)     ; 0            ; 0          ; 0    ; 0            ; 20 (20)      ; 0 (0)             ; 0 (0)            ; 20 (20)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_a6c:add_sub_17 ; add_sub_a6c     ; work         ;
+;                |add_sub_b6c:add_sub_18| ; 21 (21)     ; 0            ; 0          ; 0    ; 0            ; 21 (21)      ; 0 (0)             ; 0 (0)            ; 21 (21)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_b6c:add_sub_18 ; add_sub_b6c     ; work         ;
+;                |add_sub_c6c:add_sub_19| ; 22 (22)     ; 0            ; 0          ; 0    ; 0            ; 22 (22)      ; 0 (0)             ; 0 (0)            ; 22 (22)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_c6c:add_sub_19 ; add_sub_c6c     ; work         ;
+;                |add_sub_d6c:add_sub_20| ; 23 (23)     ; 0            ; 0          ; 0    ; 0            ; 23 (23)      ; 0 (0)             ; 0 (0)            ; 23 (23)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_d6c:add_sub_20 ; add_sub_d6c     ; work         ;
+;                |add_sub_e6c:add_sub_21| ; 24 (24)     ; 0            ; 0          ; 0    ; 0            ; 24 (24)      ; 0 (0)             ; 0 (0)            ; 24 (24)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_e6c:add_sub_21 ; add_sub_e6c     ; work         ;
+;                |add_sub_f6c:add_sub_22| ; 25 (25)     ; 0            ; 0          ; 0    ; 0            ; 25 (25)      ; 0 (0)             ; 0 (0)            ; 25 (25)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_f6c:add_sub_22 ; add_sub_f6c     ; work         ;
+;                |add_sub_g6c:add_sub_23| ; 26 (26)     ; 0            ; 0          ; 0    ; 0            ; 26 (26)      ; 0 (0)             ; 0 (0)            ; 26 (26)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_g6c:add_sub_23 ; add_sub_g6c     ; work         ;
+;                |add_sub_h6c:add_sub_24| ; 27 (27)     ; 0            ; 0          ; 0    ; 0            ; 27 (27)      ; 0 (0)             ; 0 (0)            ; 27 (27)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_h6c:add_sub_24 ; add_sub_h6c     ; work         ;
+;                |add_sub_i6c:add_sub_25| ; 28 (28)     ; 0            ; 0          ; 0    ; 0            ; 28 (28)      ; 0 (0)             ; 0 (0)            ; 28 (28)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_i6c:add_sub_25 ; add_sub_i6c     ; work         ;
+;                |add_sub_j6c:add_sub_26| ; 29 (29)     ; 0            ; 0          ; 0    ; 0            ; 29 (29)      ; 0 (0)             ; 0 (0)            ; 29 (29)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_j6c:add_sub_26 ; add_sub_j6c     ; work         ;
+;                |add_sub_k4c:add_sub_2|  ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2  ; add_sub_k4c     ; work         ;
+;                |add_sub_k6c:add_sub_27| ; 30 (30)     ; 0            ; 0          ; 0    ; 0            ; 30 (30)      ; 0 (0)             ; 0 (0)            ; 30 (30)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k6c:add_sub_27 ; add_sub_k6c     ; work         ;
+;                |add_sub_l4c:add_sub_3|  ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 6 (6)           ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_l4c:add_sub_3  ; add_sub_l4c     ; work         ;
+;                |add_sub_l6c:add_sub_28| ; 31 (31)     ; 0            ; 0          ; 0    ; 0            ; 31 (31)      ; 0 (0)             ; 0 (0)            ; 31 (31)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_l6c:add_sub_28 ; add_sub_l6c     ; work         ;
+;                |add_sub_m4c:add_sub_4|  ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 7 (7)           ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_m4c:add_sub_4  ; add_sub_m4c     ; work         ;
+;                |add_sub_m6c:add_sub_29| ; 32 (32)     ; 0            ; 0          ; 0    ; 0            ; 32 (32)      ; 0 (0)             ; 0 (0)            ; 32 (32)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_m6c:add_sub_29 ; add_sub_m6c     ; work         ;
+;                |add_sub_n4c:add_sub_5|  ; 8 (8)       ; 0            ; 0          ; 0    ; 0            ; 8 (8)        ; 0 (0)             ; 0 (0)            ; 8 (8)           ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_n4c:add_sub_5  ; add_sub_n4c     ; work         ;
+;                |add_sub_n6c:add_sub_30| ; 33 (33)     ; 0            ; 0          ; 0    ; 0            ; 33 (33)      ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_n6c:add_sub_30 ; add_sub_n6c     ; work         ;
+;                |add_sub_o4c:add_sub_6|  ; 9 (9)       ; 0            ; 0          ; 0    ; 0            ; 9 (9)        ; 0 (0)             ; 0 (0)            ; 9 (9)           ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_o4c:add_sub_6  ; add_sub_o4c     ; work         ;
+;                |add_sub_o6c:add_sub_31| ; 34 (34)     ; 0            ; 0          ; 0    ; 0            ; 34 (34)      ; 0 (0)             ; 0 (0)            ; 34 (34)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_o6c:add_sub_31 ; add_sub_o6c     ; work         ;
+;                |add_sub_p4c:add_sub_7|  ; 10 (10)     ; 0            ; 0          ; 0    ; 0            ; 10 (10)      ; 0 (0)             ; 0 (0)            ; 10 (10)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_p4c:add_sub_7  ; add_sub_p4c     ; work         ;
+;                |add_sub_q4c:add_sub_8|  ; 11 (11)     ; 0            ; 0          ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 0 (0)            ; 11 (11)         ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_q4c:add_sub_8  ; add_sub_q4c     ; work         ;
+;             |lpm_abs_tb9:my_abs_num|    ; 61 (61)     ; 0            ; 0          ; 0    ; 0            ; 61 (61)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Decoder|lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num                       ; lpm_abs_tb9     ; work         ;
++-----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++----------------------------------------+-----------------------------------------+
+; Register name                          ; Reason for Removal                      ;
++----------------------------------------+-----------------------------------------+
+; dest_reg_2[4]~reg0                     ; Stuck at GND due to stuck port data_in  ;
+; dest_reg_2[3]~reg0                     ; Stuck at GND due to stuck port data_in  ;
+; Instr_OUT_2[100]~reg0                  ; Stuck at GND due to stuck port data_in  ;
+; dest_reg_1[3]~reg0                     ; Stuck at GND due to stuck port data_in  ;
+; dest_reg_1[4]~reg0                     ; Stuck at GND due to stuck port data_in  ;
+; Instr_OUT_1[100]~reg0                  ; Stuck at GND due to stuck port data_in  ;
+; opr1_addr_out_1[4]~reg0                ; Merged with opr1_addr_out_1[3]~reg0     ;
+; opr1_addr_out_2[4]~reg0                ; Merged with opr1_addr_out_2[3]~reg0     ;
+; opr2_addr_out_1[4]~reg0                ; Merged with opr2_addr_out_1[3]~reg0     ;
+; opr2_addr_out_2[4]~reg0                ; Merged with opr2_addr_out_2[3]~reg0     ;
+; flag_reg_addr_out_1[1]~reg0            ; Merged with flag_reg_addr_out_1[0]~reg0 ;
+; flag_reg_addr_out_1[2]~reg0            ; Merged with flag_reg_addr_out_1[0]~reg0 ;
+; flag_reg_addr_out_1[3]~reg0            ; Merged with flag_reg_addr_out_1[0]~reg0 ;
+; flag_reg_addr_out_2[1]~reg0            ; Merged with flag_reg_addr_out_2[0]~reg0 ;
+; flag_reg_addr_out_2[2]~reg0            ; Merged with flag_reg_addr_out_2[0]~reg0 ;
+; flag_reg_addr_out_2[3]~reg0            ; Merged with flag_reg_addr_out_2[0]~reg0 ;
+; opr1_addr_out_1[3]~reg0                ; Stuck at GND due to stuck port data_in  ;
+; opr1_addr_out_2[3]~reg0                ; Stuck at GND due to stuck port data_in  ;
+; opr2_addr_out_1[3]~reg0                ; Stuck at GND due to stuck port data_in  ;
+; opr2_addr_out_2[3]~reg0                ; Stuck at GND due to stuck port data_in  ;
+; flag_reg_addr_out_1[0]~reg0            ; Stuck at GND due to stuck port data_in  ;
+; flag_reg_addr_out_2[0]~reg0            ; Stuck at GND due to stuck port data_in  ;
+; Total Number of Removed Registers = 22 ;                                         ;
++----------------------------------------+-----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 260   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 198   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; 16:1               ; 5 bits    ; 50 LEs        ; 0 LEs                ; 50 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[17]~reg0    ;
+; 16:1               ; 5 bits    ; 50 LEs        ; 0 LEs                ; 50 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[18]~reg0    ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |Decoder|Instr_OUT_1[23]~reg0    ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |Decoder|Instr_OUT_2[23]~reg0    ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[39]~reg0    ;
+; 14:1               ; 11 bits   ; 99 LEs        ; 0 LEs                ; 99 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[50]~reg0    ;
+; 14:1               ; 5 bits    ; 45 LEs        ; 5 LEs                ; 40 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[42]~reg0    ;
+; 10:1               ; 11 bits   ; 66 LEs        ; 0 LEs                ; 66 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[73]~reg0    ;
+; 10:1               ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[59]~reg0    ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[104]~reg0   ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[39]~reg0    ;
+; 14:1               ; 11 bits   ; 99 LEs        ; 0 LEs                ; 99 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[49]~reg0    ;
+; 14:1               ; 5 bits    ; 45 LEs        ; 5 LEs                ; 40 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[44]~reg0    ;
+; 10:1               ; 11 bits   ; 66 LEs        ; 0 LEs                ; 66 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[64]~reg0    ;
+; 10:1               ; 5 bits    ; 30 LEs        ; 5 LEs                ; 25 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[60]~reg0    ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[103]~reg0   ;
+; 15:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; Yes        ; |Decoder|tag_counter_1[31]       ;
+; 15:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; Yes        ; |Decoder|tag_counter_2[28]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |Decoder|Instr_OUT_1[27]~reg0    ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |Decoder|Instr_OUT_2[25]~reg0    ;
+; 12:1               ; 3 bits    ; 24 LEs        ; 3 LEs                ; 21 LEs                 ; Yes        ; |Decoder|opr2_addr_out_1[1]~reg0 ;
+; 12:1               ; 3 bits    ; 24 LEs        ; 3 LEs                ; 21 LEs                 ; Yes        ; |Decoder|opr2_addr_out_2[2]~reg0 ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; Yes        ; |Decoder|Instr_OUT_1[34]~reg0    ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; Yes        ; |Decoder|Instr_OUT_2[32]~reg0    ;
+; 11:1               ; 3 bits    ; 21 LEs        ; 6 LEs                ; 15 LEs                 ; Yes        ; |Decoder|opr1_addr_out_1[2]~reg0 ;
+; 11:1               ; 3 bits    ; 21 LEs        ; 6 LEs                ; 15 LEs                 ; Yes        ; |Decoder|opr1_addr_out_2[0]~reg0 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |decoder ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; input_width    ; 6     ; Signed Integer                                 ;
+; output_width   ; 16    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_n5o ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_n5o ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Nov 28 18:11:05 2022
+    Info: Processing started: Tue Nov 29 22:20:27 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 2 design units, including 1 entities, in source file branch_jump_ex.vhd
-    Info (12022): Found design unit 1: alu_Branch_Jump-beh File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 29
-    Info (12023): Found entity 1: alu_Branch_Jump File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 14
-Info (12021): Found 2 design units, including 1 entities, in source file ls_ex_unit.vhd
-    Info (12022): Found design unit 1: alu_LS-beh File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 29
-    Info (12023): Found entity 1: alu_LS File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 14
-Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
-    Info (12022): Found design unit 1: Multiple_port_RAM_VHDL-Behavioral File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/memory.vhd Line: 22
-    Info (12023): Found entity 1: Multiple_port_RAM_VHDL File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/memory.vhd Line: 6
-Error (12007): Top-level design entity "DUT" is undefined
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 4763 megabytes
-    Error: Processing ended: Mon Nov 28 18:11:18 2022
-    Error: Elapsed time: 00:00:13
-    Error: Total CPU time (on all processors): 00:00:22
+Info (12021): Found 2 design units, including 1 entities, in source file decoder.vhd
+    Info (12022): Found design unit 1: Decoder-Behavioral File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 53
+    Info (12023): Found entity 1: Decoder File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 6
+Info (12127): Elaborating entity "decoder" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at decoder.vhd(38): used implicit default value for signal "dest_addr_out_1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 38
+Warning (10541): VHDL Signal Declaration warning at decoder.vhd(39): used implicit default value for signal "dest_addr_out_2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 39
+Warning (10541): VHDL Signal Declaration warning at decoder.vhd(49): used implicit default value for signal "PC_Imm" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+Warning (10540): VHDL Signal Declaration warning at decoder.vhd(59): used explicit default value for signal "speculative_indicator" because signal was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 59
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(74): used initial value expression for variable "busy_arf" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 74
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(88): used initial value expression for variable "opr1_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 88
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(89): used initial value expression for variable "opr1_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 89
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(90): used initial value expression for variable "valid1" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 90
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(91): used initial value expression for variable "opr2_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 91
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(92): used initial value expression for variable "opr2_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 92
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(93): used initial value expression for variable "valid2" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 93
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(96): used initial value expression for variable "valid_cz" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 96
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(97): used initial value expression for variable "imm16_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 97
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(98): used initial value expression for variable "imm16_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 98
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(99): used initial value expression for variable "dest_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 99
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(100): used initial value expression for variable "dest_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 100
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(554): used initial value expression for variable "busy_arf" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 554
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(568): used initial value expression for variable "opr1_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 568
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(569): used initial value expression for variable "opr1_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 569
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(570): used initial value expression for variable "valid1" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 570
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(571): used initial value expression for variable "opr2_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 571
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(572): used initial value expression for variable "opr2_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 572
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(573): used initial value expression for variable "valid2" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 573
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(576): used initial value expression for variable "valid_cz" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 576
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(577): used initial value expression for variable "imm16_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 577
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(578): used initial value expression for variable "imm16_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 578
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(579): used initial value expression for variable "dest_h" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 579
+Warning (10542): VHDL Variable Declaration warning at decoder.vhd(580): used initial value expression for variable "dest_l" because variable was never assigned a value File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 580
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_1[106]" at decoder.vhd(47) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_1[101]" at decoder.vhd(47) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_1[16..0]" at decoder.vhd(47) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_2[106]" at decoder.vhd(48) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_2[101]" at decoder.vhd(48) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_2[16..0]" at decoder.vhd(48) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 475
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 951
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 475
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 475
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_n5o.tdf
+    Info (12023): Found entity 1: lpm_divide_n5o File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_divide_n5o.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/abs_divider_4dg.tdf Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_hle.tdf
+    Info (12023): Found entity 1: alt_u_div_hle File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/alt_u_div_hle.tdf Line: 87
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_i4c.tdf
+    Info (12023): Found entity 1: add_sub_i4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_i4c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_j4c.tdf
+    Info (12023): Found entity 1: add_sub_j4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_j4c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_36c.tdf
+    Info (12023): Found entity 1: add_sub_36c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_36c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_46c.tdf
+    Info (12023): Found entity 1: add_sub_46c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_46c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_56c.tdf
+    Info (12023): Found entity 1: add_sub_56c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_56c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_66c.tdf
+    Info (12023): Found entity 1: add_sub_66c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_66c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_76c.tdf
+    Info (12023): Found entity 1: add_sub_76c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_76c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_86c.tdf
+    Info (12023): Found entity 1: add_sub_86c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_86c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_96c.tdf
+    Info (12023): Found entity 1: add_sub_96c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_96c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_a6c.tdf
+    Info (12023): Found entity 1: add_sub_a6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_a6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_b6c.tdf
+    Info (12023): Found entity 1: add_sub_b6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_b6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_c6c.tdf
+    Info (12023): Found entity 1: add_sub_c6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_c6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_k4c.tdf
+    Info (12023): Found entity 1: add_sub_k4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_d6c.tdf
+    Info (12023): Found entity 1: add_sub_d6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_d6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_e6c.tdf
+    Info (12023): Found entity 1: add_sub_e6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_e6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_f6c.tdf
+    Info (12023): Found entity 1: add_sub_f6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_f6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_g6c.tdf
+    Info (12023): Found entity 1: add_sub_g6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_g6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_h6c.tdf
+    Info (12023): Found entity 1: add_sub_h6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_h6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_i6c.tdf
+    Info (12023): Found entity 1: add_sub_i6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_i6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_j6c.tdf
+    Info (12023): Found entity 1: add_sub_j6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_j6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_k6c.tdf
+    Info (12023): Found entity 1: add_sub_k6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_l6c.tdf
+    Info (12023): Found entity 1: add_sub_l6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_l6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_m6c.tdf
+    Info (12023): Found entity 1: add_sub_m6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_m6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_l4c.tdf
+    Info (12023): Found entity 1: add_sub_l4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_l4c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_n6c.tdf
+    Info (12023): Found entity 1: add_sub_n6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_n6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_o6c.tdf
+    Info (12023): Found entity 1: add_sub_o6c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_o6c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_m4c.tdf
+    Info (12023): Found entity 1: add_sub_m4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_m4c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_n4c.tdf
+    Info (12023): Found entity 1: add_sub_n4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_n4c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_o4c.tdf
+    Info (12023): Found entity 1: add_sub_o4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_o4c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_p4c.tdf
+    Info (12023): Found entity 1: add_sub_p4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_p4c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_q4c.tdf
+    Info (12023): Found entity 1: add_sub_q4c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_q4c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_26c.tdf
+    Info (12023): Found entity 1: add_sub_26c File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_26c.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_tb9.tdf
+    Info (12023): Found entity 1: lpm_abs_tb9 File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_tte.tdf
+    Info (12023): Found entity 1: add_sub_tte File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_tte.tdf Line: 25
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "opr1_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "opr1_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "opr1_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "opr1_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "opr2_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "opr2_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "opr2_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "opr2_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "dest_addr_out_1[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 38
+    Warning (13410): Pin "dest_addr_out_1[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 38
+    Warning (13410): Pin "dest_addr_out_1[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 38
+    Warning (13410): Pin "dest_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 38
+    Warning (13410): Pin "dest_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 38
+    Warning (13410): Pin "dest_addr_out_2[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 39
+    Warning (13410): Pin "dest_addr_out_2[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 39
+    Warning (13410): Pin "dest_addr_out_2[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 39
+    Warning (13410): Pin "dest_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 39
+    Warning (13410): Pin "dest_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 39
+    Warning (13410): Pin "flag_reg_addr_out_1[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "flag_reg_addr_out_1[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "flag_reg_addr_out_1[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "flag_reg_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "flag_reg_addr_out_2[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "flag_reg_addr_out_2[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "flag_reg_addr_out_2[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "flag_reg_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "dest_reg_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "dest_reg_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "dest_reg_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "dest_reg_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "Instr_OUT_1[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[5]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[6]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[7]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[8]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[9]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[10]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[11]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[12]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[13]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[14]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[15]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[16]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[100]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 110
+    Warning (13410): Pin "Instr_OUT_1[101]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_1[106]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 47
+    Warning (13410): Pin "Instr_OUT_2[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[5]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[6]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[7]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[8]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[9]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[10]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[11]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[12]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[13]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[14]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[15]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[16]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[100]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 586
+    Warning (13410): Pin "Instr_OUT_2[101]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "Instr_OUT_2[106]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 48
+    Warning (13410): Pin "PC_Imm[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[5]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[6]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[7]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[8]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[9]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[10]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[11]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[12]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[13]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[14]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+    Warning (13410): Pin "PC_Imm[15]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 49
+Warning (18009): Ignored 70 CARRY_SUM primitives
+    Warning (18013): Ignored 2 CARRY_SUM primitives -- cannot place fan-in logic in single logic cell
+        Warning (18014): Can't place logic feeding CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[2]" in single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~62" of type CARRY_SUM File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~8" of type CARRY_SUM File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+        Warning (18014): Can't place logic feeding CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[2]" in single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~62" of type CARRY_SUM File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~8" of type CARRY_SUM File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+    Warning (18011): Ignored 68 CARRY_SUM primitive(s) -- cannot place fan-out logic in single logic cell
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~62" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|_~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/alt_u_div_hle.tdf Line: 107
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[2]~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[30]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[30]~1" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[30]~2" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[29]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~5" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~6" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[28]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[29]~7" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[29]~8" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[27]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[28]~59" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[28]~60" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[26]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[27]~57" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[27]~58" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[25]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[26]~55" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[26]~56" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[24]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[25]~53" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[25]~54" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[23]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[24]~51" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[24]~52" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[22]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[23]~49" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[23]~50" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[21]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[22]~47" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[22]~48" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[20]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[21]~45" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[21]~46" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[19]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[20]~43" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[20]~44" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[18]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[19]~41" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[19]~42" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[17]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[18]~39" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[18]~40" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[16]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[17]~37" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[17]~38" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[15]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[16]~35" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[16]~36" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[14]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[15]~33" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[15]~34" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[13]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[14]~31" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[14]~32" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[12]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[13]~29" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[13]~30" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[11]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[12]~27" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[12]~28" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[10]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[11]~25" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[11]~26" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[9]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[10]~23" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[10]~24" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[8]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[9]~21" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[9]~22" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[7]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[8]~19" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[8]~20" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[6]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[7]~17" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[7]~18" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[5]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[6]~15" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[6]~16" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[4]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[5]~13" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[5]~14" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[3]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[4]~11" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[4]~12" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[2]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[3]~9" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[3]~10" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[1]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[2]~2" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[2]~3" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[0]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[1]~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[1]~1" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~62" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|_~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/alt_u_div_hle.tdf Line: 107
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[2]~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[30]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[30]~1" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[30]~2" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[29]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~5" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[30]~6" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[28]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[29]~7" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[29]~8" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[27]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[28]~59" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[28]~60" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[26]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[27]~57" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[27]~58" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[25]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[26]~55" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[26]~56" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[24]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[25]~53" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[25]~54" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[23]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[24]~51" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[24]~52" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[22]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[23]~49" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[23]~50" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[21]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[22]~47" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[22]~48" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[20]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[21]~45" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[21]~46" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[19]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[20]~43" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[20]~44" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[18]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[19]~41" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[19]~42" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[17]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[18]~39" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[18]~40" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[16]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[17]~37" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[17]~38" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[15]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[16]~35" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[16]~36" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[14]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[15]~33" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[15]~34" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[13]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[14]~31" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[14]~32" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[12]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[13]~29" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[13]~30" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[11]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[12]~27" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[12]~28" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[10]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[11]~25" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[11]~26" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[9]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[10]~23" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[10]~24" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[8]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[9]~21" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[9]~22" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[7]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[8]~19" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[8]~20" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[6]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[7]~17" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[7]~18" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[5]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[6]~15" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[6]~16" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[4]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[5]~13" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[5]~14" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[3]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[4]~11" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[4]~12" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[2]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[3]~9" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[3]~10" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|result_tmp[1]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[2]~2" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[2]~3" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[0]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[1]~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|lpm_abs_tb9:my_abs_num|cs1a[1]~1" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/lpm_abs_tb9.tdf Line: 32
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~8" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|_~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/alt_u_div_hle.tdf Line: 107
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[2]~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~9" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~10" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~8" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|_~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/alt_u_div_hle.tdf Line: 107
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[2]~0" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+        Warning (18012): Can't place logic fed by CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]" into a single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~9" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+            Warning (18042): Node "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~10" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
+Warning (21074): Design contains 69 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "Instruction_Word[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[4]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[6]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[7]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[8]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[9]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[10]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "Instruction_Word[11]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 11
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 15
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 15
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 15
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 15
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 16
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 16
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 16
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 16
+    Warning (15610): No output dependent on input pin "opr1_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 17
+    Warning (15610): No output dependent on input pin "opr1_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 18
+    Warning (15610): No output dependent on input pin "opr2_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 19
+    Warning (15610): No output dependent on input pin "opr2_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 20
+    Warning (15610): No output dependent on input pin "dest_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[4]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[5]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[6]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[7]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[8]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[9]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[10]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[11]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[12]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[13]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[14]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[15]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[16]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[17]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[18]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[19]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[20]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[21]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_1[22]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 21
+    Warning (15610): No output dependent on input pin "dest_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[4]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[5]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[6]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[7]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[8]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[9]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[10]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[11]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[12]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[13]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[14]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[15]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[16]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[17]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[18]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[19]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[20]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[21]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "dest_in_2[22]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 22
+    Warning (15610): No output dependent on input pin "flag_reg_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 23
+    Warning (15610): No output dependent on input pin "flag_reg_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 24
+Info (21057): Implemented 4464 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 237 input pins
+    Info (21059): Implemented 282 output pins
+    Info (21061): Implemented 3945 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 405 warnings
+    Info: Peak virtual memory: 4809 megabytes
+    Info: Processing ended: Tue Nov 29 22:20:50 2022
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:28
 
 

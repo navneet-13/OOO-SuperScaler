@@ -1,5 +1,9 @@
-Analysis & Synthesis Status : Failed - Mon Nov 28 18:11:18 2022
+Analysis & Synthesis Status : Successful - Tue Nov 29 22:20:50 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : DUT
-Top-level Entity Name : DUT
+Top-level Entity Name : Decoder
 Family : MAX V
+Total logic elements : 3,945
+Total pins : 519
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )
