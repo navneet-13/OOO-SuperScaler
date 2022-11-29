@@ -23,7 +23,7 @@ entity alu is
 		dest: in std_logic_vector(operand_width-1 downto 0);
 		output: out std_logic_vector(operand_width-1 downto 0);
 		opcode: in std_logic_vector(sel_line-1 downto 0);
-		cin, zin; in std_logic;
+		cin, zin: in std_logic;
 		enable, reset: in std_logic;
 		C, Z: out std_logic
 	);
@@ -66,46 +66,93 @@ architecture beh of alu is
 
 	signal add_temp : std_logic_vector(operand_width downto 0) := (others => '0');
 	signal adl_temp : std_logic_vector(operand_width downto 0) := (others => '0');
-	signal dest_temp : std_logic_vector(operand_width-1 downto 0) := (others => '0'); --(Aayush) directly using or reduce is giving some error for zero flag 
+	signal output_temp : std_logic_vector(operand_width-1 downto 0) := (others => '0'); --(Aayush) directly using or reduce is giving some error for zero flag 
                                                                  -- added a signal for that
 begin
 	add_temp <= add(opr1, opr2);
 	adl_temp <= adl(opr1, opr2);
 
-	main: process(opr1, opr2, opcode, enable, reset)
+	main: process(opr1, opr2, dest, cin, zin, opcode, enable, reset)
 	begin
 		if reset = '1' THEN
 			C <= '0';
 			Z <= '0';
 		else 
 			if enable = '1' then
-			   -- NAND
-				if sel = "000100" then
-					dest <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
-					dest_temp <= add_temp(operand_width-1 downto 0);
-				-- XOR
-				elsif sel = "000101" then
-					if C = '1';  
-					dest <= opr1 xor opr2;
-					dest_temp <= opr1 xor opr2;
-				-- ADD
-				elsif sel = "000110" then
-					dest <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
-					dest_temp <= add_temp(operand_width-1 downto 0);
-					C <= add_temp(operand_width);
+			   -- ADD
+				if opcode(sel_line-1 downto 2) = "0001" then
+					if opcode(1 downto 0) = "00" then
+						output <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
+						output_temp <= add_temp(operand_width-1 downto 0);
+					-- ADC
+					elsif opcode(1 downto 0) = "10" then
+						if cin = '1' then
+							output <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
+							output_temp <= add_temp(operand_width-1 downto 0);
+							C <= add_temp(operand_width);
+							Z <= or_reduce(output_temp);
+						else 
+							output <= dest;
+							output_temp <= dest;
+							C <= cin;
+							Z <= zin;
+						end if;
+				-- ADZ
+					elsif opcode(1 downto 0) = "01" then
+						if zin = '1' then 
+							output <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
+							output_temp <= add_temp(operand_width-1 downto 0);
+							C <= add_temp(operand_width);
+							Z <= or_reduce(output_temp);
+						else 
+							output <= dest;
+							output_temp <= dest;
+						end if;
 				--- ADL
-				elsif sel = "" then
-					dest <= adl_temp(operand_width-1 downto 0);
-					dest_temp <= adl_temp(operand_width-1 downto 0);
-					C <= adl_temp(operand_width);
-				end if;
-			 -- OR all bits and write in Z
-				Z <= or_reduce(dest_temp);
+					elsif opcode(1 downto 0) = "11" then
+						output <= adl_temp(operand_width-1 downto 0);
+						output_temp <= adl_temp(operand_width-1 downto 0);
+						C <= adl_temp(operand_width);
+						Z <= or_reduce(output_temp);
+					end if;
+			 -- NDU
+				elsif opcode(sel_line-1 downto 2) = "0010" then
+					if opcode(1 downto 0) = "00" then
+						output <= opr1 nand opr2;
+						output_temp <= opr1 nand opr2;
+						Z <= or_reduce(output_temp);
+						C <= cin;
+					-- NDC
+					elsif opcode(1 downto 0) = "10" then
+						if cin = '1' then
+							output <= opr1 nand opr2;
+							output_temp <= opr1 nand opr2;
+							Z <= or_reduce(output_temp);
+							C <= cin;
+						else 
+							output <= dest;
+							output_temp <= dest;
+							Z <= zin;
+							C <= cin;
+						end if;
+					---NDZ
+					elsif opcode(1 downto 0) = "01" then
+						if zin = '1' then
+							output <= opr1 nand opr2;
+							output_temp <= opr1 nand opr2;
+							Z <= or_reduce(output_temp);
+							C <= cin;
+						else 
+							output <= dest;
+							output_temp <= dest;
+							Z <= zin;
+							C <= cin;
+						end if; 
+					end if;
+				end if;	
 			end if;
 		end if;
 
 	end process;
 
-
-	
 end beh;

@@ -1,6 +1,6 @@
 Analysis & Synthesis report for DUT
-Mon Nov 28 23:31:57 2022
-Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Tue Nov 29 18:49:01 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
 ---------------------
@@ -10,14 +10,21 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |alu
+ 12. Analysis & Synthesis Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2019  Intel Corporation. All rights reserved.
+Copyright (C) 2020  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -37,11 +44,15 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Mon Nov 28 23:31:57 2022           ;
-; Quartus Prime Version       ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Analysis & Synthesis Status ; Successful - Tue Nov 29 18:49:01 2022       ;
+; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
-; Top-level Entity Name       ; DUT                                         ;
+; Top-level Entity Name       ; alu                                         ;
 ; Family                      ; MAX V                                       ;
+; Total logic elements        ; 156                                         ;
+; Total pins                  ; 76                                          ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
 
 
@@ -51,7 +62,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; 5M1270ZT144C5      ;                    ;
-; Top-level entity name                                            ; DUT                ; DUT                ;
+; Top-level entity name                                            ; alu                ; DUT                ;
 ; Family name                                                      ; MAX V              ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -132,38 +143,268 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
++-----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                      ;
++----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path               ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
+; alu.vhdl                         ; yes             ; User VHDL File  ; D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Total logic elements                        ; 156         ;
+;     -- Combinational with no register       ; 156         ;
+;     -- Register only                        ; 0           ;
+;     -- Combinational with a register        ; 0           ;
+;                                             ;             ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 81          ;
+;     -- 3 input functions                    ; 46          ;
+;     -- 2 input functions                    ; 29          ;
+;     -- 1 input functions                    ; 0           ;
+;     -- 0 input functions                    ; 0           ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 156         ;
+;     -- arithmetic mode                      ; 0           ;
+;     -- qfbk mode                            ; 0           ;
+;     -- register cascade mode                ; 0           ;
+;     -- synchronous clear/load mode          ; 0           ;
+;     -- asynchronous clear/load mode         ; 0           ;
+;                                             ;             ;
+; Total registers                             ; 0           ;
+; I/O pins                                    ; 76          ;
+; Maximum fan-out node                        ; output[0]~2 ;
+; Maximum fan-out                             ; 25          ;
+; Total fan-out                               ; 538         ;
+; Average fan-out                             ; 2.32        ;
++---------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; |alu                       ; 156 (156)   ; 0            ; 0          ; 76   ; 0            ; 156 (156)    ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |alu                ; alu         ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; output[0]$latch                                     ; output[15]          ; yes                    ;
+; output[1]$latch                                     ; output[15]          ; yes                    ;
+; output[2]$latch                                     ; output[15]          ; yes                    ;
+; output[3]$latch                                     ; output[15]          ; yes                    ;
+; output[4]$latch                                     ; output[15]          ; yes                    ;
+; output[5]$latch                                     ; output[15]          ; yes                    ;
+; output[6]$latch                                     ; output[15]          ; yes                    ;
+; output[7]$latch                                     ; output[15]          ; yes                    ;
+; output[8]$latch                                     ; output[15]          ; yes                    ;
+; output[9]$latch                                     ; output[15]          ; yes                    ;
+; output[10]$latch                                    ; output[15]          ; yes                    ;
+; output[11]$latch                                    ; output[15]          ; yes                    ;
+; output[12]$latch                                    ; output[15]          ; yes                    ;
+; output[13]$latch                                    ; output[15]          ; yes                    ;
+; output[14]$latch                                    ; output[15]          ; yes                    ;
+; output[15]$latch                                    ; output[15]          ; yes                    ;
+; C$latch                                             ; C                   ; yes                    ;
+; Z$latch                                             ; C                   ; yes                    ;
+; output_temp[1]                                      ; output[15]          ; yes                    ;
+; output_temp[2]                                      ; output[15]          ; yes                    ;
+; output_temp[3]                                      ; output[15]          ; yes                    ;
+; output_temp[4]                                      ; output[15]          ; yes                    ;
+; output_temp[5]                                      ; output[15]          ; yes                    ;
+; output_temp[6]                                      ; output[15]          ; yes                    ;
+; output_temp[7]                                      ; output[15]          ; yes                    ;
+; output_temp[8]                                      ; output[15]          ; yes                    ;
+; output_temp[9]                                      ; output[15]          ; yes                    ;
+; output_temp[10]                                     ; output[15]          ; yes                    ;
+; output_temp[11]                                     ; output[15]          ; yes                    ;
+; output_temp[12]                                     ; output[15]          ; yes                    ;
+; output_temp[13]                                     ; output[15]          ; yes                    ;
+; output_temp[14]                                     ; output[15]          ; yes                    ;
+; output_temp[15]                                     ; output[15]          ; yes                    ;
+; output_temp[0]                                      ; output[15]          ; yes                    ;
+; Number of user-specified and inferred latches = 34  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 9:1                ; 16 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; No         ; |alu|output[0]             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |alu ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                             ;
+; sel_line       ; 6     ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Mon Nov 28 23:31:47 2022
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Tue Nov 29 18:48:47 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 2 design units, including 1 entities, in source file main_register_file.vhdl
-    Info (12022): Found design unit 1: register_file-behavioural File: E:/academics/CS683/OOO-SuperScaler/Main_register_file.vhdl Line: 37
-    Info (12023): Found entity 1: register_file File: E:/academics/CS683/OOO-SuperScaler/Main_register_file.vhdl Line: 6
-Error (10500): VHDL syntax error at alu.vhdl(24) near text ";";  expecting ":", or "," File: E:/academics/CS683/OOO-SuperScaler/alu.vhdl Line: 24
-Error (10523): Ignored construct alu at alu.vhdl(14) due to previous errors File: E:/academics/CS683/OOO-SuperScaler/alu.vhdl Line: 14
-Info (12021): Found 0 design units, including 0 entities, in source file alu.vhdl
-Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
-    Info (12022): Found design unit 1: Multiple_port_RAM_VHDL-Behavioral File: E:/academics/CS683/OOO-SuperScaler/memory.vhd Line: 22
-    Info (12023): Found entity 1: Multiple_port_RAM_VHDL File: E:/academics/CS683/OOO-SuperScaler/memory.vhd Line: 6
-Info (12021): Found 2 design units, including 1 entities, in source file ls_ex_unit.vhd
-    Info (12022): Found design unit 1: alu_LS-beh File: E:/academics/CS683/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 29
-    Info (12023): Found entity 1: alu_LS File: E:/academics/CS683/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 14
-Info (12021): Found 2 design units, including 1 entities, in source file branch_predictor.vhd
-    Info (12022): Found design unit 1: LUT-arch File: E:/academics/CS683/OOO-SuperScaler/branch_predictor.vhd Line: 22
-    Info (12023): Found entity 1: LUT File: E:/academics/CS683/OOO-SuperScaler/branch_predictor.vhd Line: 8
-Info (12021): Found 2 design units, including 1 entities, in source file branch_jump_ex.vhd
-    Info (12022): Found design unit 1: alu_Branch_Jump-beh File: E:/academics/CS683/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 29
-    Info (12023): Found entity 1: alu_Branch_Jump File: E:/academics/CS683/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 14
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 4758 megabytes
-    Error: Processing ended: Mon Nov 28 23:31:57 2022
-    Error: Elapsed time: 00:00:10
-    Error: Total CPU time (on all processors): 00:00:21
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhdl
+    Info (12022): Found design unit 1: alu-beh File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 32
+    Info (12023): Found entity 1: alu File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 15
+Info (12127): Elaborating entity "alu" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at alu.vhdl(85): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 85
+Warning (10492): VHDL Process Statement warning at alu.vhdl(86): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 86
+Warning (10492): VHDL Process Statement warning at alu.vhdl(90): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 90
+Warning (10492): VHDL Process Statement warning at alu.vhdl(91): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 91
+Warning (10492): VHDL Process Statement warning at alu.vhdl(92): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 92
+Warning (10492): VHDL Process Statement warning at alu.vhdl(93): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 93
+Warning (10492): VHDL Process Statement warning at alu.vhdl(103): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 103
+Warning (10492): VHDL Process Statement warning at alu.vhdl(104): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 104
+Warning (10492): VHDL Process Statement warning at alu.vhdl(105): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 105
+Warning (10492): VHDL Process Statement warning at alu.vhdl(106): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 106
+Warning (10492): VHDL Process Statement warning at alu.vhdl(113): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 113
+Warning (10492): VHDL Process Statement warning at alu.vhdl(114): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 114
+Warning (10492): VHDL Process Statement warning at alu.vhdl(115): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 115
+Warning (10492): VHDL Process Statement warning at alu.vhdl(116): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 116
+Warning (10492): VHDL Process Statement warning at alu.vhdl(123): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 123
+Warning (10492): VHDL Process Statement warning at alu.vhdl(130): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 130
+Warning (10492): VHDL Process Statement warning at alu.vhdl(143): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 143
+Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "C", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "Z", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "output_temp", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[0]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[1]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[2]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[3]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[4]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[5]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[6]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[7]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[8]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[9]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[10]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[11]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[12]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[13]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[14]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output_temp[15]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[0]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[1]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[2]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[3]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[4]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[5]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[6]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[7]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[8]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[9]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[10]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[11]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[12]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[13]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[14]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "output[15]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "Z" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (10041): Inferred latch for "C" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "output_temp[0]" merged with LATCH primitive "output[0]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[1]" merged with LATCH primitive "output[1]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[2]" merged with LATCH primitive "output[2]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[3]" merged with LATCH primitive "output[3]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[4]" merged with LATCH primitive "output[4]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[5]" merged with LATCH primitive "output[5]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[6]" merged with LATCH primitive "output[6]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[7]" merged with LATCH primitive "output[7]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[8]" merged with LATCH primitive "output[8]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[9]" merged with LATCH primitive "output[9]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[10]" merged with LATCH primitive "output[10]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[11]" merged with LATCH primitive "output[11]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[12]" merged with LATCH primitive "output[12]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[13]" merged with LATCH primitive "output[13]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[14]" merged with LATCH primitive "output[14]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Info (13026): Duplicate LATCH primitive "output_temp[15]" merged with LATCH primitive "output[15]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+Warning (13012): Latch output[0]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[1]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[2]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[3]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[4]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[5]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[6]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[7]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[8]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[9]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[10]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[11]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[12]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[13]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[14]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch output[15]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch C$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+Warning (13012): Latch Z$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal zin File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 26
+Info (21057): Implemented 232 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 58 input pins
+    Info (21059): Implemented 18 output pins
+    Info (21061): Implemented 156 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 58 warnings
+    Info: Peak virtual memory: 4751 megabytes
+    Info: Processing ended: Tue Nov 29 18:49:01 2022
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:34
 
 
