@@ -1,0 +1,19 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.math_real.all;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use ieee.numeric_std.all;
+use ieee.std_logic_misc.all;
+
+entity alu is
+	port(opr1: in std_logic_vector(operand_width-1 downto 0);
+		opr2: in std_logic_vector(operand_width-1 downto 0);
+		dest: in std_logic_vector(operand_width-1 downto 0);
+end alu;
+
+architecture Behavioral of binary_4_bit_adder_top is
+begin
+
+    SUM <= NUM1 + NUM2;
+
+end Behavioral;
