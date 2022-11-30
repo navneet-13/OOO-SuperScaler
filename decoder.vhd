@@ -23,6 +23,7 @@ generic(input_width: integer := 6;
 		dest_valid: integer:= 106;
 		cz_rename_h: integer:= 105;
 cz_rename_l: integer:= 102;
+rs_busy: integer:= 101;
 spec: integer:= 100;
 tag_h: integer:= 99;
 tag_l: integer:= 97;
@@ -98,7 +99,7 @@ port(
  
  Instr_OUT_1: out std_logic_vector(output_size - 1 downto 0);
  Instr_OUT_2: out std_logic_vector(output_size - 1 downto 0);
- PC_Imm: out std_logic_vector(pc_size - 1 downto 0);
+ PC_Imm: out std_logic_vector(pc_size - 1 downto 0);--remaining to assign
  
  rs_wr_en_1: out std_logic;
  rs_wr_en_2: out std_logic
@@ -132,10 +133,13 @@ begin
  Instr_OUT_1(pc_h downto pc_l) <= PC_1;
  Instr_OUT_1(opcode_h downto opcode_l) <= Opcode1;
  Instr_OUT_1(cond_h downto cond_l) <= Condition1;
+ Instr_OUT_1(rs_busy) <= '1';
+ Instr_OUT_2(rs_busy) <= '1';
  
  rs_wr_en_1 <= '1'; --we will always write first entry in rs
  if(Opcode1 = "1000" or Opcode1 = "1001" or Opcode1 = "1010" or Opcode1 = "1011") then
 	rs_wr_en_2 <= '0'; -- throw away second instr
+	Instr_OUT_2(rs_busy) <= '0'; --unbusy that entry
  else
 	rs_wr_en_2 <= '1'; --keep second instr
  end if;

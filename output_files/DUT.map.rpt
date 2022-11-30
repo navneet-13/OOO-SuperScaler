@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Wed Nov 30 20:22:51 2022
+Wed Nov 30 22:16:01 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -46,12 +46,12 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Nov 30 20:22:51 2022       ;
+; Analysis & Synthesis Status ; Successful - Wed Nov 30 22:16:01 2022       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
 ; Top-level Entity Name       ; Decoder                                     ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 4,032                                       ;
+; Total logic elements        ; 4,033                                       ;
 ; Total pins                  ; 531                                         ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
@@ -200,32 +200,32 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 4032  ;
+; Total logic elements                        ; 4033  ;
 ;     -- Combinational with no register       ; 3754  ;
 ;     -- Register only                        ; 92    ;
-;     -- Combinational with a register        ; 186   ;
+;     -- Combinational with a register        ; 187   ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
 ;     -- 4 input functions                    ; 1212  ;
 ;     -- 3 input functions                    ; 1340  ;
 ;     -- 2 input functions                    ; 1208  ;
-;     -- 1 input functions                    ; 180   ;
+;     -- 1 input functions                    ; 181   ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 2740  ;
+;     -- normal mode                          ; 2741  ;
 ;     -- arithmetic mode                      ; 1292  ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
 ;     -- synchronous clear/load mode          ; 47    ;
 ;     -- asynchronous clear/load mode         ; 0     ;
 ;                                             ;       ;
-; Total registers                             ; 278   ;
+; Total registers                             ; 279   ;
 ; Total logic cells in carry chains           ; 1418  ;
 ; I/O pins                                    ; 531   ;
 ; Maximum fan-out node                        ; CLOCK ;
-; Maximum fan-out                             ; 278   ;
-; Total fan-out                               ; 12345 ;
+; Maximum fan-out                             ; 279   ;
+; Total fan-out                               ; 12348 ;
 ; Average fan-out                             ; 2.71  ;
 +---------------------------------------------+-------+
 
@@ -235,7 +235,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node              ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                                         ; Entity Name     ; Library Name ;
 +-----------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Decoder                                ; 4032 (562)  ; 278          ; 0          ; 531  ; 0            ; 3754 (284)   ; 92 (92)           ; 186 (186)        ; 1418 (192)      ; 0 (0)      ; |Decoder                                                                                                                    ; Decoder         ; work         ;
+; |Decoder                                ; 4033 (563)  ; 279          ; 0          ; 531  ; 0            ; 3754 (284)   ; 92 (92)           ; 187 (187)        ; 1418 (192)      ; 0 (0)      ; |Decoder                                                                                                                    ; Decoder         ; work         ;
 ;    |lpm_divide:Mod0|                    ; 1735 (0)    ; 0            ; 0          ; 0    ; 0            ; 1735 (0)     ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0                                                                                                    ; lpm_divide      ; work         ;
 ;       |lpm_divide_n5o:auto_generated|   ; 1735 (0)    ; 0            ; 0          ; 0    ; 0            ; 1735 (0)     ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated                                                                      ; lpm_divide_n5o  ; work         ;
 ;          |abs_divider_4dg:divider|      ; 1735 (32)   ; 0            ; 0          ; 0    ; 0            ; 1735 (32)    ; 0 (0)             ; 0 (0)            ; 613 (0)         ; 0 (0)      ; |Decoder|lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider                                              ; abs_divider_4dg ; work         ;
@@ -319,11 +319,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+-----------------------------------------+
 ; dest_reg_2[3]~reg0                     ; Stuck at GND due to stuck port data_in  ;
 ; dest_reg_2[4]~reg0                     ; Stuck at GND due to stuck port data_in  ;
-; Instr_OUT_2[110]~reg0                  ; Stuck at GND due to stuck port data_in  ;
-; Instr_OUT_2[111]~reg0                  ; Stuck at GND due to stuck port data_in  ;
 ; dest_reg_1[3]~reg0                     ; Stuck at GND due to stuck port data_in  ;
 ; dest_reg_1[4]~reg0                     ; Stuck at GND due to stuck port data_in  ;
 ; rs_wr_en_1~reg0                        ; Stuck at VCC due to stuck port data_in  ;
+; Instr_OUT_2[110]~reg0                  ; Stuck at GND due to stuck port data_in  ;
+; Instr_OUT_2[111]~reg0                  ; Stuck at GND due to stuck port data_in  ;
+; Instr_OUT_1[101]~reg0                  ; Stuck at VCC due to stuck port data_in  ;
 ; Instr_OUT_1[110]~reg0                  ; Stuck at GND due to stuck port data_in  ;
 ; Instr_OUT_1[111]~reg0                  ; Stuck at GND due to stuck port data_in  ;
 ; opr1_addr_out_1[4]~reg0                ; Merged with opr1_addr_out_1[3]~reg0     ;
@@ -346,7 +347,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; dest_addr_out_2[3]~reg0                ; Stuck at GND due to stuck port data_in  ;
 ; flag_reg_addr_out_1[0]~reg0            ; Stuck at GND due to stuck port data_in  ;
 ; flag_reg_addr_out_2[0]~reg0            ; Stuck at GND due to stuck port data_in  ;
-; Total Number of Removed Registers = 29 ;                                         ;
+; Total Number of Removed Registers = 30 ;                                         ;
 +----------------------------------------+-----------------------------------------+
 
 
@@ -355,7 +356,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 278   ;
+; Total registers                              ; 279   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 47    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -425,6 +426,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; dest_valid            ; 106   ; Signed Integer                          ;
 ; cz_rename_h           ; 105   ; Signed Integer                          ;
 ; cz_rename_l           ; 102   ; Signed Integer                          ;
+; rs_busy               ; 101   ; Signed Integer                          ;
 ; spec                  ; 100   ; Signed Integer                          ;
 ; tag_h                 ; 99    ; Signed Integer                          ;
 ; tag_l                 ; 97    ; Signed Integer                          ;
@@ -506,25 +508,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Nov 30 20:22:28 2022
+    Info: Processing started: Wed Nov 30 22:15:33 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 0 design units, including 0 entities, in source file fetch.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file fetch.vhd
+    Info (12022): Found design unit 1: fetch_buffer-struct File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/fetch.vhd Line: 13
+    Info (12023): Found entity 1: fetch_buffer File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/fetch.vhd Line: 5
 Warning (12125): Using design file decoder.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: Decoder-Behavioral File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 108
+    Info (12022): Found design unit 1: Decoder-Behavioral File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 109
     Info (12023): Found entity 1: Decoder File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 6
 Info (12127): Elaborating entity "decoder" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at decoder.vhd(101): used implicit default value for signal "PC_Imm" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-Warning (10873): Using initial value X (don't care) for net "Instr_OUT_1[101]" at decoder.vhd(99) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 99
-Warning (10873): Using initial value X (don't care) for net "Instr_OUT_1[0]" at decoder.vhd(99) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 99
-Warning (10873): Using initial value X (don't care) for net "Instr_OUT_2[101]" at decoder.vhd(100) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 100
-Warning (10873): Using initial value X (don't care) for net "Instr_OUT_2[0]" at decoder.vhd(100) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 100
+Warning (10541): VHDL Signal Declaration warning at decoder.vhd(102): used implicit default value for signal "PC_Imm" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_1[0]" at decoder.vhd(100) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 100
+Warning (10873): Using initial value X (don't care) for net "Instr_OUT_2[0]" at decoder.vhd(101) File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
 Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 1206
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 618
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 1206
-Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 1206
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 1210
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 622
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 1210
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 1210
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "32"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
@@ -605,55 +607,54 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_tte.tdf
     Info (12023): Found entity 1: add_sub_tte File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_tte.tdf Line: 25
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "opr1_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "opr1_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "opr1_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "opr1_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "opr2_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "opr2_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "opr2_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "opr2_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_1[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_1[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_1[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_2[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_2[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_2[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "flag_reg_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_reg_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_reg_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_reg_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "dest_reg_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "Instr_OUT_1[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 99
-    Warning (13410): Pin "Instr_OUT_1[101]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 99
-    Warning (13410): Pin "Instr_OUT_1[110]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "Instr_OUT_1[111]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "Instr_OUT_2[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 100
-    Warning (13410): Pin "Instr_OUT_2[101]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 100
-    Warning (13410): Pin "Instr_OUT_2[110]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "Instr_OUT_2[111]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 128
-    Warning (13410): Pin "PC_Imm[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[5]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[6]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[7]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[8]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[9]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[10]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[11]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[12]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[13]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[14]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "PC_Imm[15]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
-    Warning (13410): Pin "rs_wr_en_1" is stuck at VCC File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 103
+    Warning (13410): Pin "opr1_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "opr1_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "opr1_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "opr1_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "opr2_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "opr2_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "opr2_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "opr2_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_addr_out_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_addr_out_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_1[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_1[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_1[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_2[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_2[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_2[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "flag_reg_addr_out_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_reg_1[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_reg_1[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_reg_2[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "dest_reg_2[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "Instr_OUT_1[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 100
+    Warning (13410): Pin "Instr_OUT_1[101]" is stuck at VCC File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "Instr_OUT_1[110]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "Instr_OUT_1[111]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "Instr_OUT_2[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 101
+    Warning (13410): Pin "Instr_OUT_2[110]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "Instr_OUT_2[111]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 129
+    Warning (13410): Pin "PC_Imm[0]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[1]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[2]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[3]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[4]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[5]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[6]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[7]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[8]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[9]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[10]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[11]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[12]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[13]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[14]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "PC_Imm[15]" is stuck at GND File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 102
+    Warning (13410): Pin "rs_wr_en_1" is stuck at VCC File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 104
 Warning (18009): Ignored 70 CARRY_SUM primitives
     Warning (18013): Ignored 2 CARRY_SUM primitives -- cannot place fan-in logic in single logic cell
         Warning (18014): Can't place logic feeding CARRY_SUM primitive "lpm_divide:Mod1|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[2]" in single logic cell File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
@@ -868,30 +869,30 @@ Warning (18009): Ignored 70 CARRY_SUM primitives
             Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~9" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
             Warning (18042): Node "lpm_divide:Mod0|lpm_divide_n5o:auto_generated|abs_divider_4dg:divider|alt_u_div_hle:divider|add_sub_k4c:add_sub_2|add_sub_cella[0]~10" of type LUT File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/db/add_sub_k4c.tdf Line: 33
 Warning (21074): Design contains 16 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "free_flag_reg_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 61
-    Warning (15610): No output dependent on input pin "free_flag_reg_1[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 61
-    Warning (15610): No output dependent on input pin "free_flag_reg_1[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 61
-    Warning (15610): No output dependent on input pin "free_flag_reg_1[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 61
-    Warning (15610): No output dependent on input pin "free_flag_reg_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
-    Warning (15610): No output dependent on input pin "free_flag_reg_2[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
-    Warning (15610): No output dependent on input pin "free_flag_reg_2[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
-    Warning (15610): No output dependent on input pin "free_flag_reg_2[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
-    Warning (15610): No output dependent on input pin "opr1_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 63
-    Warning (15610): No output dependent on input pin "opr1_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 64
-    Warning (15610): No output dependent on input pin "opr2_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 65
-    Warning (15610): No output dependent on input pin "opr2_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 66
-    Warning (15610): No output dependent on input pin "dest_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 67
-    Warning (15610): No output dependent on input pin "dest_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 68
-    Warning (15610): No output dependent on input pin "flag_reg_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 69
-    Warning (15610): No output dependent on input pin "flag_reg_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 70
-Info (21057): Implemented 4563 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
+    Warning (15610): No output dependent on input pin "free_flag_reg_1[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 62
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 63
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[1]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 63
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[2]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 63
+    Warning (15610): No output dependent on input pin "free_flag_reg_2[3]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 63
+    Warning (15610): No output dependent on input pin "opr1_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 64
+    Warning (15610): No output dependent on input pin "opr1_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 65
+    Warning (15610): No output dependent on input pin "opr2_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 66
+    Warning (15610): No output dependent on input pin "opr2_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 67
+    Warning (15610): No output dependent on input pin "dest_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 68
+    Warning (15610): No output dependent on input pin "dest_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 69
+    Warning (15610): No output dependent on input pin "flag_reg_in_1[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 70
+    Warning (15610): No output dependent on input pin "flag_reg_in_2[0]" File: E:/Fifth Semester/CS 683/Project/OOO-SuperScaler/decoder.vhd Line: 71
+Info (21057): Implemented 4564 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 237 input pins
     Info (21059): Implemented 294 output pins
-    Info (21061): Implemented 4032 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 287 warnings
-    Info: Peak virtual memory: 4816 megabytes
-    Info: Processing ended: Wed Nov 30 20:22:51 2022
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:27
+    Info (21061): Implemented 4033 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 284 warnings
+    Info: Peak virtual memory: 4818 megabytes
+    Info: Processing ended: Wed Nov 30 22:16:01 2022
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:33
 
 
