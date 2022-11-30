@@ -5,7 +5,40 @@ USE ieee.numeric_std.ALL;
 -- Decoder
 entity Decoder is
 generic(input_width: integer := 6;
-		output_width: integer := 16);
+		output_width: integer := 16;
+		--variable tag_counter: integer:= 0;
+busy_arf: integer:= 6;
+--bit structrue of RS buffer
+dest_valid: integer:= 106;
+cz_rename_h: integer:= 105;
+cz_rename_l: integer:= 102;
+spec: integer:= 100;
+tag_h: integer:= 99;
+tag_l: integer:= 97;
+pc_h: integer:= 96;
+pc_l: integer:= 81;
+opcode_h: integer:= 80;
+opcode_l: integer:= 77;
+cond_h: integer:= 76;
+cond_l: integer:= 75;
+opr1_h: integer:= 74;
+opr1_l: integer:= 59;
+valid1: integer:= 58;
+opr2_h: integer:= 57;
+opr2_l: integer:= 42;
+valid2: integer:= 41;
+cz_h: integer:= 40;
+cz_l: integer:= 39;
+valid_cz: integer:= 38;
+imm16_h: integer:= 37;
+imm16_l: integer:= 22;
+dest_h: integer:= 21;
+dest_l: integer:= 17;
+dest_val_h: integer:= 16;
+dest_val_l: integer:= 1;
+ready: integer:= 0
+
+);
 		
 port(
  Instruction_Word: in std_logic_vector(31 downto 0); 
@@ -70,41 +103,6 @@ Condition1 <= Instruction_Word(17 downto 16);
 Condition2 <= Instruction_Word(1 downto 0);
 
 Decode_process_1: process(CLOCK)
---variable tag_counter: integer:= 0;
-variable busy_arf: integer:= 6;
---bit structrue of RS buffer
-variable dest_valid: integer:= 106;
-variable cz_rename_h: integer:= 105;
-variable cz_rename_l: integer:= 102;
-variable spec: integer:= 100;
-variable tag_h: integer:= 99;
-variable tag_l: integer:= 97;
-variable pc_h: integer:= 96;
-variable pc_l: integer:= 81;
-variable opcode_h: integer:= 80;
-variable opcode_l: integer:= 77;
-variable cond_h: integer:= 76;
-variable cond_l: integer:= 75;
-variable opr1_h: integer:= 74;
-variable opr1_l: integer:= 59;
-variable valid1: integer:= 58;
-variable opr2_h: integer:= 57;
-variable opr2_l: integer:= 42;
-variable valid2: integer:= 41;
-variable cz_h: integer:= 40;
-variable cz_l: integer:= 39;
-variable valid_cz: integer:= 38;
-variable imm16_h: integer:= 37;
-variable imm16_l: integer:= 22;
-variable dest_h: integer:= 21;
-variable dest_l: integer:= 17;
-variable dest_val_h: integer:= 16;
-variable dest_val_l: integer:= 1;
-variable ready: integer:= 0;
-
-------------------------------------------
-------------------------------------------
-------------------------------------------
 
 begin
  if(rising_edge(CLOCK)) then
@@ -134,6 +132,7 @@ begin
 		if(opr1_in_1(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(58) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(58) <= '1';--make valid1 one
@@ -144,6 +143,7 @@ begin
 		if(opr2_in_1(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(41) <= '0';
+			Instr_OUT_1(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(46 downto 42) <= opr2_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(41) <= '1';--make valid1 one
@@ -193,6 +193,7 @@ begin
 		if(opr1_in_1(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(58) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(58) <= '1';--make valid1 one
@@ -203,6 +204,7 @@ begin
 		if(opr2_in_1(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(41) <= '0';
+			Instr_OUT_1(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(46 downto 42) <= opr2_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(41) <= '1';--make valid1 one
@@ -236,6 +238,7 @@ begin
 	when "0011"=>--ADI inst
 		
 		Instr_OUT_1(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_1(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		opr1_addr_out_1(2 downto 0) <= Instruction_Word(21 downto 19);
 		opr1_addr_out_1(4 downto 3) <= "00";
@@ -247,6 +250,7 @@ begin
 		if(opr1_in_1(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid1) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid1) <= '1';--make valid1 one
@@ -282,6 +286,7 @@ begin
 	when "0111"=>--LW inst
 		
 		Instr_OUT_1(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_1(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		opr1_addr_out_1(2 downto 0) <= Instruction_Word(21 downto 19);
 		opr1_addr_out_1(4 downto 3) <= "00";
@@ -293,6 +298,7 @@ begin
 		if(opr1_in_1(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid1) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid1) <= '1';--make valid1 one
@@ -335,6 +341,7 @@ begin
 		if(opr1_in_1(busy_arf) = '1') then--If ARF of ra is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid1) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid1) <= '1';--make valid1 one
@@ -345,6 +352,7 @@ begin
 		if(opr2_in_1(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid2) <= '0';
+			Instr_OUT_1(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(46 downto 42) <= opr2_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid2) <= '1';--make valid2 one
@@ -370,7 +378,9 @@ begin
 	when "0000"=>--LHI Instr
 				
 		Instr_OUT_1(valid1) <= '1'; --we don't have opr1 so making its valid 1
+		Instr_OUT_1(74 downto 59) <= "0000000000011111"; --writing dummy value to it
 		Instr_OUT_1(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_1(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		
 		--for dest
@@ -409,6 +419,7 @@ begin
 		if(opr1_in_1(busy_arf) = '1') then--If ARF of ra is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid1) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid1) <= '1';--make valid1 one
@@ -419,6 +430,7 @@ begin
 		if(opr2_in_1(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid2) <= '0';
+			Instr_OUT_1(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(46 downto 42) <= opr2_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid2) <= '1';--make valid2 one
@@ -447,7 +459,9 @@ begin
 	--no operands to read
 		
 		Instr_OUT_1(valid1) <= '1'; --we don't have opr1 so making its valid 1
+		Instr_OUT_1(74 downto 59) <= "0000000000011111"; --writing dummy value to it
 		Instr_OUT_1(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_1(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		--for dest
 		Instr_OUT_1(dest_h downto dest_l) <= free_reg_1;
@@ -472,6 +486,7 @@ begin
 	when "1011"=>--JRI Instr
 		
 		Instr_OUT_1(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_1(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		tag_counter_1 := (tag_counter_1 + 1) mod 7;
 		--we don't have destination so no rename !!!
 		
@@ -484,6 +499,7 @@ begin
 		if(opr1_in_1(busy_arf) = '1') then--If ARF of ra is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid1) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid1) <= '1';--make valid1 one
@@ -512,6 +528,7 @@ begin
 		tag_counter_1 := (tag_counter_1 + 1) mod 7;
 		
 		Instr_OUT_1(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_1(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		--for dest
 		Instr_OUT_1(dest_h downto dest_l) <= free_reg_1;
@@ -527,6 +544,7 @@ begin
 		if(opr1_in_1(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(58) <= '0';
+			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(58) <= '1';--make valid1 one
@@ -550,37 +568,6 @@ end process;
 ------------------------------------------------------
 
 Decode_process_2: process(CLOCK)
---variable tag_counter: integer:= 0;
-variable busy_arf: integer:= 6;
---bit structrue of RS buffer
-variable dest_valid: integer:= 106;
-variable cz_rename_h: integer:= 105;
-variable cz_rename_l: integer:= 102;
-variable spec: integer:= 100;
-variable tag_h: integer:= 99;
-variable tag_l: integer:= 97;
-variable pc_h: integer:= 96;
-variable pc_l: integer:= 81;
-variable opcode_h: integer:= 80;
-variable opcode_l: integer:= 77;
-variable cond_h: integer:= 76;
-variable cond_l: integer:= 75;
-variable opr1_h: integer:= 74;
-variable opr1_l: integer:= 59;
-variable valid1: integer:= 58;
-variable opr2_h: integer:= 57;
-variable opr2_l: integer:= 42;
-variable valid2: integer:= 41;
-variable cz_h: integer:= 40;
-variable cz_l: integer:= 39;
-variable valid_cz: integer:= 38;
-variable imm16_h: integer:= 37;
-variable imm16_l: integer:= 22;
-variable dest_h: integer:= 21;
-variable dest_l: integer:= 17;
-variable dest_val_h: integer:= 16;
-variable dest_val_l: integer:= 1;
-variable ready: integer:= 0;
 
 begin
  if(rising_edge(CLOCK)) then
@@ -610,6 +597,7 @@ begin
 		if(opr1_in_2(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(58) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(58) <= '1';--make valid1 one
@@ -620,6 +608,7 @@ begin
 		if(opr2_in_2(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(41) <= '0';
+			Instr_OUT_2(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(46 downto 42) <= opr2_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(41) <= '1';--make valid1 one
@@ -669,6 +658,7 @@ begin
 		if(opr1_in_2(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(58) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(58) <= '1';--make valid1 one
@@ -679,6 +669,7 @@ begin
 		if(opr2_in_2(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(41) <= '0';
+			Instr_OUT_2(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(46 downto 42) <= opr2_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(41) <= '1';--make valid1 one
@@ -712,6 +703,7 @@ begin
 	when "0011"=>--ADI inst
 		
 		Instr_OUT_2(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_2(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		opr1_addr_out_2(2 downto 0) <= Instruction_Word(21 downto 19);
 		opr1_addr_out_2(4 downto 3) <= "00";
@@ -723,6 +715,7 @@ begin
 		if(opr1_in_2(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(valid1) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(valid1) <= '1';--make valid1 one
@@ -758,6 +751,7 @@ begin
 	when "0111"=>--LW inst
 		
 		Instr_OUT_2(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_2(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		opr1_addr_out_2(2 downto 0) <= Instruction_Word(21 downto 19);
 		opr1_addr_out_2(4 downto 3) <= "00";
@@ -769,6 +763,7 @@ begin
 		if(opr1_in_2(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(valid1) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(valid1) <= '1';--make valid1 one
@@ -811,6 +806,7 @@ begin
 		if(opr1_in_2(busy_arf) = '1') then--If ARF of ra is busy
 			--make its valid1 zero
 			Instr_OUT_2(valid1) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(valid1) <= '1';--make valid1 one
@@ -821,6 +817,7 @@ begin
 		if(opr2_in_2(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(valid2) <= '0';
+			Instr_OUT_2(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(46 downto 42) <= opr2_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(valid2) <= '1';--make valid2 one
@@ -846,7 +843,9 @@ begin
 	when "0000"=>--LHI Instr
 				
 		Instr_OUT_2(valid1) <= '1'; --we don't have opr1 so making its valid 1
+		Instr_OUT_2(74 downto 59) <= "0000000000011111"; --writing dummy value to it
 		Instr_OUT_2(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_2(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		
 		--for dest
@@ -885,6 +884,7 @@ begin
 		if(opr1_in_2(busy_arf) = '1') then--If ARF of ra is busy
 			--make its valid1 zero
 			Instr_OUT_2(valid1) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(valid1) <= '1';--make valid1 one
@@ -895,6 +895,7 @@ begin
 		if(opr2_in_2(busy_arf) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(valid2) <= '0';
+			Instr_OUT_2(57 downto 47) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(46 downto 42) <= opr2_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(valid2) <= '1';--make valid2 one
@@ -923,7 +924,9 @@ begin
 	--no operands to read
 		
 		Instr_OUT_2(valid1) <= '1'; --we don't have opr1 so making its valid 1
+		Instr_OUT_2(74 downto 59) <= "0000000000011111"; --writing dummy value to it
 		Instr_OUT_2(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_2(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		--for dest
 		Instr_OUT_2(dest_h downto dest_l) <= free_reg_2;
@@ -948,6 +951,7 @@ begin
 	when "1011"=>--JRI Instr
 		
 		Instr_OUT_2(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_2(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		tag_counter_2 := (tag_counter_2 + 1) mod 7;
 		--we don't have destination so no rename !!!
 		
@@ -960,6 +964,7 @@ begin
 		if(opr1_in_2(busy_arf) = '1') then--If ARF of ra is busy
 			--make its valid1 zero
 			Instr_OUT_2(valid1) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(valid1) <= '1';--make valid1 one
@@ -988,6 +993,7 @@ begin
 		tag_counter_2 := (tag_counter_2 + 1) mod 7;
 		
 		Instr_OUT_2(valid2) <= '1'; --we don't have opr2 so making its valid 1
+		Instr_OUT_2(57 downto 42) <= "0000000000011111"; --writing dummy value to it
 		
 		--for dest
 		Instr_OUT_2(dest_h downto dest_l) <= free_reg_2;
@@ -1003,6 +1009,7 @@ begin
 		if(opr1_in_2(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_2(58) <= '0';
+			Instr_OUT_2(74 downto 64) <= "00000000000";--added 11 zeros in front
 			Instr_OUT_2(63 downto 59) <= opr1_in_2(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_2(58) <= '1';--make valid1 one
