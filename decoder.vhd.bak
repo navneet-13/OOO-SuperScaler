@@ -1,0 +1,37 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+USE ieee.numeric_std.ALL;
+
+-- Decoder
+entity Decoder is
+port(
+ Instruction_Word: in std_logic_vector(31 downto 0); 
+ CLOCK: in std_logic; -- clock input for RAM
+ Instr_OUT_1: out std_logic_vector(15 downto 0);
+ Instr_OUT_2: out std_logic_vector(15 downto 0);
+ PC_Imm: out std_logic_vector(15 downto 0);
+);
+end Multiple_port_RAM_VHDL;
+
+architecture Behavioral of Multiple_port_RAM_VHDL is
+-- define the new type for the 63x16 RAM 
+type RAM_ARRAY is array (0 to  63) of std_logic_vector (15 downto 0);
+-- initial values in the RAM
+
+begin
+process(RAM_CLOCK)
+begin
+ if(rising_edge(RAM_CLOCK)) then
+ if(RAM_WR_1='1') then -- when write enable = 1, 
+ -- write input data into RAM at the provided address
+ RAM(to_integer(unsigned(RAM_ADDR_Write_1))) <= RAM_DATA_IN_1;
+ -- The index of the RAM array type needs to be integer so
+ -- converts RAM_ADDR from std_logic_vector -> Unsigned -> Interger using numeric_std library
+ end if;
+ end if;
+
+end process;
+ -- Data to be read out 
+ RAM_DATA_OUT_1 <= RAM(to_integer(unsigned(RAM_ADDR_Read_1)));
+ RAM_DATA_OUT_2 <= RAM(to_integer(unsigned(RAM_ADDR_Read_2)));
+end Behavioral;

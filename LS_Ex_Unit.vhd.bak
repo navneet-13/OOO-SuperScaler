@@ -7,12 +7,11 @@ use ieee.std_logic_misc.all;
 library work;
 use work.all;
 --- Opcode
---- 1000 = BEQ
---- 1010 = JLR
---- 1011 = JRI
---- 1001 = JAL
+--- 0000 = LHI
+--- 0111 = LW
+--- 0101 = SW
 --- Anything else = XXX
-entity alu_Branch_Jump is 
+entity alu_LS is 
 	generic(
 		operand_width : integer:= 16;
 		sel_line: integer:= 4
@@ -25,9 +24,9 @@ entity alu_Branch_Jump is
 		enable, reset: in std_logic;
 		C, Z: out std_logic
 	);
-end alu_Branch_Jump;
+end alu_LS;
 
-architecture beh of alu_Branch_Jump is
+architecture beh of alu_LS is
 	--- Addition Function
 	function add(A: in std_logic_vector(operand_width-1 downto 0); B: in std_logic_vector(operand_width-1 downto 0)) 
 	return std_logic_vector is
@@ -45,36 +44,32 @@ architecture beh of alu_Branch_Jump is
 			return sum;
 	end function add;
 	
-	
 begin
 	
 	main: process(opr1, opr2, Opcode, enable, reset)
 	begin
 		if reset = '1' THEN
 			C <= '0';
-			    Z <= '0';
+			Z <= '0';
 		else 
 			if enable = '1' then
 			-- NAND
-				if unsigned(Opcode) = 8 then
-					dest <= opr1 xor opr2;
-				-- BEQ
-                -- Storing opr1 xor opr2 to output
-				elsif unsigned(Opcode) = 10 then
-					dest <= add(opr1, "0000000000000001");
-				-- JLR
-                -- Storing opr1(PC) + 1 to output
-				elsif unsigned(Opcode) = 9 then
-					dest <= add(opr1, "0000000000000001");
-				-- JAL
-                -- Storing opr1(PC) + 1 to output
-				elsif unsigned(Opcode) = 11 then
+				if unsigned(Opcode) = 0 then
+					dest <= opr1;
+				-- LHI
+                -- Storing opr1 to output
+				elsif unsigned(Opcode) = 7 then
 					dest <= add(opr1, opr2);
-				--- JRI
-                -- Storing opr1(RA) + opr2(Imm) to output
+                    Z <= or_reduce(dest);
+				-- LW
+                -- Storing opr1 + opr2 to output
+				elsif unsigned(Opcode) = 5 then
+					dest <= add(opr1, opr2);
+				--- SW
+                -- Storing opr1 + opr2 to output
 				end if;
 			-- OR all bits and write in Z
-				-- Z <= or_reduce(dest);
+				
 			end if;
 		end if;
 
