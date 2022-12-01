@@ -12,16 +12,18 @@ generic(input_width: integer := 6;
 		flag_reg_pointer_size: integer := 4;
 		opcode_size: integer := 4;
 		condition_size: integer := 2;
-		output_size: integer := 112;
+		output_size: integer := 116;
 		pc_size: integer := 16;
 		instr_word_size: integer := 32;
 		busy_arf: integer:= 6;
 
-		--bit structrue of RS buffer
-		dest_arf_h: integer:= 111;
-		dest_arf_l: integer:= 107;
-		dest_valid: integer:= 106;
-		cz_rename_h: integer:= 105;
+--bit structrue of RS buffer
+dest_flag_rr_h: integer:= 115;
+dest_flag_rr_l: integer:= 112;
+dest_arf_h: integer:= 111;
+dest_arf_l: integer:= 107;
+dest_valid: integer:= 106;
+cz_rename_h: integer:= 105;
 cz_rename_l: integer:= 102;
 rs_busy: integer:= 101;
 spec: integer:= 100;
@@ -99,7 +101,7 @@ port(
  
  Instr_OUT_1: out std_logic_vector(output_size - 1 downto 0);
  Instr_OUT_2: out std_logic_vector(output_size - 1 downto 0);
- PC_Imm: out std_logic_vector(pc_size - 1 downto 0);--remaining to assign
+ --PC_Imm: out std_logic_vector(pc_size - 1 downto 0);--remaining to assign
  
  rs_wr_en_1: out std_logic;
  rs_wr_en_2: out std_logic
@@ -137,6 +139,7 @@ begin
  Instr_OUT_2(rs_busy) <= '1';
  
  rs_wr_en_1 <= '1'; --we will always write first entry in rs
+ rs_wr_en_2 <= '1'; --initialized
  if(Opcode1 = "1000" or Opcode1 = "1001" or Opcode1 = "1010" or Opcode1 = "1011") then
 	rs_wr_en_2 <= '0'; -- throw away second instr
 	Instr_OUT_2(rs_busy) <= '0'; --unbusy that entry
@@ -150,8 +153,8 @@ begin
  Instr_OUT_1(dest_arf_h downto dest_arf_h - 1) <= "00";
  
  --ready at end
- reg_rename_en_1 <= '0';
- flag_rename_en_1 <= '0';
+-- reg_rename_en_1 <= '0';
+-- flag_rename_en_1 <= '0';
  --initializing rename enable to 0
  
  case Opcode1 is
@@ -172,22 +175,22 @@ begin
 		if(opr1_in_1(6) = '1') then--If ARF is busy
 			--make its valid1 zero
 			Instr_OUT_1(valid1) <= '0';
-			Instr_OUT_1(74 downto 64) <= "00000000000";--added 11 zeros in front
-			Instr_OUT_1(63 downto 59) <= opr1_in_1(5 downto 1);--wrote tag value
+			Instr_OUT_1(opr1_h downto opr1_l + 5) <= "00000000000";--added 11 zeros in front
+			Instr_OUT_1(opr1_l + 4 downto opr1_l) <= opr1_in_1(5 downto 1);--wrote tag value
 		else
 			Instr_OUT_1(valid1) <= '1';--make valid1 one
-			Instr_OUT_1(74 downto 59) <= opr1_in_1(22 downto 7);--wrote operand value
+			Instr_OUT_1(opr1_h downto opr1_l) <= opr1_in_1(22 downto 7);--wrote operand value
 		end if;
 			--for opr2
 			
 		if(opr2_in_1(6) = '1') then--If ARF is busy
 			--make its valid1 zero
-			Instr_OUT_1(41) <= '0';
-			Instr_OUT_1(57 downto 47) <= "00000000000";--added 11 zeros in front
-			Instr_OUT_1(46 downto 42) <= opr2_in_1(5 downto 1);--wrote tag value
+			Instr_OUT_1(valid2) <= '0';
+			Instr_OUT_1(opr2_h downto opr2_l + 5) <= "00000000000";--added 11 zeros in front
+			Instr_OUT_1(opr2_l + 4 downto opr2_l) <= opr2_in_1(5 downto 1);--wrote tag value
 		else
-			Instr_OUT_1(41) <= '1';--make valid1 one
-			Instr_OUT_1(57 downto 42) <= opr2_in_1(22 downto 7);--wrote operand value	
+			Instr_OUT_1(valid2) <= '1';--make valid1 one
+			Instr_OUT_1(opr2_h downto opr2_l) <= opr2_in_1(22 downto 7);--wrote operand value	
 		end if;
 		
 			--dest reading
@@ -201,12 +204,15 @@ begin
 			Instr_OUT_1(dest_val_h downto dest_val_l) <= dest_in_1(22 downto 7);--wrote destination value	
 		end if;
 		
-			--for dest
+			--for dest renaming
 		Instr_OUT_1(21 downto 17) <= free_reg_1;
+		
 --		Instr_OUT_1(16 downto 1) <= dest value pending
 
-			--for cz
+			--for cz renaming
+		Instr_OUT_1(115 downto 112) <= free_flag_reg_1;
 			
+		--cz reading as a oprand	
 		if(Condition1 = "10" or Condition1 = "01") then
 			
 			if(flag_reg_in_1(5) = '1') then--if CZ is busy
@@ -265,6 +271,9 @@ begin
 			--for dest
 		Instr_OUT_1(21 downto 17) <= free_reg_1;
 --		Instr_OUT_1(16 downto 1) <= dest value pending
+
+			--for cz renaming
+		Instr_OUT_1(115 downto 112) <= free_flag_reg_1;
 		
 			--dest reading
 		if(dest_in_1(6) = '1') then--If dest is busy
@@ -308,7 +317,8 @@ begin
 		opr1_addr_out_1(4 downto 3) <= "00";
 		dest_addr_out_1(4 downto 3) <= "00";
 		
-		flag_reg_addr_out_1 <= "0000";
+		--flag_reg_addr_out_1 <= "0000";--need to check
+		--no need to read flag arf
 		-- delay needed to get the operand value from reg file
 		
 			--for opr1
@@ -325,7 +335,10 @@ begin
 		--for dest
 		Instr_OUT_1(dest_h downto dest_l) <= free_reg_1;
 --		Instr_OUT_1(16 downto 1) <= dest value pending
-
+		
+		--for cz renaming
+		Instr_OUT_1(115 downto 112) <= free_flag_reg_1;
+		
 			--dest reading
 		if(dest_in_1(6) = '1') then--If dest is busy
 			--make its valid zero
@@ -389,6 +402,9 @@ begin
 		--for dest
 		Instr_OUT_1(dest_h downto dest_l) <= free_reg_1;
 --		Instr_OUT_1(16 downto 1) <= dest value pending
+
+		--for cz renaming
+		Instr_OUT_1(115 downto 112) <= free_flag_reg_1;
 
 			--dest reading
 		if(dest_in_1(6) = '1') then--If dest is busy
@@ -669,22 +685,7 @@ begin
 		
 		dest_addr_out_1(2 downto 0) <= Instruction_Word(27 downto 25);
 		
-		dest_addr_out_1(4 downto 3) <= "00";
-		
-		--for dest
-		Instr_OUT_1(dest_h downto dest_l) <= free_reg_1;
---		Instr_OUT_1(16 downto 1) <= dest value pending
-
-			--dest reading
-		if(dest_in_1(6) = '1') then--If dest is busy
-			--make its valid zero
-			Instr_OUT_1(dest_valid) <= '0';
-			Instr_OUT_1(dest_val_h downto dest_val_l + 5) <= "00000000000";--added 11 zeros in front
-			Instr_OUT_1(dest_val_l + 4 downto dest_val_l) <= dest_in_1(5 downto 1);--wrote tag value
-		else
-			Instr_OUT_1(dest_valid) <= '1';--make dest valid one
-			Instr_OUT_1(dest_val_h downto dest_val_l) <= dest_in_1(22 downto 7);--wrote destination value	
-		end if;
+		dest_addr_out_1(4 downto 3) <= "00";	
 
 		opr1_addr_out_1(2 downto 0) <= Instruction_Word(24 downto 22);
 		opr1_addr_out_1(4 downto 3) <= "00";
@@ -701,6 +702,21 @@ begin
 		else
 			Instr_OUT_1(valid1) <= '1';--make valid1 one
 			Instr_OUT_1(74 downto 59) <= opr1_in_1(22 downto 7);--wrote operand value
+		end if;
+		
+		--for dest
+		Instr_OUT_1(dest_h downto dest_l) <= free_reg_1;
+--		Instr_OUT_1(16 downto 1) <= dest value pending
+
+			--dest reading
+		if(dest_in_1(6) = '1') then--If dest is busy
+			--make its valid zero
+			Instr_OUT_1(dest_valid) <= '0';
+			Instr_OUT_1(dest_val_h downto dest_val_l + 5) <= "00000000000";--added 11 zeros in front
+			Instr_OUT_1(dest_val_l + 4 downto dest_val_l) <= dest_in_1(5 downto 1);--wrote tag value
+		else
+			Instr_OUT_1(dest_valid) <= '1';--make dest valid one
+			Instr_OUT_1(dest_val_h downto dest_val_l) <= dest_in_1(22 downto 7);--wrote destination value	
 		end if;
 		
 		
@@ -738,8 +754,8 @@ begin
  Instr_OUT_2(dest_arf_h downto dest_arf_h - 1) <= "00";
 
  --ready at end
- reg_rename_en_2 <= '0';
- flag_rename_en_2 <= '0';
+-- reg_rename_en_2 <= '0';
+-- flag_rename_en_2 <= '0';
  --initializing rename enable to 1
  case Opcode2 is
 	when "0001"=>--AD instr
@@ -780,6 +796,9 @@ begin
 			--for dest
 		Instr_OUT_2(21 downto 17) <= free_reg_2;
 --		Instr_OUT_1(16 downto 1) <= dest value pending
+
+		--for cz renaming
+		Instr_OUT_2(115 downto 112) <= free_flag_reg_2;
 
 			--dest reading
 		if(dest_in_2(6) = '1') then--If dest is busy
@@ -854,6 +873,9 @@ begin
 		Instr_OUT_2(21 downto 17) <= free_reg_2;
 --		Instr_OUT_1(16 downto 1) <= dest value pending
 
+		--for cz renaming
+		Instr_OUT_2(115 downto 112) <= free_flag_reg_2;
+
 			--dest reading
 		if(dest_in_2(6) = '1') then--If dest is busy
 			--make its valid zero
@@ -913,6 +935,9 @@ begin
 		--for dest
 		Instr_OUT_2(dest_h downto dest_l) <= free_reg_2;
 --		Instr_OUT_1(16 downto 1) <= dest value pending
+
+		--for cz renaming
+		Instr_OUT_2(115 downto 112) <= free_flag_reg_2;
 
 			--dest reading
 		if(dest_in_2(6) = '1') then--If dest is busy
@@ -977,6 +1002,9 @@ begin
 		--for dest
 		Instr_OUT_2(dest_h downto dest_l) <= free_reg_2;
 --		Instr_OUT_1(16 downto 1) <= dest value pending
+
+		--for cz renaming
+		Instr_OUT_2(115 downto 112) <= free_flag_reg_2;
 
 			--dest reading
 		if(dest_in_2(6) = '1') then--If dest is busy
@@ -1262,6 +1290,10 @@ begin
 		
 		
 		--regB is my operand1
+		
+		opr1_addr_out_2(2 downto 0) <= Instruction_Word(8 downto 6);
+		
+		opr1_addr_out_2(4 downto 3) <= "00";
 		
 		-- delay needed to get the operand value from reg file
 			--for opr1
