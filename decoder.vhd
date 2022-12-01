@@ -770,6 +770,8 @@ begin
 		
 		flag_reg_addr_out_2 <= "0000";
 		
+		--wait
+		
 		-- delay needed to get the operand value from reg file
 			--for opr1
 		if(opr1_in_2(6) = '1') then--If ARF is busy
@@ -918,7 +920,7 @@ begin
 		opr1_addr_out_2(4 downto 3) <= "00";
 		dest_addr_out_2(4 downto 3) <= "00";
 		
-		flag_reg_addr_out_2 <= "0000";
+		--flag_reg_addr_out_2 <= "0000";
 		-- delay needed to get the operand value from reg file
 		
 			--for opr1
@@ -1278,7 +1280,7 @@ begin
 	when "1010"=>--JLR Instr
 		speculative_indicator <= '1';
 	--just do renaming
-	--no operand read
+	--no operand2 read
 		tag_counter := (tag_counter + 1) mod 7;
 		
 		Instr_OUT_2(valid2) <= '1'; --we don't have opr2 so making its valid 1
