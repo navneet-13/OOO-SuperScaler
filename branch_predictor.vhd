@@ -5,35 +5,37 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.std_logic_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-ENTITY LUT IS
+ENTITY branch_predictor IS
 
 	PORT (
 		PC_given, inst, PC_cond_jmp: in std_logic_vector(15 downto 0);
 		--IF_M1_OUT, PC_EXE, PC_PRED, PC_RR: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		--clk, reset, RR_EX_valid : IN STD_LOGIC;
 		read_en, write_en, predict : in std_logic; -- T,NT -predict=1,0
-		
+		clk: in std_logic;
 		--match, fush : OUT STD_LOGIC;
 		Branch_addr : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 	);
 
 END ENTITY;
 
-ARCHITECTURE arch OF LUT IS
+ARCHITECTURE arch OF  branch_predictor IS
 	--TYPE mult IS ARRAY (0 TO 7) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
 	--TYPE mul IS ARRAY (0 TO 7) OF STD_LOGIC;
 	--SIGNAL CA, BA : mult := (OTHERS => (OTHERS => '0'));
 	--SIGNAL v : mul := (others => '0');
 	--SIGNAL u : STD_LOGIC := '0';
 	-- 32 entries of LUT
+	BEGIN
+	
+	PROCESS (read_en, write_en, predict, PC_given, inst)
 	variable sign_ext_imm : std_logic_vector(15 downto 0);
 	TYPE LUT_type is array (0 to 32) of std_logic_vector(34 downto 0);
 	variable LUT: LUT_type := (OTHERS => (OTHERS => '0'));
-	variable present, head : integer; -- present in look up table 
-BEGIN
-	
-	PROCESS (read_en, write_en, predict, PC_given, inst)
+	variable present, head : integer; -- present in look up table --not initialized
+
 	BEGIN
+	 if(rising_edge(clk)) then
 		if (read_en = '1') then
 		L1 : for i in 0 to 32 loop
 			if(LUT(i)(34 downto 19) = PC_given) then
@@ -117,6 +119,7 @@ BEGIN
 					LUT(i)(15 downto 0) := PC_cond_jmp;
 				end if;
 			end loop;
+		end if;
 		end if;
 	END PROCESS;
 

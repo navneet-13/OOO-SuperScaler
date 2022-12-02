@@ -10,6 +10,7 @@ use work.all;
 --- 1000 = BEQ
 --- 1010 = JLR
 --- 1011 = JRI
+--- 1001 = JAL
 --- Anything else = XXX
 entity alu_Branch_Jump is 
 	generic(
@@ -62,6 +63,10 @@ begin
 				elsif unsigned(Opcode) = 10 then
 					dest <= add(opr1, "0000000000000001");
 				-- JLR
+                -- Storing opr1(PC) + 1 to output
+				elsif unsigned(Opcode) = 9 then
+					dest <= add(opr1, "0000000000000001");
+				-- JAL
                 -- Storing opr1(PC) + 1 to output
 				elsif unsigned(Opcode) = 11 then
 					dest <= add(opr1, opr2);
