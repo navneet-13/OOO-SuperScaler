@@ -97,6 +97,12 @@ begin
 							C <= cin;
 							Z <= zin;
 						end if;
+				---ADI
+				elsif opcode(sel_line-1 downto 2) = "0011" then
+			`		output <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
+					output_temp <= add_temp(operand_width-1 downto 0);
+					C <= add_temp(operand_width);
+					Z <= or_reduce(output_temp);
 				-- ADZ
 					elsif opcode(1 downto 0) = "01" then
 						if zin = '1' then 

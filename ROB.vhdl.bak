@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.math_real.all;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use ieee.numeric_std.all;
+use ieee.std_logic_misc.all;
+
+entity ROB is
+	generic( word_width : integer:= 50;
+	);
+	port(entry_word: in std_logic_vector(word_width-1 downto 0),
+		clock: in std_logic_vector;
+		PC1: in std_logic_vector(15 downto 0);
+		PC2: in std_logic_vector(15 downto 0);
+	);
+	
+architecture beh of ROB is
+	TYPE entry IS ARRAY(0 TO 50) OF std_logic_vector(word_width-1 DOWNTO 0);
+	SIGNAL rob_entry : entry := (others=> (others => '0'));
+	begin
+		main: process(clock, PC1, PC2)
+		begin
+		
+		
+end architecture beh;
