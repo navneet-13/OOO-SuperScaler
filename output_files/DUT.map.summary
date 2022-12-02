@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Thu Dec 01 17:00:58 2022
+Analysis & Synthesis Status : Successful - Fri Dec 02 15:23:32 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : DUT
-Top-level Entity Name : flag_register_file
+Top-level Entity Name : branch_predictor
 Family : MAX V
-Total logic elements : 157
-Total pins : 52
+Total logic elements : 193
+Total pins : 68
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

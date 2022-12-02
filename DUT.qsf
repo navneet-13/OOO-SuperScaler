@@ -39,7 +39,11 @@
 
 set_global_assignment -name FAMILY "MAX V"
 set_global_assignment -name DEVICE 5M1270ZT144C5
+<<<<<<< Updated upstream
 set_global_assignment -name TOP_LEVEL_ENTITY decoder
+=======
+set_global_assignment -name TOP_LEVEL_ENTITY res_station
+>>>>>>> Stashed changes
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:12:59  NOVEMBER 28, 2022"
 set_global_assignment -name LAST_QUARTUS_VERSION "19.1.0 Lite Edition"
@@ -55,4 +59,11 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
+<<<<<<< Updated upstream
 set_global_assignment -name VHDL_FILE datapath.vhd
+=======
+
+set_global_assignment -name ALLOW_REGISTER_MERGING OFF
+set_global_assignment -name ALLOW_REGISTER_DUPLICATION OFF
+set_global_assignment -name STRATIX_CARRY_CHAIN_LENGTH 370
+>>>>>>> Stashed changes

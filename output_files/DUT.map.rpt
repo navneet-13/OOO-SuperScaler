@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Thu Dec 01 17:00:58 2022
+Fri Dec 02 15:23:32 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -44,13 +44,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Thu Dec 01 17:00:58 2022       ;
+; Analysis & Synthesis Status ; Successful - Fri Dec 02 15:23:32 2022       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
-; Top-level Entity Name       ; flag_register_file                          ;
+; Top-level Entity Name       ; branch_predictor                            ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 157                                         ;
-; Total pins                  ; 52                                          ;
+; Total logic elements        ; 193                                         ;
+; Total pins                  ; 68                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -62,8 +62,9 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; 5M1270ZT144C5      ;                    ;
-; Top-level entity name                                            ; flag_register_file ; DUT                ;
+; Top-level entity name                                            ; branch_predictor   ; DUT                ;
 ; Family name                                                      ; MAX V              ; Cyclone V          ;
+; Remove Duplicate Registers                                       ; Off                ; On                 ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
 ; Enable compact report table                                      ; Off                ; Off                ;
@@ -86,7 +87,6 @@ https://fpgasoftware.intel.com/eula.
 ; NOT Gate Push-Back                                               ; On                 ; On                 ;
 ; Power-Up Don't Care                                              ; On                 ; On                 ;
 ; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
-; Remove Duplicate Registers                                       ; On                 ; On                 ;
 ; Ignore CARRY Buffers                                             ; Off                ; Off                ;
 ; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
 ; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
@@ -143,13 +143,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                     ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                              ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------+---------+
-; flag_register_file.vhdl          ; yes             ; User VHDL File  ; D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                  ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                           ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------+---------+
+; branch_predictor.vhd             ; yes             ; User VHDL File  ; D:/CS 683/Project/OOO-SuperScaler/branch_predictor.vhd ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -157,99 +157,1249 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 157   ;
+; Total logic elements                        ; 193   ;
 ;     -- Combinational with no register       ; 109   ;
-;     -- Register only                        ; 0     ;
-;     -- Combinational with a register        ; 48    ;
+;     -- Register only                        ; 64    ;
+;     -- Combinational with a register        ; 20    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 137   ;
-;     -- 3 input functions                    ; 3     ;
-;     -- 2 input functions                    ; 17    ;
-;     -- 1 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 62    ;
+;     -- 3 input functions                    ; 48    ;
+;     -- 2 input functions                    ; 18    ;
+;     -- 1 input functions                    ; 1     ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 157   ;
-;     -- arithmetic mode                      ; 0     ;
+;     -- normal mode                          ; 148   ;
+;     -- arithmetic mode                      ; 45    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 48    ;
+;     -- synchronous clear/load mode          ; 16    ;
+;     -- asynchronous clear/load mode         ; 0     ;
 ;                                             ;       ;
-; Total registers                             ; 48    ;
-; I/O pins                                    ; 52    ;
+; Total registers                             ; 84    ;
+; Total logic cells in carry chains           ; 48    ;
+; I/O pins                                    ; 68    ;
 ; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 48    ;
-; Total fan-out                               ; 725   ;
-; Average fan-out                             ; 3.47  ;
+; Maximum fan-out                             ; 84    ;
+; Total fan-out                               ; 705   ;
+; Average fan-out                             ; 2.70  ;
 +---------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                       ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name        ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------------+--------------+
-; |flag_register_file        ; 157 (157)   ; 48           ; 0          ; 52   ; 0            ; 109 (109)    ; 0 (0)             ; 48 (48)          ; 0 (0)           ; 0 (0)      ; |flag_register_file ; flag_register_file ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                     ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name      ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
+; |branch_predictor          ; 193 (193)   ; 84           ; 0          ; 68   ; 0            ; 109 (109)    ; 64 (64)           ; 20 (20)          ; 48 (48)         ; 0 (0)      ; |branch_predictor   ; branch_predictor ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; cz[1][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[2][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[3][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[4][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[5][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[6][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[7][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[8][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[9][5]                               ; Stuck at GND due to stuck port data_in ;
-; cz[10][5]                              ; Stuck at GND due to stuck port data_in ;
-; cz[11][5]                              ; Stuck at GND due to stuck port data_in ;
-; cz[12][5]                              ; Stuck at GND due to stuck port data_in ;
-; cz[13][5]                              ; Stuck at GND due to stuck port data_in ;
-; cz[14][5]                              ; Stuck at GND due to stuck port data_in ;
-; cz[15][5]                              ; Stuck at GND due to stuck port data_in ;
-; \write_process:fresh_reg_1[1..3]       ; Stuck at GND due to stuck port data_in ;
-; fresh_rr_out_1[3]~reg0                 ; Stuck at GND due to stuck port data_in ;
-; fresh_rr_out_1[2]~reg0                 ; Stuck at GND due to stuck port data_in ;
-; fresh_rr_out_1[1]~reg0                 ; Stuck at GND due to stuck port data_in ;
-; \write_process:fresh_reg_1[0]          ; Stuck at VCC due to stuck port data_in ;
-; \write_process:fresh_reg_2[2,3]        ; Stuck at GND due to stuck port data_in ;
-; \write_process:fresh_reg_2[1]          ; Stuck at VCC due to stuck port data_in ;
-; fresh_rr_out_1[0]~reg0                 ; Stuck at VCC due to stuck port data_in ;
-; fresh_rr_out_2[3]~reg0                 ; Stuck at GND due to stuck port data_in ;
-; fresh_rr_out_2[2]~reg0                 ; Stuck at GND due to stuck port data_in ;
-; fresh_rr_out_2[1]~reg0                 ; Stuck at VCC due to stuck port data_in ;
-; fresh_rr_out_2[0]~reg0                 ; Stuck at GND due to stuck port data_in ;
-; \write_process:fresh_reg_2[0]          ; Stuck at GND due to stuck port data_in ;
-; full~reg0                              ; Stuck at GND due to stuck port data_in ;
-; cz[0][5]                               ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 33 ;                                        ;
-+----------------------------------------+----------------------------------------+
++----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                     ;
++------------------------------------------+---------------------------------------------+
+; Register name                            ; Reason for Removal                          ;
++------------------------------------------+---------------------------------------------+
+; present[1..30]                           ; Stuck at GND due to stuck port data_in      ;
+; present[0]                               ; Stuck at VCC due to stuck port data_in      ;
+; head[0]                                  ; Stuck at VCC due to stuck port clock_enable ;
+; head[1..5]                               ; Stuck at GND due to stuck port clock_enable ;
+; head[31]                                 ; Stuck at VCC due to stuck port clock_enable ;
+; head[6..30]                              ; Stuck at GND due to stuck port clock_enable ;
+; LUT[0][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[0][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[1][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[2][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[3][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[4][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[5][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[6][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[7][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[8][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][34]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][33]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][32]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][31]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][30]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][29]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][28]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][27]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][26]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][25]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][24]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][23]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][22]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][21]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][20]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[9][19]                               ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[10][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[11][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[12][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[13][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[14][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[15][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[16][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[17][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[18][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[19][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[20][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[21][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[22][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[23][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[24][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[25][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[26][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[27][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[28][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[29][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[30][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[31][19]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][34]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][33]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][32]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][31]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][30]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][29]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][28]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][27]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][26]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][25]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][24]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][23]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][22]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][21]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][20]                              ; Stuck at GND due to stuck port data_in      ;
+; LUT[32][19]                              ; Stuck at GND due to stuck port data_in      ;
+; present[31]                              ; Lost fanout                                 ;
+; LUT[15][0]                               ; Lost fanout                                 ;
+; LUT[14][0]                               ; Lost fanout                                 ;
+; LUT[13][0]                               ; Lost fanout                                 ;
+; LUT[12][0]                               ; Lost fanout                                 ;
+; LUT[11][0]                               ; Lost fanout                                 ;
+; LUT[10][0]                               ; Lost fanout                                 ;
+; LUT[9][0]                                ; Lost fanout                                 ;
+; LUT[8][0]                                ; Lost fanout                                 ;
+; LUT[24][0]                               ; Lost fanout                                 ;
+; LUT[23][0]                               ; Lost fanout                                 ;
+; LUT[22][0]                               ; Lost fanout                                 ;
+; LUT[21][0]                               ; Lost fanout                                 ;
+; LUT[20][0]                               ; Lost fanout                                 ;
+; LUT[19][0]                               ; Lost fanout                                 ;
+; LUT[18][0]                               ; Lost fanout                                 ;
+; LUT[17][0]                               ; Lost fanout                                 ;
+; LUT[15][1]                               ; Lost fanout                                 ;
+; LUT[14][1]                               ; Lost fanout                                 ;
+; LUT[13][1]                               ; Lost fanout                                 ;
+; LUT[12][1]                               ; Lost fanout                                 ;
+; LUT[11][1]                               ; Lost fanout                                 ;
+; LUT[10][1]                               ; Lost fanout                                 ;
+; LUT[9][1]                                ; Lost fanout                                 ;
+; LUT[8][1]                                ; Lost fanout                                 ;
+; LUT[24][1]                               ; Lost fanout                                 ;
+; LUT[23][1]                               ; Lost fanout                                 ;
+; LUT[22][1]                               ; Lost fanout                                 ;
+; LUT[21][1]                               ; Lost fanout                                 ;
+; LUT[20][1]                               ; Lost fanout                                 ;
+; LUT[19][1]                               ; Lost fanout                                 ;
+; LUT[18][1]                               ; Lost fanout                                 ;
+; LUT[17][1]                               ; Lost fanout                                 ;
+; LUT[15][2]                               ; Lost fanout                                 ;
+; LUT[14][2]                               ; Lost fanout                                 ;
+; LUT[13][2]                               ; Lost fanout                                 ;
+; LUT[12][2]                               ; Lost fanout                                 ;
+; LUT[11][2]                               ; Lost fanout                                 ;
+; LUT[10][2]                               ; Lost fanout                                 ;
+; LUT[9][2]                                ; Lost fanout                                 ;
+; LUT[8][2]                                ; Lost fanout                                 ;
+; LUT[24][2]                               ; Lost fanout                                 ;
+; LUT[23][2]                               ; Lost fanout                                 ;
+; LUT[22][2]                               ; Lost fanout                                 ;
+; LUT[21][2]                               ; Lost fanout                                 ;
+; LUT[20][2]                               ; Lost fanout                                 ;
+; LUT[19][2]                               ; Lost fanout                                 ;
+; LUT[18][2]                               ; Lost fanout                                 ;
+; LUT[17][2]                               ; Lost fanout                                 ;
+; LUT[15][3]                               ; Lost fanout                                 ;
+; LUT[14][3]                               ; Lost fanout                                 ;
+; LUT[13][3]                               ; Lost fanout                                 ;
+; LUT[12][3]                               ; Lost fanout                                 ;
+; LUT[11][3]                               ; Lost fanout                                 ;
+; LUT[10][3]                               ; Lost fanout                                 ;
+; LUT[9][3]                                ; Lost fanout                                 ;
+; LUT[8][3]                                ; Lost fanout                                 ;
+; LUT[24][3]                               ; Lost fanout                                 ;
+; LUT[23][3]                               ; Lost fanout                                 ;
+; LUT[22][3]                               ; Lost fanout                                 ;
+; LUT[21][3]                               ; Lost fanout                                 ;
+; LUT[20][3]                               ; Lost fanout                                 ;
+; LUT[19][3]                               ; Lost fanout                                 ;
+; LUT[18][3]                               ; Lost fanout                                 ;
+; LUT[17][3]                               ; Lost fanout                                 ;
+; LUT[15][4]                               ; Lost fanout                                 ;
+; LUT[14][4]                               ; Lost fanout                                 ;
+; LUT[13][4]                               ; Lost fanout                                 ;
+; LUT[12][4]                               ; Lost fanout                                 ;
+; LUT[11][4]                               ; Lost fanout                                 ;
+; LUT[10][4]                               ; Lost fanout                                 ;
+; LUT[9][4]                                ; Lost fanout                                 ;
+; LUT[8][4]                                ; Lost fanout                                 ;
+; LUT[24][4]                               ; Lost fanout                                 ;
+; LUT[23][4]                               ; Lost fanout                                 ;
+; LUT[22][4]                               ; Lost fanout                                 ;
+; LUT[21][4]                               ; Lost fanout                                 ;
+; LUT[20][4]                               ; Lost fanout                                 ;
+; LUT[19][4]                               ; Lost fanout                                 ;
+; LUT[18][4]                               ; Lost fanout                                 ;
+; LUT[17][4]                               ; Lost fanout                                 ;
+; LUT[15][5]                               ; Lost fanout                                 ;
+; LUT[14][5]                               ; Lost fanout                                 ;
+; LUT[13][5]                               ; Lost fanout                                 ;
+; LUT[12][5]                               ; Lost fanout                                 ;
+; LUT[11][5]                               ; Lost fanout                                 ;
+; LUT[10][5]                               ; Lost fanout                                 ;
+; LUT[9][5]                                ; Lost fanout                                 ;
+; LUT[8][5]                                ; Lost fanout                                 ;
+; LUT[24][5]                               ; Lost fanout                                 ;
+; LUT[23][5]                               ; Lost fanout                                 ;
+; LUT[22][5]                               ; Lost fanout                                 ;
+; LUT[21][5]                               ; Lost fanout                                 ;
+; LUT[20][5]                               ; Lost fanout                                 ;
+; LUT[19][5]                               ; Lost fanout                                 ;
+; LUT[18][5]                               ; Lost fanout                                 ;
+; LUT[17][5]                               ; Lost fanout                                 ;
+; LUT[15][6]                               ; Lost fanout                                 ;
+; LUT[14][6]                               ; Lost fanout                                 ;
+; LUT[13][6]                               ; Lost fanout                                 ;
+; LUT[12][6]                               ; Lost fanout                                 ;
+; LUT[11][6]                               ; Lost fanout                                 ;
+; LUT[10][6]                               ; Lost fanout                                 ;
+; LUT[9][6]                                ; Lost fanout                                 ;
+; LUT[8][6]                                ; Lost fanout                                 ;
+; LUT[24][6]                               ; Lost fanout                                 ;
+; LUT[23][6]                               ; Lost fanout                                 ;
+; LUT[22][6]                               ; Lost fanout                                 ;
+; LUT[21][6]                               ; Lost fanout                                 ;
+; LUT[20][6]                               ; Lost fanout                                 ;
+; LUT[19][6]                               ; Lost fanout                                 ;
+; LUT[18][6]                               ; Lost fanout                                 ;
+; LUT[17][6]                               ; Lost fanout                                 ;
+; LUT[15][7]                               ; Lost fanout                                 ;
+; LUT[14][7]                               ; Lost fanout                                 ;
+; LUT[13][7]                               ; Lost fanout                                 ;
+; LUT[12][7]                               ; Lost fanout                                 ;
+; LUT[11][7]                               ; Lost fanout                                 ;
+; LUT[10][7]                               ; Lost fanout                                 ;
+; LUT[9][7]                                ; Lost fanout                                 ;
+; LUT[8][7]                                ; Lost fanout                                 ;
+; LUT[24][7]                               ; Lost fanout                                 ;
+; LUT[23][7]                               ; Lost fanout                                 ;
+; LUT[22][7]                               ; Lost fanout                                 ;
+; LUT[21][7]                               ; Lost fanout                                 ;
+; LUT[20][7]                               ; Lost fanout                                 ;
+; LUT[19][7]                               ; Lost fanout                                 ;
+; LUT[18][7]                               ; Lost fanout                                 ;
+; LUT[17][7]                               ; Lost fanout                                 ;
+; LUT[15][8]                               ; Lost fanout                                 ;
+; LUT[14][8]                               ; Lost fanout                                 ;
+; LUT[13][8]                               ; Lost fanout                                 ;
+; LUT[12][8]                               ; Lost fanout                                 ;
+; LUT[11][8]                               ; Lost fanout                                 ;
+; LUT[10][8]                               ; Lost fanout                                 ;
+; LUT[9][8]                                ; Lost fanout                                 ;
+; LUT[8][8]                                ; Lost fanout                                 ;
+; LUT[24][8]                               ; Lost fanout                                 ;
+; LUT[23][8]                               ; Lost fanout                                 ;
+; LUT[22][8]                               ; Lost fanout                                 ;
+; LUT[21][8]                               ; Lost fanout                                 ;
+; LUT[20][8]                               ; Lost fanout                                 ;
+; LUT[19][8]                               ; Lost fanout                                 ;
+; LUT[18][8]                               ; Lost fanout                                 ;
+; LUT[17][8]                               ; Lost fanout                                 ;
+; LUT[15][9]                               ; Lost fanout                                 ;
+; LUT[14][9]                               ; Lost fanout                                 ;
+; LUT[13][9]                               ; Lost fanout                                 ;
+; LUT[12][9]                               ; Lost fanout                                 ;
+; LUT[11][9]                               ; Lost fanout                                 ;
+; LUT[10][9]                               ; Lost fanout                                 ;
+; LUT[9][9]                                ; Lost fanout                                 ;
+; LUT[8][9]                                ; Lost fanout                                 ;
+; LUT[24][9]                               ; Lost fanout                                 ;
+; LUT[23][9]                               ; Lost fanout                                 ;
+; LUT[22][9]                               ; Lost fanout                                 ;
+; LUT[21][9]                               ; Lost fanout                                 ;
+; LUT[20][9]                               ; Lost fanout                                 ;
+; LUT[19][9]                               ; Lost fanout                                 ;
+; LUT[18][9]                               ; Lost fanout                                 ;
+; LUT[17][9]                               ; Lost fanout                                 ;
+; LUT[15][10]                              ; Lost fanout                                 ;
+; LUT[14][10]                              ; Lost fanout                                 ;
+; LUT[13][10]                              ; Lost fanout                                 ;
+; LUT[12][10]                              ; Lost fanout                                 ;
+; LUT[11][10]                              ; Lost fanout                                 ;
+; LUT[10][10]                              ; Lost fanout                                 ;
+; LUT[9][10]                               ; Lost fanout                                 ;
+; LUT[8][10]                               ; Lost fanout                                 ;
+; LUT[24][10]                              ; Lost fanout                                 ;
+; LUT[23][10]                              ; Lost fanout                                 ;
+; LUT[22][10]                              ; Lost fanout                                 ;
+; LUT[21][10]                              ; Lost fanout                                 ;
+; LUT[20][10]                              ; Lost fanout                                 ;
+; LUT[19][10]                              ; Lost fanout                                 ;
+; LUT[18][10]                              ; Lost fanout                                 ;
+; LUT[17][10]                              ; Lost fanout                                 ;
+; LUT[15][11]                              ; Lost fanout                                 ;
+; LUT[14][11]                              ; Lost fanout                                 ;
+; LUT[13][11]                              ; Lost fanout                                 ;
+; LUT[12][11]                              ; Lost fanout                                 ;
+; LUT[11][11]                              ; Lost fanout                                 ;
+; LUT[10][11]                              ; Lost fanout                                 ;
+; LUT[9][11]                               ; Lost fanout                                 ;
+; LUT[8][11]                               ; Lost fanout                                 ;
+; LUT[24][11]                              ; Lost fanout                                 ;
+; LUT[23][11]                              ; Lost fanout                                 ;
+; LUT[22][11]                              ; Lost fanout                                 ;
+; LUT[21][11]                              ; Lost fanout                                 ;
+; LUT[20][11]                              ; Lost fanout                                 ;
+; LUT[19][11]                              ; Lost fanout                                 ;
+; LUT[18][11]                              ; Lost fanout                                 ;
+; LUT[17][11]                              ; Lost fanout                                 ;
+; LUT[15][12]                              ; Lost fanout                                 ;
+; LUT[14][12]                              ; Lost fanout                                 ;
+; LUT[13][12]                              ; Lost fanout                                 ;
+; LUT[12][12]                              ; Lost fanout                                 ;
+; LUT[11][12]                              ; Lost fanout                                 ;
+; LUT[10][12]                              ; Lost fanout                                 ;
+; LUT[9][12]                               ; Lost fanout                                 ;
+; LUT[8][12]                               ; Lost fanout                                 ;
+; LUT[24][12]                              ; Lost fanout                                 ;
+; LUT[23][12]                              ; Lost fanout                                 ;
+; LUT[22][12]                              ; Lost fanout                                 ;
+; LUT[21][12]                              ; Lost fanout                                 ;
+; LUT[20][12]                              ; Lost fanout                                 ;
+; LUT[19][12]                              ; Lost fanout                                 ;
+; LUT[18][12]                              ; Lost fanout                                 ;
+; LUT[17][12]                              ; Lost fanout                                 ;
+; LUT[15][13]                              ; Lost fanout                                 ;
+; LUT[14][13]                              ; Lost fanout                                 ;
+; LUT[13][13]                              ; Lost fanout                                 ;
+; LUT[12][13]                              ; Lost fanout                                 ;
+; LUT[11][13]                              ; Lost fanout                                 ;
+; LUT[10][13]                              ; Lost fanout                                 ;
+; LUT[9][13]                               ; Lost fanout                                 ;
+; LUT[8][13]                               ; Lost fanout                                 ;
+; LUT[24][13]                              ; Lost fanout                                 ;
+; LUT[23][13]                              ; Lost fanout                                 ;
+; LUT[22][13]                              ; Lost fanout                                 ;
+; LUT[21][13]                              ; Lost fanout                                 ;
+; LUT[20][13]                              ; Lost fanout                                 ;
+; LUT[19][13]                              ; Lost fanout                                 ;
+; LUT[18][13]                              ; Lost fanout                                 ;
+; LUT[17][13]                              ; Lost fanout                                 ;
+; LUT[15][14]                              ; Lost fanout                                 ;
+; LUT[14][14]                              ; Lost fanout                                 ;
+; LUT[13][14]                              ; Lost fanout                                 ;
+; LUT[12][14]                              ; Lost fanout                                 ;
+; LUT[11][14]                              ; Lost fanout                                 ;
+; LUT[10][14]                              ; Lost fanout                                 ;
+; LUT[9][14]                               ; Lost fanout                                 ;
+; LUT[8][14]                               ; Lost fanout                                 ;
+; LUT[24][14]                              ; Lost fanout                                 ;
+; LUT[23][14]                              ; Lost fanout                                 ;
+; LUT[22][14]                              ; Lost fanout                                 ;
+; LUT[21][14]                              ; Lost fanout                                 ;
+; LUT[20][14]                              ; Lost fanout                                 ;
+; LUT[19][14]                              ; Lost fanout                                 ;
+; LUT[18][14]                              ; Lost fanout                                 ;
+; LUT[17][14]                              ; Lost fanout                                 ;
+; LUT[15][15]                              ; Lost fanout                                 ;
+; LUT[14][15]                              ; Lost fanout                                 ;
+; LUT[13][15]                              ; Lost fanout                                 ;
+; LUT[12][15]                              ; Lost fanout                                 ;
+; LUT[11][15]                              ; Lost fanout                                 ;
+; LUT[10][15]                              ; Lost fanout                                 ;
+; LUT[9][15]                               ; Lost fanout                                 ;
+; LUT[8][15]                               ; Lost fanout                                 ;
+; LUT[24][15]                              ; Lost fanout                                 ;
+; LUT[23][15]                              ; Lost fanout                                 ;
+; LUT[22][15]                              ; Lost fanout                                 ;
+; LUT[21][15]                              ; Lost fanout                                 ;
+; LUT[20][15]                              ; Lost fanout                                 ;
+; LUT[19][15]                              ; Lost fanout                                 ;
+; LUT[18][15]                              ; Lost fanout                                 ;
+; LUT[17][15]                              ; Lost fanout                                 ;
+; LUT[26][18]                              ; Lost fanout                                 ;
+; LUT[26][17]                              ; Lost fanout                                 ;
+; LUT[27][0]                               ; Lost fanout                                 ;
+; LUT[26][0]                               ; Lost fanout                                 ;
+; LUT[30][0]                               ; Lost fanout                                 ;
+; LUT[29][0]                               ; Lost fanout                                 ;
+; LUT[2][0]                                ; Lost fanout                                 ;
+; LUT[1][0]                                ; Lost fanout                                 ;
+; LUT[5][0]                                ; Lost fanout                                 ;
+; LUT[4][0]                                ; Lost fanout                                 ;
+; LUT[27][1]                               ; Lost fanout                                 ;
+; LUT[26][1]                               ; Lost fanout                                 ;
+; LUT[30][1]                               ; Lost fanout                                 ;
+; LUT[29][1]                               ; Lost fanout                                 ;
+; LUT[2][1]                                ; Lost fanout                                 ;
+; LUT[1][1]                                ; Lost fanout                                 ;
+; LUT[5][1]                                ; Lost fanout                                 ;
+; LUT[4][1]                                ; Lost fanout                                 ;
+; LUT[27][2]                               ; Lost fanout                                 ;
+; LUT[26][2]                               ; Lost fanout                                 ;
+; LUT[30][2]                               ; Lost fanout                                 ;
+; LUT[29][2]                               ; Lost fanout                                 ;
+; LUT[2][2]                                ; Lost fanout                                 ;
+; LUT[1][2]                                ; Lost fanout                                 ;
+; LUT[5][2]                                ; Lost fanout                                 ;
+; LUT[4][2]                                ; Lost fanout                                 ;
+; LUT[27][3]                               ; Lost fanout                                 ;
+; LUT[26][3]                               ; Lost fanout                                 ;
+; LUT[30][3]                               ; Lost fanout                                 ;
+; LUT[29][3]                               ; Lost fanout                                 ;
+; LUT[2][3]                                ; Lost fanout                                 ;
+; LUT[1][3]                                ; Lost fanout                                 ;
+; LUT[5][3]                                ; Lost fanout                                 ;
+; LUT[4][3]                                ; Lost fanout                                 ;
+; LUT[27][4]                               ; Lost fanout                                 ;
+; LUT[26][4]                               ; Lost fanout                                 ;
+; LUT[30][4]                               ; Lost fanout                                 ;
+; LUT[29][4]                               ; Lost fanout                                 ;
+; LUT[2][4]                                ; Lost fanout                                 ;
+; LUT[1][4]                                ; Lost fanout                                 ;
+; LUT[5][4]                                ; Lost fanout                                 ;
+; LUT[4][4]                                ; Lost fanout                                 ;
+; LUT[27][5]                               ; Lost fanout                                 ;
+; LUT[26][5]                               ; Lost fanout                                 ;
+; LUT[30][5]                               ; Lost fanout                                 ;
+; LUT[29][5]                               ; Lost fanout                                 ;
+; LUT[2][5]                                ; Lost fanout                                 ;
+; LUT[1][5]                                ; Lost fanout                                 ;
+; LUT[5][5]                                ; Lost fanout                                 ;
+; LUT[4][5]                                ; Lost fanout                                 ;
+; LUT[27][6]                               ; Lost fanout                                 ;
+; LUT[26][6]                               ; Lost fanout                                 ;
+; LUT[30][6]                               ; Lost fanout                                 ;
+; LUT[29][6]                               ; Lost fanout                                 ;
+; LUT[2][6]                                ; Lost fanout                                 ;
+; LUT[1][6]                                ; Lost fanout                                 ;
+; LUT[5][6]                                ; Lost fanout                                 ;
+; LUT[4][6]                                ; Lost fanout                                 ;
+; LUT[27][7]                               ; Lost fanout                                 ;
+; LUT[26][7]                               ; Lost fanout                                 ;
+; LUT[30][7]                               ; Lost fanout                                 ;
+; LUT[29][7]                               ; Lost fanout                                 ;
+; LUT[2][7]                                ; Lost fanout                                 ;
+; LUT[1][7]                                ; Lost fanout                                 ;
+; LUT[5][7]                                ; Lost fanout                                 ;
+; LUT[4][7]                                ; Lost fanout                                 ;
+; LUT[27][8]                               ; Lost fanout                                 ;
+; LUT[26][8]                               ; Lost fanout                                 ;
+; LUT[30][8]                               ; Lost fanout                                 ;
+; LUT[29][8]                               ; Lost fanout                                 ;
+; LUT[2][8]                                ; Lost fanout                                 ;
+; LUT[1][8]                                ; Lost fanout                                 ;
+; LUT[5][8]                                ; Lost fanout                                 ;
+; LUT[4][8]                                ; Lost fanout                                 ;
+; LUT[27][9]                               ; Lost fanout                                 ;
+; LUT[26][9]                               ; Lost fanout                                 ;
+; LUT[30][9]                               ; Lost fanout                                 ;
+; LUT[29][9]                               ; Lost fanout                                 ;
+; LUT[2][9]                                ; Lost fanout                                 ;
+; LUT[1][9]                                ; Lost fanout                                 ;
+; LUT[5][9]                                ; Lost fanout                                 ;
+; LUT[4][9]                                ; Lost fanout                                 ;
+; LUT[27][10]                              ; Lost fanout                                 ;
+; LUT[26][10]                              ; Lost fanout                                 ;
+; LUT[30][10]                              ; Lost fanout                                 ;
+; LUT[29][10]                              ; Lost fanout                                 ;
+; LUT[2][10]                               ; Lost fanout                                 ;
+; LUT[1][10]                               ; Lost fanout                                 ;
+; LUT[5][10]                               ; Lost fanout                                 ;
+; LUT[4][10]                               ; Lost fanout                                 ;
+; LUT[27][11]                              ; Lost fanout                                 ;
+; LUT[26][11]                              ; Lost fanout                                 ;
+; LUT[30][11]                              ; Lost fanout                                 ;
+; LUT[29][11]                              ; Lost fanout                                 ;
+; LUT[2][11]                               ; Lost fanout                                 ;
+; LUT[1][11]                               ; Lost fanout                                 ;
+; LUT[5][11]                               ; Lost fanout                                 ;
+; LUT[4][11]                               ; Lost fanout                                 ;
+; LUT[27][12]                              ; Lost fanout                                 ;
+; LUT[26][12]                              ; Lost fanout                                 ;
+; LUT[30][12]                              ; Lost fanout                                 ;
+; LUT[29][12]                              ; Lost fanout                                 ;
+; LUT[2][12]                               ; Lost fanout                                 ;
+; LUT[1][12]                               ; Lost fanout                                 ;
+; LUT[5][12]                               ; Lost fanout                                 ;
+; LUT[4][12]                               ; Lost fanout                                 ;
+; LUT[27][13]                              ; Lost fanout                                 ;
+; LUT[26][13]                              ; Lost fanout                                 ;
+; LUT[30][13]                              ; Lost fanout                                 ;
+; LUT[29][13]                              ; Lost fanout                                 ;
+; LUT[2][13]                               ; Lost fanout                                 ;
+; LUT[1][13]                               ; Lost fanout                                 ;
+; LUT[5][13]                               ; Lost fanout                                 ;
+; LUT[4][13]                               ; Lost fanout                                 ;
+; LUT[27][14]                              ; Lost fanout                                 ;
+; LUT[26][14]                              ; Lost fanout                                 ;
+; LUT[30][14]                              ; Lost fanout                                 ;
+; LUT[29][14]                              ; Lost fanout                                 ;
+; LUT[2][14]                               ; Lost fanout                                 ;
+; LUT[1][14]                               ; Lost fanout                                 ;
+; LUT[5][14]                               ; Lost fanout                                 ;
+; LUT[4][14]                               ; Lost fanout                                 ;
+; LUT[27][15]                              ; Lost fanout                                 ;
+; LUT[26][15]                              ; Lost fanout                                 ;
+; LUT[30][15]                              ; Lost fanout                                 ;
+; LUT[29][15]                              ; Lost fanout                                 ;
+; LUT[2][15]                               ; Lost fanout                                 ;
+; LUT[1][15]                               ; Lost fanout                                 ;
+; LUT[5][15]                               ; Lost fanout                                 ;
+; LUT[4][15]                               ; Lost fanout                                 ;
+; LUT[16][0]                               ; Lost fanout                                 ;
+; LUT[16][1]                               ; Lost fanout                                 ;
+; LUT[16][2]                               ; Lost fanout                                 ;
+; LUT[16][3]                               ; Lost fanout                                 ;
+; LUT[16][4]                               ; Lost fanout                                 ;
+; LUT[16][5]                               ; Lost fanout                                 ;
+; LUT[16][6]                               ; Lost fanout                                 ;
+; LUT[16][7]                               ; Lost fanout                                 ;
+; LUT[16][8]                               ; Lost fanout                                 ;
+; LUT[16][9]                               ; Lost fanout                                 ;
+; LUT[16][10]                              ; Lost fanout                                 ;
+; LUT[16][11]                              ; Lost fanout                                 ;
+; LUT[16][12]                              ; Lost fanout                                 ;
+; LUT[16][13]                              ; Lost fanout                                 ;
+; LUT[16][14]                              ; Lost fanout                                 ;
+; LUT[16][15]                              ; Lost fanout                                 ;
+; LUT[28][0]                               ; Lost fanout                                 ;
+; LUT[3][0]                                ; Lost fanout                                 ;
+; LUT[28][1]                               ; Lost fanout                                 ;
+; LUT[3][1]                                ; Lost fanout                                 ;
+; LUT[28][2]                               ; Lost fanout                                 ;
+; LUT[3][2]                                ; Lost fanout                                 ;
+; LUT[28][3]                               ; Lost fanout                                 ;
+; LUT[3][3]                                ; Lost fanout                                 ;
+; LUT[28][4]                               ; Lost fanout                                 ;
+; LUT[3][4]                                ; Lost fanout                                 ;
+; LUT[28][5]                               ; Lost fanout                                 ;
+; LUT[3][5]                                ; Lost fanout                                 ;
+; LUT[28][6]                               ; Lost fanout                                 ;
+; LUT[3][6]                                ; Lost fanout                                 ;
+; LUT[28][7]                               ; Lost fanout                                 ;
+; LUT[3][7]                                ; Lost fanout                                 ;
+; LUT[28][8]                               ; Lost fanout                                 ;
+; LUT[3][8]                                ; Lost fanout                                 ;
+; LUT[28][9]                               ; Lost fanout                                 ;
+; LUT[3][9]                                ; Lost fanout                                 ;
+; LUT[28][10]                              ; Lost fanout                                 ;
+; LUT[3][10]                               ; Lost fanout                                 ;
+; LUT[28][11]                              ; Lost fanout                                 ;
+; LUT[3][11]                               ; Lost fanout                                 ;
+; LUT[28][12]                              ; Lost fanout                                 ;
+; LUT[3][12]                               ; Lost fanout                                 ;
+; LUT[28][13]                              ; Lost fanout                                 ;
+; LUT[3][13]                               ; Lost fanout                                 ;
+; LUT[28][14]                              ; Lost fanout                                 ;
+; LUT[3][14]                               ; Lost fanout                                 ;
+; LUT[28][15]                              ; Lost fanout                                 ;
+; LUT[3][15]                               ; Lost fanout                                 ;
+; LUT[25][0]                               ; Lost fanout                                 ;
+; LUT[25][1]                               ; Lost fanout                                 ;
+; LUT[25][2]                               ; Lost fanout                                 ;
+; LUT[25][3]                               ; Lost fanout                                 ;
+; LUT[25][4]                               ; Lost fanout                                 ;
+; LUT[25][5]                               ; Lost fanout                                 ;
+; LUT[25][6]                               ; Lost fanout                                 ;
+; LUT[25][7]                               ; Lost fanout                                 ;
+; LUT[25][8]                               ; Lost fanout                                 ;
+; LUT[25][9]                               ; Lost fanout                                 ;
+; LUT[25][10]                              ; Lost fanout                                 ;
+; LUT[25][11]                              ; Lost fanout                                 ;
+; LUT[25][12]                              ; Lost fanout                                 ;
+; LUT[25][13]                              ; Lost fanout                                 ;
+; LUT[25][14]                              ; Lost fanout                                 ;
+; LUT[25][15]                              ; Lost fanout                                 ;
+; LUT[6][18]                               ; Lost fanout                                 ;
+; LUT[7][18]                               ; Lost fanout                                 ;
+; LUT[8][18]                               ; Lost fanout                                 ;
+; LUT[9][18]                               ; Lost fanout                                 ;
+; LUT[10][18]                              ; Lost fanout                                 ;
+; LUT[11][18]                              ; Lost fanout                                 ;
+; LUT[24][18]                              ; Lost fanout                                 ;
+; LUT[29][18]                              ; Lost fanout                                 ;
+; LUT[30][18]                              ; Lost fanout                                 ;
+; LUT[28][18]                              ; Lost fanout                                 ;
+; LUT[27][18]                              ; Lost fanout                                 ;
+; LUT[25][18]                              ; Lost fanout                                 ;
+; LUT[12][18]                              ; Lost fanout                                 ;
+; LUT[13][18]                              ; Lost fanout                                 ;
+; LUT[14][18]                              ; Lost fanout                                 ;
+; LUT[15][18]                              ; Lost fanout                                 ;
+; LUT[3][18]                               ; Lost fanout                                 ;
+; LUT[4][18]                               ; Lost fanout                                 ;
+; LUT[5][18]                               ; Lost fanout                                 ;
+; LUT[2][18]                               ; Lost fanout                                 ;
+; LUT[1][18]                               ; Lost fanout                                 ;
+; LUT[6][17]                               ; Lost fanout                                 ;
+; LUT[7][17]                               ; Lost fanout                                 ;
+; LUT[8][17]                               ; Lost fanout                                 ;
+; LUT[9][17]                               ; Lost fanout                                 ;
+; LUT[10][17]                              ; Lost fanout                                 ;
+; LUT[11][17]                              ; Lost fanout                                 ;
+; LUT[24][17]                              ; Lost fanout                                 ;
+; LUT[29][17]                              ; Lost fanout                                 ;
+; LUT[30][17]                              ; Lost fanout                                 ;
+; LUT[28][17]                              ; Lost fanout                                 ;
+; LUT[27][17]                              ; Lost fanout                                 ;
+; LUT[25][17]                              ; Lost fanout                                 ;
+; LUT[12][17]                              ; Lost fanout                                 ;
+; LUT[13][17]                              ; Lost fanout                                 ;
+; LUT[14][17]                              ; Lost fanout                                 ;
+; LUT[15][17]                              ; Lost fanout                                 ;
+; LUT[3][17]                               ; Lost fanout                                 ;
+; LUT[4][17]                               ; Lost fanout                                 ;
+; LUT[5][17]                               ; Lost fanout                                 ;
+; LUT[2][17]                               ; Lost fanout                                 ;
+; LUT[1][17]                               ; Lost fanout                                 ;
+; LUT[18][18]                              ; Lost fanout                                 ;
+; LUT[20][18]                              ; Lost fanout                                 ;
+; LUT[22][18]                              ; Lost fanout                                 ;
+; LUT[23][18]                              ; Lost fanout                                 ;
+; LUT[21][18]                              ; Lost fanout                                 ;
+; LUT[19][18]                              ; Lost fanout                                 ;
+; LUT[17][18]                              ; Lost fanout                                 ;
+; LUT[18][17]                              ; Lost fanout                                 ;
+; LUT[20][17]                              ; Lost fanout                                 ;
+; LUT[22][17]                              ; Lost fanout                                 ;
+; LUT[23][17]                              ; Lost fanout                                 ;
+; LUT[21][17]                              ; Lost fanout                                 ;
+; LUT[19][17]                              ; Lost fanout                                 ;
+; LUT[17][17]                              ; Lost fanout                                 ;
+; LUT[31][18]                              ; Lost fanout                                 ;
+; LUT[16][18]                              ; Lost fanout                                 ;
+; LUT[31][17]                              ; Lost fanout                                 ;
+; LUT[16][17]                              ; Lost fanout                                 ;
+; LUT[6][0]                                ; Lost fanout                                 ;
+; LUT[6][1]                                ; Lost fanout                                 ;
+; LUT[6][2]                                ; Lost fanout                                 ;
+; LUT[6][3]                                ; Lost fanout                                 ;
+; LUT[6][4]                                ; Lost fanout                                 ;
+; LUT[6][5]                                ; Lost fanout                                 ;
+; LUT[6][6]                                ; Lost fanout                                 ;
+; LUT[6][7]                                ; Lost fanout                                 ;
+; LUT[6][8]                                ; Lost fanout                                 ;
+; LUT[6][9]                                ; Lost fanout                                 ;
+; LUT[6][10]                               ; Lost fanout                                 ;
+; LUT[6][11]                               ; Lost fanout                                 ;
+; LUT[6][12]                               ; Lost fanout                                 ;
+; LUT[6][13]                               ; Lost fanout                                 ;
+; LUT[6][14]                               ; Lost fanout                                 ;
+; LUT[6][15]                               ; Lost fanout                                 ;
+; Total Number of Removed Registers = 1118 ;                                             ;
++------------------------------------------+---------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                       ;
-+---------------+---------------------------+---------------------------------------------------------------------------------------+
-; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                ;
-+---------------+---------------------------+---------------------------------------------------------------------------------------+
-; cz[10][5]     ; Stuck at GND              ; \write_process:fresh_reg_1[3], \write_process:fresh_reg_1[2],                         ;
-;               ; due to stuck port data_in ; \write_process:fresh_reg_1[1], \write_process:fresh_reg_1[0], fresh_rr_out_2[3]~reg0, ;
-;               ;                           ; fresh_rr_out_2[2]~reg0, fresh_rr_out_2[1]~reg0, fresh_rr_out_2[0]~reg0                ;
-; cz[9][5]      ; Stuck at GND              ; fresh_rr_out_1[3]~reg0, fresh_rr_out_1[2]~reg0, fresh_rr_out_1[1]~reg0,               ;
-;               ; due to stuck port data_in ; fresh_rr_out_1[0]~reg0                                                                ;
-; cz[12][5]     ; Stuck at GND              ; \write_process:fresh_reg_2[3], \write_process:fresh_reg_2[2],                         ;
-;               ; due to stuck port data_in ; \write_process:fresh_reg_2[1], \write_process:fresh_reg_2[0]                          ;
-; cz[13][5]     ; Stuck at GND              ; full~reg0                                                                             ;
-;               ; due to stuck port data_in ;                                                                                       ;
-+---------------+---------------------------+---------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                     ;
++---------------+---------------------------+-----------------------------------------------------------------------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                              ;
++---------------+---------------------------+-----------------------------------------------------------------------------------------------------+
+; present[1]    ; Stuck at GND              ; present[0], head[0], head[1], head[2], head[3], head[4], head[5], head[31], head[30], head[29],     ;
+;               ; due to stuck port data_in ; head[28], head[27], head[26], head[25], head[24], head[23], head[22], head[21], head[20], head[19], ;
+;               ;                           ; head[18], head[17], head[16], head[15], head[14], head[13], head[12], head[11], head[10], head[9],  ;
+;               ;                           ; head[8], head[7], head[6], LUT[0][34], LUT[0][31], LUT[0][30], LUT[0][29], LUT[0][28],              ;
+;               ;                           ; LUT[0][27], LUT[0][26], LUT[0][25], LUT[0][24], LUT[0][23], LUT[0][22], LUT[0][21], LUT[0][20],     ;
+;               ;                           ; LUT[0][19], LUT[1][34], LUT[1][31], LUT[1][30], LUT[1][29], LUT[1][28], LUT[1][27], LUT[1][26],     ;
+;               ;                           ; LUT[1][25], LUT[1][24], LUT[1][23], LUT[1][22], LUT[1][21], LUT[1][20], LUT[1][19], LUT[2][34],     ;
+;               ;                           ; LUT[2][31], LUT[2][30], LUT[2][29], LUT[2][28], LUT[2][27], LUT[2][26], LUT[2][25], LUT[2][24],     ;
+;               ;                           ; LUT[2][23], LUT[2][22], LUT[2][21], LUT[2][20], LUT[2][19], LUT[3][34], LUT[3][31], LUT[3][30],     ;
+;               ;                           ; LUT[3][29], LUT[3][28], LUT[3][27], LUT[3][26], LUT[3][25], LUT[3][24], LUT[3][23], LUT[3][22],     ;
+;               ;                           ; LUT[3][21], LUT[3][20], LUT[3][19], LUT[4][34], LUT[4][31], LUT[4][30], LUT[4][29], LUT[4][28],     ;
+;               ;                           ; LUT[4][27], LUT[4][26], LUT[4][25], LUT[4][24], LUT[4][23], LUT[4][22], LUT[4][21], LUT[4][20],     ;
+;               ;                           ; LUT[4][19], LUT[5][34], LUT[5][31], LUT[5][30], LUT[5][29], LUT[5][28], LUT[5][27], LUT[5][26],     ;
+;               ;                           ; LUT[5][25], LUT[5][24], LUT[5][23], LUT[5][22], LUT[5][21], LUT[5][20], LUT[5][19], LUT[6][34],     ;
+;               ;                           ; LUT[6][31], LUT[6][30], LUT[6][29], LUT[6][28], LUT[6][27], LUT[6][26], LUT[6][25], LUT[6][24],     ;
+;               ;                           ; LUT[6][23], LUT[6][22], LUT[6][21], LUT[6][20], LUT[6][19], LUT[7][34], LUT[7][31], LUT[7][30],     ;
+;               ;                           ; LUT[7][29], LUT[7][28], LUT[7][27], LUT[7][26], LUT[7][25], LUT[7][24], LUT[7][23], LUT[7][22],     ;
+;               ;                           ; LUT[7][21], LUT[7][20], LUT[7][19], LUT[8][34], LUT[8][31], LUT[8][30], LUT[8][29], LUT[8][28],     ;
+;               ;                           ; LUT[8][27], LUT[8][26], LUT[8][25], LUT[8][24], LUT[8][23], LUT[8][22], LUT[8][21], LUT[8][20],     ;
+;               ;                           ; LUT[8][19], LUT[9][34], LUT[9][31], LUT[9][30], LUT[9][29], LUT[9][28], LUT[9][27], LUT[9][26],     ;
+;               ;                           ; LUT[9][25], LUT[9][24], LUT[9][23], LUT[9][22], LUT[9][21], LUT[9][20], LUT[9][19],                 ;
+;               ;                           ; LUT[10][34], LUT[10][31], LUT[10][30], LUT[10][29], LUT[10][28], LUT[10][27], LUT[10][26],          ;
+;               ;                           ; LUT[10][25], LUT[10][24], LUT[10][23], LUT[10][22], LUT[10][21], LUT[10][20], LUT[10][19],          ;
+;               ;                           ; LUT[11][34], LUT[11][31], LUT[11][30], LUT[11][29], LUT[11][28], LUT[11][27], LUT[11][26],          ;
+;               ;                           ; LUT[11][25], LUT[11][24], LUT[11][23], LUT[11][22], LUT[11][21], LUT[11][20], LUT[11][19],          ;
+;               ;                           ; LUT[12][34], LUT[12][31], LUT[12][30], LUT[12][29], LUT[12][28], LUT[12][27], LUT[12][26],          ;
+;               ;                           ; LUT[12][25], LUT[12][24], LUT[12][23], LUT[12][22], LUT[12][21], LUT[12][20], LUT[12][19],          ;
+;               ;                           ; LUT[13][34], LUT[13][31], LUT[13][30], LUT[13][29], LUT[13][28], LUT[13][27], LUT[13][26],          ;
+;               ;                           ; LUT[13][25], LUT[13][24], LUT[13][23], LUT[13][22], LUT[13][21], LUT[13][20], LUT[13][19],          ;
+;               ;                           ; LUT[14][34], LUT[14][31], LUT[14][30], LUT[14][29], LUT[14][28], LUT[14][27], LUT[14][26],          ;
+;               ;                           ; LUT[14][25], LUT[14][24], LUT[14][23], LUT[14][22], LUT[14][21], LUT[14][20], LUT[14][19],          ;
+;               ;                           ; LUT[15][34], LUT[15][31], LUT[15][30], LUT[15][29], LUT[15][28], LUT[15][27], LUT[15][26],          ;
+;               ;                           ; LUT[15][25], LUT[15][24], LUT[15][23], LUT[15][22], LUT[15][21], LUT[15][20], LUT[15][19],          ;
+;               ;                           ; LUT[16][34], LUT[16][31], LUT[16][30], LUT[16][29], LUT[16][28], LUT[16][27], LUT[16][26],          ;
+;               ;                           ; LUT[16][25], LUT[16][24], LUT[16][23], LUT[16][22], LUT[16][21], LUT[16][20], LUT[16][19],          ;
+;               ;                           ; LUT[17][34], LUT[17][31], LUT[17][30], LUT[17][29], LUT[17][28], LUT[17][27], LUT[17][26],          ;
+;               ;                           ; LUT[17][25], LUT[17][24], LUT[17][23], LUT[17][22], LUT[17][21], LUT[17][20], LUT[17][19],          ;
+;               ;                           ; LUT[18][34], LUT[18][31], LUT[18][30], LUT[18][29], LUT[18][28], LUT[18][27], LUT[18][26],          ;
+;               ;                           ; LUT[18][25], LUT[18][24], LUT[18][23], LUT[18][22], LUT[18][21], LUT[18][20], LUT[18][19],          ;
+;               ;                           ; LUT[19][34], LUT[19][31], LUT[19][30], LUT[19][29], LUT[19][28], LUT[19][27], LUT[19][26],          ;
+;               ;                           ; LUT[19][25], LUT[19][24], LUT[19][23], LUT[19][22], LUT[19][21], LUT[19][20], LUT[19][19],          ;
+;               ;                           ; LUT[20][34], LUT[20][31], LUT[20][30], LUT[20][29], LUT[20][28], LUT[20][27], LUT[20][26],          ;
+;               ;                           ; LUT[20][25], LUT[20][24], LUT[20][23], LUT[20][22], LUT[20][21], LUT[20][20], LUT[20][19],          ;
+;               ;                           ; LUT[21][34], LUT[21][31], LUT[21][30], LUT[21][29], LUT[21][28], LUT[21][27], LUT[21][26],          ;
+;               ;                           ; LUT[21][25], LUT[21][24], LUT[21][23], LUT[21][22], LUT[21][21], LUT[21][20], LUT[21][19],          ;
+;               ;                           ; LUT[22][34], LUT[22][31], LUT[22][30], LUT[22][29], LUT[22][28], LUT[22][27], LUT[22][26],          ;
+;               ;                           ; LUT[22][25], LUT[22][24], LUT[22][23], LUT[22][22], LUT[22][21], LUT[22][20], LUT[22][19],          ;
+;               ;                           ; LUT[23][34], LUT[23][31], LUT[23][30], LUT[23][29], LUT[23][28], LUT[23][27], LUT[23][26],          ;
+;               ;                           ; LUT[23][25], LUT[23][24], LUT[23][23], LUT[23][22], LUT[23][21], LUT[23][20], LUT[23][19],          ;
+;               ;                           ; LUT[24][34], LUT[24][31], LUT[24][30], LUT[24][29], LUT[24][28], LUT[24][27], LUT[24][26],          ;
+;               ;                           ; LUT[24][25], LUT[24][24], LUT[24][23], LUT[24][22], LUT[24][21], LUT[24][20], LUT[24][19],          ;
+;               ;                           ; LUT[25][34], LUT[25][31], LUT[25][30], LUT[25][29], LUT[25][28], LUT[25][27], LUT[25][26],          ;
+;               ;                           ; LUT[25][25], LUT[25][24], LUT[25][23], LUT[25][22], LUT[25][21], LUT[25][20], LUT[25][19],          ;
+;               ;                           ; LUT[26][34], LUT[26][31], LUT[26][30], LUT[26][29], LUT[26][28], LUT[26][27], LUT[26][26],          ;
+;               ;                           ; LUT[26][25], LUT[26][24], LUT[26][23], LUT[26][22], LUT[26][21], LUT[26][20], LUT[26][19],          ;
+;               ;                           ; LUT[27][34], LUT[27][31], LUT[27][30], LUT[27][29], LUT[27][28], LUT[27][27], LUT[27][26],          ;
+;               ;                           ; LUT[27][25], LUT[27][24], LUT[27][23], LUT[27][22], LUT[27][21], LUT[27][20], LUT[27][19],          ;
+;               ;                           ; LUT[28][34], LUT[28][31], LUT[28][30], LUT[28][29], LUT[28][28], LUT[28][27], LUT[28][26],          ;
+;               ;                           ; LUT[28][25], LUT[28][24], LUT[28][23], LUT[28][22], LUT[28][21], LUT[28][20], LUT[28][19],          ;
+;               ;                           ; LUT[29][34], LUT[29][31], LUT[29][30], LUT[29][29], LUT[29][28], LUT[29][27], LUT[29][26],          ;
+;               ;                           ; LUT[29][25], LUT[29][24], LUT[29][23], LUT[29][22], LUT[29][21], LUT[29][20], LUT[29][19],          ;
+;               ;                           ; LUT[30][34], LUT[30][31], LUT[30][30], LUT[30][29], LUT[30][28], LUT[30][27], LUT[30][26],          ;
+;               ;                           ; LUT[30][25], LUT[30][24], LUT[30][23], LUT[30][22], LUT[30][21], LUT[30][20], LUT[30][19],          ;
+;               ;                           ; LUT[31][34], LUT[31][31], LUT[31][30], LUT[31][29], LUT[31][28], LUT[31][27], LUT[31][26],          ;
+;               ;                           ; LUT[31][25], LUT[31][24], LUT[31][23], LUT[31][22], LUT[31][21], LUT[31][20], LUT[31][19],          ;
+;               ;                           ; LUT[32][34], LUT[32][31], LUT[32][30], LUT[32][29], LUT[32][28], LUT[32][27], LUT[32][26],          ;
+;               ;                           ; LUT[32][25], LUT[32][24], LUT[32][23], LUT[32][22], LUT[32][21], LUT[32][20], LUT[32][19],          ;
+;               ;                           ; present[31], LUT[15][0], LUT[14][0], LUT[13][0], LUT[12][0], LUT[11][0], LUT[10][0], LUT[9][0],     ;
+;               ;                           ; LUT[24][0], LUT[23][0], LUT[22][0], LUT[21][0], LUT[20][0], LUT[19][0], LUT[18][0], LUT[15][1],     ;
+;               ;                           ; LUT[14][1], LUT[13][1], LUT[12][1], LUT[11][1], LUT[10][1], LUT[9][1], LUT[24][1], LUT[23][1],      ;
+;               ;                           ; LUT[22][1], LUT[21][1], LUT[20][1], LUT[19][1], LUT[18][1], LUT[15][2], LUT[14][2], LUT[13][2],     ;
+;               ;                           ; LUT[12][2], LUT[11][2], LUT[10][2], LUT[9][2], LUT[24][2], LUT[23][2], LUT[22][2], LUT[21][2],      ;
+;               ;                           ; LUT[20][2], LUT[19][2], LUT[18][2], LUT[15][3], LUT[14][3], LUT[13][3], LUT[12][3], LUT[11][3],     ;
+;               ;                           ; LUT[10][3], LUT[9][3], LUT[24][3], LUT[23][3], LUT[22][3], LUT[21][3], LUT[20][3], LUT[19][3],      ;
+;               ;                           ; LUT[18][3], LUT[15][4], LUT[14][4], LUT[13][4], LUT[12][4], LUT[11][4], LUT[10][4], LUT[9][4],      ;
+;               ;                           ; LUT[24][4], LUT[23][4], LUT[22][4], LUT[21][4], LUT[20][4], LUT[19][4], LUT[18][4], LUT[15][5],     ;
+;               ;                           ; LUT[14][5], LUT[13][5], LUT[12][5], LUT[11][5], LUT[10][5], LUT[9][5], LUT[24][5], LUT[23][5],      ;
+;               ;                           ; LUT[22][5], LUT[21][5], LUT[20][5], LUT[19][5], LUT[18][5], LUT[15][6], LUT[14][6], LUT[13][6],     ;
+;               ;                           ; LUT[12][6], LUT[11][6], LUT[10][6], LUT[9][6], LUT[24][6], LUT[23][6], LUT[22][6], LUT[21][6],      ;
+;               ;                           ; LUT[20][6], LUT[19][6], LUT[18][6], LUT[15][7], LUT[14][7], LUT[13][7], LUT[12][7], LUT[11][7],     ;
+;               ;                           ; LUT[10][7], LUT[9][7], LUT[24][7], LUT[23][7], LUT[22][7], LUT[21][7], LUT[20][7], LUT[19][7],      ;
+;               ;                           ; LUT[18][7], LUT[15][8], LUT[14][8], LUT[13][8], LUT[12][8], LUT[11][8], LUT[10][8], LUT[9][8],      ;
+;               ;                           ; LUT[24][8], LUT[23][8], LUT[22][8], LUT[21][8], LUT[20][8], LUT[19][8], LUT[18][8], LUT[15][9],     ;
+;               ;                           ; LUT[14][9], LUT[13][9], LUT[12][9], LUT[11][9], LUT[10][9], LUT[9][9], LUT[24][9], LUT[23][9],      ;
+;               ;                           ; LUT[22][9], LUT[21][9], LUT[20][9], LUT[19][9], LUT[18][9], LUT[15][10], LUT[14][10],               ;
+;               ;                           ; LUT[13][10], LUT[12][10], LUT[11][10], LUT[10][10], LUT[9][10], LUT[24][10], LUT[23][10],           ;
+;               ;                           ; LUT[22][10], LUT[21][10], LUT[20][10], LUT[19][10], LUT[18][10], LUT[15][11], LUT[14][11],          ;
+;               ;                           ; LUT[13][11], LUT[12][11], LUT[11][11], LUT[10][11], LUT[9][11], LUT[24][11], LUT[23][11],           ;
+;               ;                           ; LUT[22][11], LUT[21][11], LUT[20][11], LUT[19][11], LUT[18][11], LUT[15][12], LUT[14][12],          ;
+;               ;                           ; LUT[13][12], LUT[12][12], LUT[11][12], LUT[10][12], LUT[9][12], LUT[24][12], LUT[23][12],           ;
+;               ;                           ; LUT[22][12], LUT[21][12], LUT[20][12], LUT[19][12], LUT[18][12], LUT[15][13], LUT[14][13],          ;
+;               ;                           ; LUT[13][13], LUT[12][13], LUT[11][13], LUT[10][13], LUT[9][13], LUT[24][13], LUT[23][13],           ;
+;               ;                           ; LUT[22][13], LUT[21][13], LUT[20][13], LUT[19][13], LUT[18][13], LUT[15][14], LUT[14][14],          ;
+;               ;                           ; LUT[13][14], LUT[12][14], LUT[11][14], LUT[10][14], LUT[9][14], LUT[24][14], LUT[23][14],           ;
+;               ;                           ; LUT[22][14], LUT[21][14], LUT[20][14], LUT[19][14], LUT[18][14], LUT[15][15], LUT[14][15],          ;
+;               ;                           ; LUT[13][15], LUT[12][15], LUT[11][15], LUT[10][15], LUT[9][15], LUT[24][15], LUT[23][15],           ;
+;               ;                           ; LUT[22][15], LUT[21][15], LUT[20][15], LUT[19][15], LUT[18][15], LUT[26][18], LUT[26][17],          ;
+;               ;                           ; LUT[27][0], LUT[26][0], LUT[2][0], LUT[1][0], LUT[5][0], LUT[4][0], LUT[27][1], LUT[26][1],         ;
+;               ;                           ; LUT[2][1], LUT[1][1], LUT[5][1], LUT[4][1], LUT[27][2], LUT[26][2], LUT[2][2], LUT[1][2],           ;
+;               ;                           ; LUT[5][2], LUT[4][2], LUT[27][3], LUT[26][3], LUT[2][3], LUT[1][3], LUT[5][3], LUT[4][3],           ;
+;               ;                           ; LUT[27][4], LUT[26][4], LUT[2][4], LUT[1][4], LUT[5][4], LUT[4][4], LUT[27][5], LUT[26][5],         ;
+;               ;                           ; LUT[2][5], LUT[1][5], LUT[5][5], LUT[4][5], LUT[27][6], LUT[26][6], LUT[2][6], LUT[1][6],           ;
+;               ;                           ; LUT[5][6], LUT[4][6], LUT[27][7], LUT[26][7], LUT[2][7], LUT[1][7], LUT[5][7], LUT[4][7],           ;
+;               ;                           ; LUT[27][8], LUT[26][8], LUT[2][8], LUT[1][8], LUT[5][8], LUT[4][8], LUT[27][9], LUT[26][9],         ;
+;               ;                           ; LUT[2][9], LUT[1][9], LUT[5][9], LUT[4][9], LUT[27][10], LUT[26][10], LUT[2][10], LUT[1][10],       ;
+;               ;                           ; LUT[5][10], LUT[4][10], LUT[27][11], LUT[26][11], LUT[2][11], LUT[1][11], LUT[5][11],               ;
+;               ;                           ; LUT[4][11], LUT[27][12], LUT[26][12], LUT[2][12], LUT[1][12], LUT[5][12], LUT[4][12],               ;
+;               ;                           ; LUT[27][13], LUT[26][13], LUT[2][13], LUT[1][13], LUT[5][13], LUT[4][13], LUT[27][14],              ;
+;               ;                           ; LUT[26][14], LUT[2][14], LUT[1][14], LUT[5][14], LUT[4][14], LUT[27][15], LUT[26][15],              ;
+;               ;                           ; LUT[2][15], LUT[1][15], LUT[5][15], LUT[4][15], LUT[16][0], LUT[16][1], LUT[16][2], LUT[16][3],     ;
+;               ;                           ; LUT[16][4], LUT[16][5], LUT[16][6], LUT[16][7], LUT[16][8], LUT[16][9], LUT[16][10],                ;
+;               ;                           ; LUT[16][11], LUT[16][12], LUT[16][13], LUT[16][14], LUT[16][15], LUT[28][0], LUT[3][0],             ;
+;               ;                           ; LUT[28][1], LUT[3][1], LUT[28][2], LUT[3][2], LUT[28][3], LUT[3][3], LUT[28][4], LUT[3][4],         ;
+;               ;                           ; LUT[28][5], LUT[3][5], LUT[28][6], LUT[3][6], LUT[28][7], LUT[3][7], LUT[28][8], LUT[3][8],         ;
+;               ;                           ; LUT[28][9], LUT[3][9], LUT[28][10], LUT[3][10], LUT[28][11], LUT[3][11], LUT[28][12],               ;
+;               ;                           ; LUT[3][12], LUT[28][13], LUT[3][13], LUT[28][14], LUT[3][14], LUT[28][15], LUT[3][15],              ;
+;               ;                           ; LUT[6][18], LUT[7][18], LUT[8][18], LUT[9][18], LUT[10][18], LUT[11][18], LUT[24][18],              ;
+;               ;                           ; LUT[29][18], LUT[30][18], LUT[28][18], LUT[27][18], LUT[25][18], LUT[12][18], LUT[13][18],          ;
+;               ;                           ; LUT[14][18], LUT[15][18], LUT[3][18], LUT[4][18], LUT[5][18], LUT[2][18], LUT[1][18],               ;
+;               ;                           ; LUT[6][17], LUT[7][17], LUT[8][17], LUT[9][17], LUT[10][17], LUT[11][17], LUT[24][17],              ;
+;               ;                           ; LUT[29][17], LUT[30][17], LUT[28][17], LUT[27][17], LUT[25][17], LUT[12][17], LUT[13][17],          ;
+;               ;                           ; LUT[14][17], LUT[15][17], LUT[3][17], LUT[4][17], LUT[5][17], LUT[2][17], LUT[1][17],               ;
+;               ;                           ; LUT[18][18], LUT[20][18], LUT[22][18], LUT[23][18], LUT[21][18], LUT[19][18], LUT[17][18],          ;
+;               ;                           ; LUT[18][17], LUT[20][17], LUT[22][17], LUT[23][17], LUT[21][17], LUT[19][17], LUT[17][17],          ;
+;               ;                           ; LUT[31][18], LUT[16][18], LUT[31][17], LUT[16][17], LUT[6][0], LUT[6][1], LUT[6][2], LUT[6][3],     ;
+;               ;                           ; LUT[6][4], LUT[6][5], LUT[6][6], LUT[6][7], LUT[6][8], LUT[6][9], LUT[6][10], LUT[6][11],           ;
+;               ;                           ; LUT[6][12], LUT[6][13], LUT[6][14], LUT[6][15]                                                      ;
++---------------+---------------------------+-----------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -257,40 +1407,56 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 48    ;
+; Total registers                              ; 84    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 48    ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 32    ;
+; Number of registers using Clock Enable       ; 80    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                              ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[0][7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[1][7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[2][7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[3][7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[4][7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[5][7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[6][7]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[7][6]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[8][6]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[9][6]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[10][6] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[11][6] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[12][6] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[13][6] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[14][6] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |flag_register_file|cz[15][6] ;
-; 16:1               ; 3 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |flag_register_file|Mux7      ;
-; 16:1               ; 3 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |flag_register_file|Mux8      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[31][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[30][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[29][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[28][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[27][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[26][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[25][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[24][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[23][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[22][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[21][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[20][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[19][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[18][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[17][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[16][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[15][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[14][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[13][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[12][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[11][17]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[10][18]         ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[9][17]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[8][17]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[7][17]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[6][18]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[5][18]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[4][18]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[3][17]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[2][17]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[1][17]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[0][17]          ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |branch_predictor|LUT[32][18]         ;
+; 167:1              ; 16 bits   ; 1776 LEs      ; 384 LEs              ; 1392 LEs               ; Yes        ; |branch_predictor|Branch_addr[0]~reg0 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
 
 
 +-------------------------------+
@@ -299,113 +1465,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Dec 01 17:00:49 2022
+    Info: Processing started: Fri Dec 02 15:23:20 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 2 design units, including 1 entities, in source file flag_register_file.vhdl
-    Info (12022): Found design unit 1: flag_register_file-behavioural File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 36
-    Info (12023): Found entity 1: flag_register_file File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 5
-Info (12127): Elaborating entity "flag_register_file" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at flag_register_file.vhdl(42): used implicit default value for signal "reg_rename_en_b_lat" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 42
-Warning (10620): VHDL warning at flag_register_file.vhdl(79): comparison between unequal length operands always returns TRUE File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 79
-Warning (10620): VHDL warning at flag_register_file.vhdl(89): comparison between unequal length operands always returns TRUE File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 89
-Warning (10631): VHDL Process Statement warning at flag_register_file.vhdl(56): inferring latch(es) for signal or variable "cz", which holds its previous value in one or more paths through the process File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 56
-Info (10041): Inferred latch for "cz[15][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[15][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[15][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[15][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[14][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[14][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[14][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[14][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[13][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[13][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[13][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[13][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[12][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[12][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[12][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[12][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[11][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[11][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[11][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[11][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[10][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[10][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[10][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[10][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[9][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[9][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[9][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[9][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[8][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[8][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[8][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[8][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[7][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[7][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[7][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[7][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[6][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[6][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[6][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[6][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[5][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[5][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[5][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[5][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[4][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[4][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[4][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[4][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[3][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[3][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[3][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[3][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[2][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[2][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[2][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[2][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[1][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[1][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[1][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[1][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[0][1]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[0][2]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[0][3]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Info (10041): Inferred latch for "cz[0][4]" at flag_register_file.vhdl(63) File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "data_out_a[1]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 16
-    Warning (13410): Pin "data_out_a[2]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 16
-    Warning (13410): Pin "data_out_a[3]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 16
-    Warning (13410): Pin "data_out_a[4]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 16
-    Warning (13410): Pin "data_out_a[5]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 16
-    Warning (13410): Pin "data_out_b[1]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 17
-    Warning (13410): Pin "data_out_b[2]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 17
-    Warning (13410): Pin "data_out_b[3]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 17
-    Warning (13410): Pin "data_out_b[4]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 17
-    Warning (13410): Pin "data_out_b[5]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 17
-    Warning (13410): Pin "full" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 22
-    Warning (13410): Pin "fresh_rr_out_1[0]" is stuck at VCC File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-    Warning (13410): Pin "fresh_rr_out_1[1]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-    Warning (13410): Pin "fresh_rr_out_1[2]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-    Warning (13410): Pin "fresh_rr_out_1[3]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-    Warning (13410): Pin "fresh_rr_out_2[0]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-    Warning (13410): Pin "fresh_rr_out_2[1]" is stuck at VCC File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-    Warning (13410): Pin "fresh_rr_out_2[2]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-    Warning (13410): Pin "fresh_rr_out_2[3]" is stuck at GND File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 63
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "reg_rename_en_a" File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 30
-    Warning (15610): No output dependent on input pin "reg_rename_en_b" File: D:/CS 683/Project/OOO-SuperScaler/flag_register_file.vhdl Line: 31
-Info (21057): Implemented 209 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 27 input pins
-    Info (21059): Implemented 25 output pins
-    Info (21061): Implemented 157 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
-    Info: Peak virtual memory: 4749 megabytes
-    Info: Processing ended: Thu Dec 01 17:00:58 2022
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:19
+Info (12021): Found 2 design units, including 1 entities, in source file branch_predictor.vhd
+    Info (12022): Found design unit 1: branch_predictor-arch File: D:/CS 683/Project/OOO-SuperScaler/branch_predictor.vhd Line: 22
+    Info (12023): Found entity 1: branch_predictor File: D:/CS 683/Project/OOO-SuperScaler/branch_predictor.vhd Line: 8
+Info (12127): Elaborating entity "branch_predictor" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at branch_predictor.vhd(38): signal "clk" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/CS 683/Project/OOO-SuperScaler/branch_predictor.vhd Line: 38
+Info (17049): 527 registers lost all their fanouts during netlist optimizations.
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "inst[9]" File: D:/CS 683/Project/OOO-SuperScaler/branch_predictor.vhd Line: 11
+    Warning (15610): No output dependent on input pin "inst[10]" File: D:/CS 683/Project/OOO-SuperScaler/branch_predictor.vhd Line: 11
+    Warning (15610): No output dependent on input pin "inst[11]" File: D:/CS 683/Project/OOO-SuperScaler/branch_predictor.vhd Line: 11
+Info (21057): Implemented 261 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 52 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 193 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4766 megabytes
+    Info: Processing ended: Fri Dec 02 15:23:32 2022
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:25
 
 
