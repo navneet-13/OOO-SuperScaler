@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Thu Dec 01 16:34:53 2022
+Analysis & Synthesis Status : Successful - Thu Dec 01 17:00:58 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : DUT
-Top-level Entity Name : Decoder
+Top-level Entity Name : flag_register_file
 Family : MAX V
-Total logic elements : 4,040
-Total pins : 523
+Total logic elements : 157
+Total pins : 52
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )
