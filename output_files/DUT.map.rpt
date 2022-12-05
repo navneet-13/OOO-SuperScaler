@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Fri Dec 02 23:54:46 2022
+Mon Dec 05 20:14:05 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -13,10 +13,10 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. User-Specified and Inferred Latches
+  8. Registers Removed During Synthesis
   9. General Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: Top-level Entity: |alu
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |ROB
  12. Analysis & Synthesis Messages
 
 
@@ -44,13 +44,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Fri Dec 02 23:54:46 2022       ;
+; Analysis & Synthesis Status ; Successful - Mon Dec 05 20:14:05 2022       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
-; Top-level Entity Name       ; alu                                         ;
+; Top-level Entity Name       ; ROB                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 153                                         ;
-; Total pins                  ; 76                                          ;
+; Total logic elements        ; 42,033                                      ;
+; Total pins                  ; 433                                         ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -62,7 +62,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; 5M1270ZT144C5      ;                    ;
-; Top-level entity name                                            ; alu                ; DUT                ;
+; Top-level entity name                                            ; ROB                ; DUT                ;
 ; Family name                                                      ; MAX V              ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -149,96 +149,63 @@ https://fpgasoftware.intel.com/eula.
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path               ; Library ;
 +----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
 ; ROB.vhdl                         ; yes             ; User VHDL File  ; D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl ;         ;
-; alu.vhdl                         ; yes             ; User VHDL File  ; D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl ;         ;
 +----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
 
 
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Total logic elements                        ; 153         ;
-;     -- Combinational with no register       ; 153         ;
-;     -- Register only                        ; 0           ;
-;     -- Combinational with a register        ; 0           ;
-;                                             ;             ;
-; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 88          ;
-;     -- 3 input functions                    ; 44          ;
-;     -- 2 input functions                    ; 21          ;
-;     -- 1 input functions                    ; 0           ;
-;     -- 0 input functions                    ; 0           ;
-;                                             ;             ;
-; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 153         ;
-;     -- arithmetic mode                      ; 0           ;
-;     -- qfbk mode                            ; 0           ;
-;     -- register cascade mode                ; 0           ;
-;     -- synchronous clear/load mode          ; 0           ;
-;     -- asynchronous clear/load mode         ; 0           ;
-;                                             ;             ;
-; Total registers                             ; 0           ;
-; I/O pins                                    ; 76          ;
-; Maximum fan-out node                        ; output[0]~3 ;
-; Maximum fan-out                             ; 32          ;
-; Total fan-out                               ; 544         ;
-; Average fan-out                             ; 2.38        ;
-+---------------------------------------------+-------------+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Total logic elements                        ; 42033  ;
+;     -- Combinational with no register       ; 38803  ;
+;     -- Register only                        ; 34     ;
+;     -- Combinational with a register        ; 3196   ;
+;                                             ;        ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 31994  ;
+;     -- 3 input functions                    ; 4789   ;
+;     -- 2 input functions                    ; 5095   ;
+;     -- 1 input functions                    ; 121    ;
+;     -- 0 input functions                    ; 0      ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 37714  ;
+;     -- arithmetic mode                      ; 4319   ;
+;     -- qfbk mode                            ; 0      ;
+;     -- register cascade mode                ; 0      ;
+;     -- synchronous clear/load mode          ; 117    ;
+;     -- asynchronous clear/load mode         ; 3125   ;
+;                                             ;        ;
+; Total registers                             ; 3230   ;
+; Total logic cells in carry chains           ; 4468   ;
+; I/O pins                                    ; 433    ;
+; Maximum fan-out node                        ; clock  ;
+; Maximum fan-out                             ; 3230   ;
+; Total fan-out                               ; 162497 ;
+; Average fan-out                             ; 3.83   ;
++---------------------------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |alu                       ; 153 (153)   ; 0            ; 0          ; 76   ; 0            ; 153 (153)    ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |alu                ; alu         ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                   ;
++----------------------------+---------------+--------------+------------+------+--------------+---------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells   ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs  ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------+--------------+------------+------+--------------+---------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
+; |ROB                       ; 42033 (42033) ; 3230         ; 0          ; 433  ; 0            ; 38803 (38803) ; 34 (34)           ; 3196 (3196)      ; 4468 (4468)     ; 0 (0)      ; |ROB                ; ROB         ; work         ;
++----------------------------+---------------+--------------+------------+------+--------------+---------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                ;
-+-----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
-+-----------------------------------------------------+---------------------+------------------------+
-; output[0]$latch                                     ; output[15]          ; yes                    ;
-; output[1]$latch                                     ; output[15]          ; yes                    ;
-; output[2]$latch                                     ; output[15]          ; yes                    ;
-; output[3]$latch                                     ; output[15]          ; yes                    ;
-; output[4]$latch                                     ; output[15]          ; yes                    ;
-; output[5]$latch                                     ; output[15]          ; yes                    ;
-; output[6]$latch                                     ; output[15]          ; yes                    ;
-; output[7]$latch                                     ; output[15]          ; yes                    ;
-; output[8]$latch                                     ; output[15]          ; yes                    ;
-; output[9]$latch                                     ; output[15]          ; yes                    ;
-; output[10]$latch                                    ; output[15]          ; yes                    ;
-; output[11]$latch                                    ; output[15]          ; yes                    ;
-; output[12]$latch                                    ; output[15]          ; yes                    ;
-; output[13]$latch                                    ; output[15]          ; yes                    ;
-; output[14]$latch                                    ; output[15]          ; yes                    ;
-; output[15]$latch                                    ; output[15]          ; yes                    ;
-; C$latch                                             ; C                   ; yes                    ;
-; Z$latch                                             ; C                   ; yes                    ;
-; output_temp[1]                                      ; output[15]          ; yes                    ;
-; output_temp[2]                                      ; output[15]          ; yes                    ;
-; output_temp[3]                                      ; output[15]          ; yes                    ;
-; output_temp[4]                                      ; output[15]          ; yes                    ;
-; output_temp[5]                                      ; output[15]          ; yes                    ;
-; output_temp[6]                                      ; output[15]          ; yes                    ;
-; output_temp[7]                                      ; output[15]          ; yes                    ;
-; output_temp[8]                                      ; output[15]          ; yes                    ;
-; output_temp[9]                                      ; output[15]          ; yes                    ;
-; output_temp[10]                                     ; output[15]          ; yes                    ;
-; output_temp[11]                                     ; output[15]          ; yes                    ;
-; output_temp[12]                                     ; output[15]          ; yes                    ;
-; output_temp[13]                                     ; output[15]          ; yes                    ;
-; output_temp[14]                                     ; output[15]          ; yes                    ;
-; output_temp[15]                                     ; output[15]          ; yes                    ;
-; output_temp[0]                                      ; output[15]          ; yes                    ;
-; Number of user-specified and inferred latches = 34  ;                     ;                        ;
-+-----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; which_store[1]                        ; Stuck at GND due to stuck port data_in ;
+; rob_full~reg0                         ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 2 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -246,32 +213,341 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 3230  ;
+; Number of registers using Synchronous Clear  ; 6     ;
+; Number of registers using Synchronous Load   ; 115   ;
+; Number of registers using Asynchronous Clear ; 3125  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 3127  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; No         ; |alu|output[0]             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[0][37]       ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[1][44]       ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[2][28]       ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[3][49]       ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[4][44]       ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[5][7]        ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[6][7]        ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[7][7]        ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[8][7]        ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[9][7]        ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[10][33]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[11][57]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[12][52]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[13][56]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[14][33]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[15][27]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[16][45]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[17][34]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[18][27]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[19][43]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[20][50]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[21][48]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[22][34]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[23][36]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[24][36]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[25][47]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[26][48]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[27][57]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[28][44]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[29][27]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[30][57]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[31][36]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[32][32]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[33][56]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[34][40]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[35][30]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[36][27]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[37][5]       ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[38][30]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[39][30]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[40][51]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[41][48]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[42][33]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[43][41]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[44][55]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[45][35]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[46][35]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[47][48]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[48][5]       ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[49][51]      ;
+; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[50][52]      ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[0][4]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[1][4]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[2][2]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[3][4]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[4][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[5][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[6][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[7][2]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[8][2]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[9][4]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[10][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[11][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[12][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[13][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[14][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[15][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[16][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[17][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[18][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[19][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[20][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[21][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[22][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[23][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[24][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[25][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[26][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[27][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[28][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[29][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[30][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[31][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[32][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[33][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[34][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[35][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[36][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[37][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[38][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[39][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[40][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[41][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[42][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[43][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[44][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[45][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[46][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[47][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[48][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[49][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[50][4]       ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; Yes        ; |ROB|\main:head_pointer[30] ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[0][20]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[1][9]        ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[2][10]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[3][21]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[4][17]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[5][18]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[6][16]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[7][15]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[8][10]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[9][10]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[10][16]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[11][12]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[12][22]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[13][9]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[14][19]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[15][9]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[16][10]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[17][15]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[18][13]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[19][20]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[20][11]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[21][21]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[22][13]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[23][11]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[24][23]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[25][22]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[26][9]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[27][18]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[28][17]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[29][10]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[30][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[31][21]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[32][10]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[33][11]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[34][23]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[35][23]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[36][17]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[37][20]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[38][22]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[39][15]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[40][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[41][10]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[42][22]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[43][25]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[44][23]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[45][18]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[46][16]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[47][10]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[48][17]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[49][12]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[50][25]      ;
+; 66:1               ; 16 bits   ; 704 LEs       ; 544 LEs              ; 160 LEs                ; Yes        ; |ROB|dest_val1[7]~reg0      ;
+; 69:1               ; 16 bits   ; 736 LEs       ; 544 LEs              ; 192 LEs                ; Yes        ; |ROB|mem_add1[7]~reg0       ;
+; 66:1               ; 16 bits   ; 704 LEs       ; 544 LEs              ; 160 LEs                ; Yes        ; |ROB|dest_val2[8]~reg0      ;
+; 69:1               ; 16 bits   ; 736 LEs       ; 544 LEs              ; 192 LEs                ; Yes        ; |ROB|mem_add2[2]~reg0       ;
+; 65:1               ; 6 bits    ; 258 LEs       ; 204 LEs              ; 54 LEs                 ; Yes        ; |ROB|cz_write_data1[0]~reg0 ;
+; 65:1               ; 6 bits    ; 258 LEs       ; 204 LEs              ; 54 LEs                 ; Yes        ; |ROB|cz_write_add2[1]~reg0  ;
+; 65:1               ; 10 bits   ; 430 LEs       ; 340 LEs              ; 90 LEs                 ; Yes        ; |ROB|dest_RRF1[4]~reg0      ;
+; 65:1               ; 10 bits   ; 430 LEs       ; 340 LEs              ; 90 LEs                 ; Yes        ; |ROB|dest_ARF2[1]~reg0      ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 2 LEs                ; 20 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 3 bits    ; 33 LEs        ; 3 LEs                ; 30 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 4 LEs                ; 40 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 5 bits    ; 55 LEs        ; 5 LEs                ; 50 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 6 LEs                ; 60 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 7 bits    ; 77 LEs        ; 7 LEs                ; 70 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 9 bits    ; 99 LEs        ; 9 LEs                ; 90 LEs                 ; No         ; |ROB|no_instr               ;
+; 17:1               ; 10 bits   ; 110 LEs       ; 10 LEs               ; 100 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 11 bits   ; 121 LEs       ; 11 LEs               ; 110 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 12 bits   ; 132 LEs       ; 12 LEs               ; 120 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 13 bits   ; 143 LEs       ; 13 LEs               ; 130 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 14 bits   ; 154 LEs       ; 14 LEs               ; 140 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 15 bits   ; 165 LEs       ; 15 LEs               ; 150 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 16 bits   ; 176 LEs       ; 16 LEs               ; 160 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 17 bits   ; 187 LEs       ; 17 LEs               ; 170 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 18 bits   ; 198 LEs       ; 18 LEs               ; 180 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 19 bits   ; 209 LEs       ; 19 LEs               ; 190 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 20 bits   ; 220 LEs       ; 20 LEs               ; 200 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 21 bits   ; 231 LEs       ; 21 LEs               ; 210 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 22 bits   ; 242 LEs       ; 22 LEs               ; 220 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 23 bits   ; 253 LEs       ; 23 LEs               ; 230 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 24 bits   ; 264 LEs       ; 24 LEs               ; 240 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 25 bits   ; 275 LEs       ; 25 LEs               ; 250 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 26 bits   ; 286 LEs       ; 26 LEs               ; 260 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 27 bits   ; 297 LEs       ; 27 LEs               ; 270 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 28 bits   ; 308 LEs       ; 28 LEs               ; 280 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 29 bits   ; 319 LEs       ; 29 LEs               ; 290 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 30 bits   ; 330 LEs       ; 30 LEs               ; 300 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 31 bits   ; 341 LEs       ; 31 LEs               ; 310 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; No         ; |ROB|no_instr               ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux0                   ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux197                 ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux395                 ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux592                 ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux790                 ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux987                 ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux1183                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux1381                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux1577                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux1774                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux1971                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux2169                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux2365                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux2563                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux2758                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux2955                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux3152                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux3351                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux3546                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux3743                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux3940                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux4137                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux4336                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux4533                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux4728                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux4926                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux5122                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux5319                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux5516                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux5714                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux5912                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux6107                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux6305                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux6500                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux6697                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux6890                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux7082                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux7276                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux7465                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux7655                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux7844                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux8032                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux8221                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux8406                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux8590                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux8776                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux8959                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux9139                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux9320                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux9500                ;
+; 51:1               ; 3 bits    ; 102 LEs       ; 102 LEs              ; 0 LEs                  ; No         ; |ROB|Mux9679                ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
+; 16:1               ; 32 bits   ; 320 LEs       ; 32 LEs               ; 288 LEs                ; No         ; |ROB|head_pointer           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
 
 
 +---------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Top-level Entity: |alu ;
+; Parameter Settings for User Entity Instance: Top-level Entity: |ROB ;
 +----------------+-------+--------------------------------------------+
 ; Parameter Name ; Value ; Type                                       ;
 +----------------+-------+--------------------------------------------+
-; operand_width  ; 16    ; Signed Integer                             ;
-; sel_line       ; 6     ; Signed Integer                             ;
+; word_width     ; 60    ; Signed Integer                             ;
 +----------------+-------+--------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -282,137 +558,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Fri Dec 02 23:54:27 2022
+    Info: Processing started: Mon Dec 05 20:06:14 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file rob.vhdl
-    Info (12022): Found design unit 1: ROB-beh File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 51
+    Info (12022): Found design unit 1: ROB-beh File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 52
     Info (12023): Found entity 1: ROB File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 8
-Info (12021): Found 2 design units, including 1 entities, in source file alu.vhdl
-    Info (12022): Found design unit 1: alu-beh File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 32
-    Info (12023): Found entity 1: alu File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 15
-Info (12127): Elaborating entity "alu" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at alu.vhdl(85): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 85
-Warning (10492): VHDL Process Statement warning at alu.vhdl(86): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 86
-Warning (10492): VHDL Process Statement warning at alu.vhdl(90): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 90
-Warning (10492): VHDL Process Statement warning at alu.vhdl(91): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 91
-Warning (10492): VHDL Process Statement warning at alu.vhdl(92): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 92
-Warning (10492): VHDL Process Statement warning at alu.vhdl(93): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 93
-Warning (10492): VHDL Process Statement warning at alu.vhdl(102): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 102
-Warning (10492): VHDL Process Statement warning at alu.vhdl(103): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 103
-Warning (10492): VHDL Process Statement warning at alu.vhdl(104): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 104
-Warning (10492): VHDL Process Statement warning at alu.vhdl(105): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 105
-Warning (10492): VHDL Process Statement warning at alu.vhdl(109): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 109
-Warning (10492): VHDL Process Statement warning at alu.vhdl(110): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 110
-Warning (10492): VHDL Process Statement warning at alu.vhdl(111): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 111
-Warning (10492): VHDL Process Statement warning at alu.vhdl(112): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 112
-Warning (10492): VHDL Process Statement warning at alu.vhdl(119): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 119
-Warning (10492): VHDL Process Statement warning at alu.vhdl(120): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 120
-Warning (10492): VHDL Process Statement warning at alu.vhdl(121): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 121
-Warning (10492): VHDL Process Statement warning at alu.vhdl(122): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 122
-Warning (10492): VHDL Process Statement warning at alu.vhdl(129): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 129
-Warning (10492): VHDL Process Statement warning at alu.vhdl(136): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 136
-Warning (10492): VHDL Process Statement warning at alu.vhdl(149): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 149
-Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "C", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "Z", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "output_temp", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[0]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[1]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[2]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[3]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[4]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[5]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[6]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[7]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[8]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[9]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[10]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[11]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[12]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[13]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[14]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output_temp[15]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[0]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[1]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[2]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[3]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[4]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[5]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[6]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[7]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[8]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[9]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[10]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[11]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[12]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[13]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[14]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "output[15]" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "Z" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (10041): Inferred latch for "C" at alu.vhdl(75) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
-    Info (13026): Duplicate LATCH primitive "output_temp[0]" merged with LATCH primitive "output[0]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[1]" merged with LATCH primitive "output[1]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[2]" merged with LATCH primitive "output[2]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[3]" merged with LATCH primitive "output[3]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[4]" merged with LATCH primitive "output[4]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[5]" merged with LATCH primitive "output[5]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[6]" merged with LATCH primitive "output[6]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[7]" merged with LATCH primitive "output[7]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[8]" merged with LATCH primitive "output[8]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[9]" merged with LATCH primitive "output[9]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[10]" merged with LATCH primitive "output[10]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[11]" merged with LATCH primitive "output[11]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[12]" merged with LATCH primitive "output[12]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[13]" merged with LATCH primitive "output[13]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[14]" merged with LATCH primitive "output[14]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Info (13026): Duplicate LATCH primitive "output_temp[15]" merged with LATCH primitive "output[15]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-Warning (13012): Latch output[0]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[1]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[2]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[3]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[4]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[5]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[6]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[7]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[8]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[9]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[10]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[11]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[12]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[13]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[14]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch output[15]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch C$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
-Warning (13012): Latch Z$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal zin File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 26
-Info (21057): Implemented 229 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 58 input pins
-    Info (21059): Implemented 18 output pins
-    Info (21061): Implemented 153 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 62 warnings
-    Info: Peak virtual memory: 4759 megabytes
-    Info: Processing ended: Fri Dec 02 23:54:46 2022
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:34
+Info (12127): Elaborating entity "ROB" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at ROB.vhdl(55): object "which_load" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 55
+Warning (10492): VHDL Process Statement warning at ROB.vhdl(69): signal "rob_entry" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 69
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "rob_full" is stuck at GND File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 48
+Info (21057): Implemented 42466 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 331 input pins
+    Info (21059): Implemented 102 output pins
+    Info (21061): Implemented 42033 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 5243 megabytes
+    Info: Processing ended: Mon Dec 05 20:14:06 2022
+    Info: Elapsed time: 00:07:52
+    Info: Total CPU time (on all processors): 00:07:59
 
 
