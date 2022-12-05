@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Wed Nov 30 15:43:24 2022
+Fri Dec 02 23:54:46 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -44,12 +44,12 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Nov 30 15:43:24 2022       ;
+; Analysis & Synthesis Status ; Successful - Fri Dec 02 23:54:46 2022       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
 ; Top-level Entity Name       ; alu                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 156                                         ;
+; Total logic elements        ; 153                                         ;
 ; Total pins                  ; 76                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
@@ -158,20 +158,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Total logic elements                        ; 156         ;
-;     -- Combinational with no register       ; 156         ;
+; Total logic elements                        ; 153         ;
+;     -- Combinational with no register       ; 153         ;
 ;     -- Register only                        ; 0           ;
 ;     -- Combinational with a register        ; 0           ;
 ;                                             ;             ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 81          ;
-;     -- 3 input functions                    ; 46          ;
-;     -- 2 input functions                    ; 29          ;
+;     -- 4 input functions                    ; 88          ;
+;     -- 3 input functions                    ; 44          ;
+;     -- 2 input functions                    ; 21          ;
 ;     -- 1 input functions                    ; 0           ;
 ;     -- 0 input functions                    ; 0           ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 156         ;
+;     -- normal mode                          ; 153         ;
 ;     -- arithmetic mode                      ; 0           ;
 ;     -- qfbk mode                            ; 0           ;
 ;     -- register cascade mode                ; 0           ;
@@ -180,10 +180,10 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Total registers                             ; 0           ;
 ; I/O pins                                    ; 76          ;
-; Maximum fan-out node                        ; output[0]~2 ;
-; Maximum fan-out                             ; 25          ;
-; Total fan-out                               ; 538         ;
-; Average fan-out                             ; 2.32        ;
+; Maximum fan-out node                        ; output[0]~3 ;
+; Maximum fan-out                             ; 32          ;
+; Total fan-out                               ; 544         ;
+; Average fan-out                             ; 2.38        ;
 +---------------------------------------------+-------------+
 
 
@@ -192,7 +192,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |alu                       ; 156 (156)   ; 0            ; 0          ; 76   ; 0            ; 156 (156)    ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |alu                ; alu         ; work         ;
+; |alu                       ; 153 (153)   ; 0            ; 0          ; 76   ; 0            ; 153 (153)    ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |alu                ; alu         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -261,7 +261,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 9:1                ; 16 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; No         ; |alu|output[0]             ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; No         ; |alu|output[0]             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -282,12 +282,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Nov 30 15:43:13 2022
+    Info: Processing started: Fri Dec 02 23:54:27 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file rob.vhdl
-    Info (12022): Found design unit 1: ROB-beh File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 20
+    Info (12022): Found design unit 1: ROB-beh File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 51
     Info (12023): Found entity 1: ROB File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file alu.vhdl
     Info (12022): Found design unit 1: alu-beh File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 32
@@ -299,17 +299,21 @@ Warning (10492): VHDL Process Statement warning at alu.vhdl(90): signal "add_tem
 Warning (10492): VHDL Process Statement warning at alu.vhdl(91): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 91
 Warning (10492): VHDL Process Statement warning at alu.vhdl(92): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 92
 Warning (10492): VHDL Process Statement warning at alu.vhdl(93): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 93
+Warning (10492): VHDL Process Statement warning at alu.vhdl(102): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 102
 Warning (10492): VHDL Process Statement warning at alu.vhdl(103): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 103
 Warning (10492): VHDL Process Statement warning at alu.vhdl(104): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 104
-Warning (10492): VHDL Process Statement warning at alu.vhdl(105): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 105
-Warning (10492): VHDL Process Statement warning at alu.vhdl(106): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 106
-Warning (10492): VHDL Process Statement warning at alu.vhdl(113): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 113
-Warning (10492): VHDL Process Statement warning at alu.vhdl(114): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 114
-Warning (10492): VHDL Process Statement warning at alu.vhdl(115): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 115
-Warning (10492): VHDL Process Statement warning at alu.vhdl(116): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 116
-Warning (10492): VHDL Process Statement warning at alu.vhdl(123): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 123
-Warning (10492): VHDL Process Statement warning at alu.vhdl(130): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 130
-Warning (10492): VHDL Process Statement warning at alu.vhdl(143): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 143
+Warning (10492): VHDL Process Statement warning at alu.vhdl(105): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 105
+Warning (10492): VHDL Process Statement warning at alu.vhdl(109): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 109
+Warning (10492): VHDL Process Statement warning at alu.vhdl(110): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 110
+Warning (10492): VHDL Process Statement warning at alu.vhdl(111): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 111
+Warning (10492): VHDL Process Statement warning at alu.vhdl(112): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 112
+Warning (10492): VHDL Process Statement warning at alu.vhdl(119): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 119
+Warning (10492): VHDL Process Statement warning at alu.vhdl(120): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 120
+Warning (10492): VHDL Process Statement warning at alu.vhdl(121): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 121
+Warning (10492): VHDL Process Statement warning at alu.vhdl(122): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 122
+Warning (10492): VHDL Process Statement warning at alu.vhdl(129): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 129
+Warning (10492): VHDL Process Statement warning at alu.vhdl(136): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 136
+Warning (10492): VHDL Process Statement warning at alu.vhdl(149): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 149
 Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "C", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
 Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "Z", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
 Warning (10631): VHDL Process Statement warning at alu.vhdl(75): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
@@ -366,49 +370,49 @@ Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
     Info (13026): Duplicate LATCH primitive "output_temp[14]" merged with LATCH primitive "output[14]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Info (13026): Duplicate LATCH primitive "output_temp[15]" merged with LATCH primitive "output[15]$latch" File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
 Warning (13012): Latch output[0]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[1]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[2]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[3]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[4]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[5]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[6]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[7]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[8]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[9]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[10]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[11]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[12]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[13]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[14]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[0] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch output[15]$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch C$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal opcode[2] File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 25
 Warning (13012): Latch Z$latch has unsafe behavior File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 75
     Warning (13013): Ports D and ENA on the latch are fed by the same signal zin File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 26
-Info (21057): Implemented 232 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 229 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 58 input pins
     Info (21059): Implemented 18 output pins
-    Info (21061): Implemented 156 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 58 warnings
-    Info: Peak virtual memory: 4755 megabytes
-    Info: Processing ended: Wed Nov 30 15:43:24 2022
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:18
+    Info (21061): Implemented 153 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 62 warnings
+    Info: Peak virtual memory: 4759 megabytes
+    Info: Processing ended: Fri Dec 02 23:54:46 2022
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:34
 
 

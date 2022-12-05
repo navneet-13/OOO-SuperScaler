@@ -98,8 +98,8 @@ begin
 							Z <= zin;
 						end if;
 				---ADI
-				elsif opcode(sel_line-1 downto 2) = "0011" then
-			`		output <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
+				elsif (opcode(sel_line-1 downto 2) = "0011") then
+					output <= add_temp(operand_width-1 downto 0);
 					output_temp <= add_temp(operand_width-1 downto 0);
 					C <= add_temp(operand_width);
 					Z <= or_reduce(output_temp);

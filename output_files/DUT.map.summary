@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Wed Nov 30 15:43:24 2022
+Analysis & Synthesis Status : Successful - Fri Dec 02 23:54:46 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : DUT
 Top-level Entity Name : alu
 Family : MAX V
-Total logic elements : 156
+Total logic elements : 153
 Total pins : 76
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )
