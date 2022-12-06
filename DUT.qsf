@@ -38,7 +38,7 @@
 
 
 set_global_assignment -name FAMILY "MAX V"
-set_global_assignment -name DEVICE 5M1270ZT144C5
+set_global_assignment -name DEVICE 5M1270ZF256C5
 set_global_assignment -name TOP_LEVEL_ENTITY ROB
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:12:59  NOVEMBER 28, 2022"
