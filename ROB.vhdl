@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 use ieee.std_logic_misc.all;
 
 entity ROB is
-	generic( word_width : integer:= 60	);
+	generic( word_width : integer:= 76	);
 	port(entry_word_1 : in std_logic_vector(word_width-1 downto 2);
 		entry_word_2: in std_logic_vector(word_width-1 downto 2);
 		clock: in std_logic;
@@ -44,8 +44,11 @@ entity ROB is
 		dest_ARF1, dest_ARF2: out std_logic_vector(4 downto 0); --ARF and RRF address
 		dest_RRF1, dest_RRF2: out std_logic_vector(4 downto 0);
 		dest_val1, dest_val2: out std_logic_vector(15 downto 0);
-		mispred_flush: out std_logic;										--misprediction indicator
-		rob_full: out std_logic												--rob become full
+		mispred_flush: out std_logic;									  --misprediction indicator
+		target_address: out std_logic_vector(15 downto 0);      -- target PC for branch Predictor
+		current_pc: out std_logic_vector(15 downto 0);          -- Current PC for branch Predictor
+		branch_pred_en : out std_logic;                         -- Enable to update 
+		rob_full: out std_logic											  -- rob become full
 	);
 end entity;
 	
@@ -80,6 +83,7 @@ begin
 			which_dest <= "00";
 			which_load  <= "00";
 			which_store <= "00";
+			branch_pred_en <= '0';
 			
 		elsif (clock'event AND clock = '1') then
 			branch_flush <='0';
@@ -89,6 +93,7 @@ begin
 			which_store <= "00";
 			retire := 0;
 			no_instr := 0;
+			branch_pred_en <= '0';
 			if write_en = '1' then
 				if tail_pointer = 50 then
 					tail_pointer := 0;
@@ -118,7 +123,7 @@ begin
 					if (i >head_pointer-1 and i<tail_pointer+1) then
 						if (rob_entry(i) = PC1) then
 							if (rob_entry(i)(9) = '0') then
-								rob_entry(i)(word_width - 35 downto word_width - 50) <= dest_ready_val1;
+								rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val1;
 								rob_entry(i)(9) <= dest_ready_en1;
 								rob_entry(i)(4 downto 3) <= cz_data1;
 								rob_entry(i)(2) <= cz_en1;
@@ -127,7 +132,7 @@ begin
 							
 						elsif (rob_entry(i) = PC2) then
 							if (rob_entry(i)(9) = '0') then
-								rob_entry(i)(word_width - 35 downto word_width - 50) <= dest_ready_val2;
+								rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val2;
 								rob_entry(i)(9) <= dest_ready_en2;
 								rob_entry(i)(4 downto 3) <= cz_data2;
 								rob_entry(i)(2) <= cz_en2;
@@ -135,7 +140,7 @@ begin
 							
 						elsif (rob_entry(i) = PC3) then
 							if (rob_entry(i)(9) = '0') then
-								rob_entry(i)(word_width - 35 downto word_width - 50) <= dest_ready_val3;
+								rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val3;
 								rob_entry(i)(9) <= dest_ready_en3;
 								rob_entry(i)(4 downto 3) <= cz_data3;
 								rob_entry(i)(2) <= cz_en3;
@@ -143,7 +148,7 @@ begin
 
 						elsif (rob_entry(i) = PC4) then
 							if (rob_entry(i)(9) = '0') then
-								rob_entry(i)(word_width - 35 downto word_width - 50) <= dest_ready_val4;
+								rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val4;
 								rob_entry(i)(9) <= dest_ready_en4;
 								rob_entry(i)(4 downto 3) <= cz_data4;
 								rob_entry(i)(2) <= cz_en4;
@@ -151,13 +156,13 @@ begin
 							
 						elsif (rob_entry(i) = PC5) then
 							if (rob_entry(i)(9) = '0') then
-								rob_entry(i)(word_width - 35 downto word_width - 50) <= dest_ready_val5;
+								rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val5;
 								rob_entry(i)(9) <= dest_ready_en5;
 							end if;
 							
 						elsif (rob_entry(i) = PC6) then
 							if (rob_entry(i)(9) = '0') then
-								rob_entry(i)(word_width - 35 downto word_width - 50) <= dest_ready_val6;
+								rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val6;
 								rob_entry(i)(9) <= dest_ready_en6;
 							end if;
 						end if;
@@ -177,15 +182,15 @@ begin
 									retire := retire + 1;
 									rob_entry(i)(0) <= '0';
 									if (which_dest = "00") then
-										dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										dest_val1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en1 <= '1';
 										which_dest <= "01";
 									elsif (which_dest = "01") then
-										dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										dest_val2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en2 <= '1';
 										which_dest <= "10";
 									end if;
@@ -236,15 +241,15 @@ begin
 									retire := retire + 1;
 									rob_entry(i)(0) <= '0';
 									if (which_dest = "00") then
-										dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										dest_val1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en1 <= '1';
 										which_dest <= "01";
 									elsif (which_dest = "01") then
-										dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										dest_val2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en2 <= '1';
 										which_dest <= "10";
 									end if;
@@ -293,15 +298,15 @@ begin
 								retire := retire + 1;
 								rob_entry(i)(0) <= '0';
 								if (which_dest = "00") then
-									dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-									dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-									dest_val1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+									dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+									dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en1 <= '1';
 									which_dest <= "01";
 								elsif (which_dest = "01") then
-									dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-									dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-									dest_val2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+									dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
 								end if;
@@ -350,15 +355,15 @@ begin
 									retire := retire + 1;
 									rob_entry(i)(0) <= '0';
 									if (which_dest = "00") then
-										dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										mem_add1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en1 <= '1';
 										which_dest <= "01";
 									elsif (which_dest = "01") then
-										dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										mem_add2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										mem_add2  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en2 <= '1';
 										which_dest <= "10";
 									end if;
@@ -378,56 +383,56 @@ begin
 								
 								elsif(which_store = "01") then
 									if (i>0) then
-										if(rob_entry(i)(word_width - 35 downto word_width - 50) = rob_entry(i-1)(word_width - 35 downto word_width - 50)) then
-										case which_dest is
-											when "00" => 
-												dest_en1 <= '0';
-												dest_en2 <= '0';
-											when "01" => 
-												dest_en2 <= '0';
-											when others =>
-												
-										end case;
-										
-										case which_en is
-											when "00" => 
-												cz_write_en1 <= '0';
-												cz_write_en2 <= '0';
-											when "01" => 
-												cz_write_en2 <= '0';
-											when others =>
-										end case;
-										which_store<= "01";
-									else
-										retire := retire + 1;
-										rob_entry(i)(0) <= '0';
-										if (which_dest = "00") then
-											dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-											dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-											mem_add1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
-											dest_en1 <= '1';
-											which_dest <= "01";
-										elsif (which_dest = "01") then
-											dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-											dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-											mem_add2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
-											dest_en2 <= '1';
-											which_dest <= "10";
+										if(rob_entry(i)(word_width - 51 downto word_width - 66) = rob_entry(i-1)(word_width - 51 downto word_width - 66)) then
+											case which_dest is
+												when "00" => 
+													dest_en1 <= '0';
+													dest_en2 <= '0';
+												when "01" => 
+													dest_en2 <= '0';
+												when others =>
+													
+											end case;
+											
+											case which_en is
+												when "00" => 
+													cz_write_en1 <= '0';
+													cz_write_en2 <= '0';
+												when "01" => 
+													cz_write_en2 <= '0';
+												when others =>
+											end case;
+											which_store<= "01";
+										else
+											retire := retire + 1;
+											rob_entry(i)(0) <= '0';
+											if (which_dest = "00") then
+												dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+												dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+												mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
+												dest_en1 <= '1';
+												which_dest <= "01";
+											elsif (which_dest = "01") then
+												dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
+												dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
+												mem_add2  <= rob_entry(i)(word_width - 35 downto word_width - 50);
+												dest_en2 <= '1';
+												which_dest <= "10";
+											end if;
+											
+											if which_en = "00" then
+												cz_write_add1 <= rob_entry(i)(8 downto 5);
+												cz_write_data1 <= rob_entry(i)(4 downto 3);
+												cz_write_en1<='1';
+												which_en <= "01";
+											elsif which_en = "01" then
+												cz_write_add2 <= rob_entry(i)(8 downto 5);
+												cz_write_data2 <= rob_entry(i)(4 downto 3);
+												cz_write_en2<='1';
+												which_en <= "10";
+											end if;
+											
 										end if;
-										
-										if which_en = "00" then
-											cz_write_add1 <= rob_entry(i)(8 downto 5);
-											cz_write_data1 <= rob_entry(i)(4 downto 3);
-											cz_write_en1<='1';
-											which_en <= "01";
-										elsif which_en = "01" then
-											cz_write_add2 <= rob_entry(i)(8 downto 5);
-											cz_write_data2 <= rob_entry(i)(4 downto 3);
-											cz_write_en2<='1';
-											which_en <= "10";
-										end if;
-										
-									end if;
 									end if;
 											
 								end if;
@@ -460,16 +465,17 @@ begin
 								if (which_store = "00") then
 									retire := retire + 1;
 									rob_entry(i)(0) <= '0';
+									
 									if (which_dest = "00") then
-										dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										mem_add1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en1 <= '1';
 										which_dest <= "01";
 									elsif (which_dest = "01") then
-										dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										mem_add2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										mem_add2  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en2 <= '1';
 										which_dest <= "10";
 									end if;
@@ -490,15 +496,15 @@ begin
 									retire := retire + 1;
 									rob_entry(i)(0) <= '0';
 									if (which_dest = "00") then
-										dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										mem_add1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en1 <= '1';
 										which_dest <= "01";
 									elsif (which_dest = "01") then
-										dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-										dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-										mem_add2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+										dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+										dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+										mem_add2  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 										dest_en2 <= '1';
 										which_dest <= "10";
 									end if;
@@ -525,10 +531,13 @@ begin
 						if (rob_entry(i)(1) = '1') then	
 							if (no_instr = 1 ) then
 								retire := retire + 1;
+								target_address <= rob_entry(i)(75 downto 60);
+								current_pc <= rob_entry(i)(59 downto 44);
+								branch_pred_en <= '1';
 								if(to_integer(unsigned(rob_entry(i)(25 downto 10))) = 0) then
 									loop_spec : for j in 0 to 50 loop
-										if (j>i-1) then
-											if(rob_entry(j)(38 downto 36) = rob_entry(head_pointer)(38 downto 36)) then
+										if (j>i) then
+											if(rob_entry(j)(38 downto 36) = rob_entry(i)(38 downto 36)) then
 												rob_entry(j)(39) <= '0';
 											else
 												exit;
@@ -549,15 +558,15 @@ begin
 								retire := retire + 1;
 								rob_entry(i)(0) <= '0';
 								if (which_dest = "00") then
-									dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-									dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-									dest_val1 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+									dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+									dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en1 <= '1';
 									which_dest <= "01";
 								elsif (which_dest = "01") then
-									dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-									dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-									dest_val2 <= rob_entry(i)(word_width - 35 downto word_width - 50);
+									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+									dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
 								end if;
@@ -602,16 +611,20 @@ begin
 						if (rob_entry(i)(1) = '1') then	
 							if (no_instr = 1 ) then
 								retire := retire + 1;
+								rob_entry(i)(0) <= '0';
+								target_address <= rob_entry(i)(75 downto 60);
+								current_pc <= rob_entry(i)(59 downto 44);
+								branch_pred_en <= '1';
 								if (which_dest = "00") then
-									dest_ARF1 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-									dest_RRF1 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-									dest_val1 <= rob_entry(i)(word_width - 1 downto word_width - 15) + x"0001";
+									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+									dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+									dest_val1 <= rob_entry(i)(word_width - 17 downto word_width - 32) + x"0001";
 									dest_en1 <= '1';
 									which_dest <= "01";
 								elsif (which_dest = "01") then
-									dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
-									dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
-									dest_val2 <= rob_entry(i)(word_width - 1 downto word_width - 15) + x"0001";
+									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
+									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
+									dest_val2 <= rob_entry(i)(word_width - 17 downto word_width - 32) + x"0001";
 									dest_en2 <= '1';
 									which_dest <= "10";
 								end if;
@@ -667,6 +680,10 @@ begin
 						if (rob_entry(i)(1) = '1') then	
 							if (no_instr = 1 ) then
 								retire := retire + 1;
+								rob_entry(i)(0) <= '0';
+								target_address <= rob_entry(i)(75 downto 60);
+								current_pc <= rob_entry(i)(59 downto 44);
+								branch_pred_en <= '1';
 								if(to_integer(unsigned(rob_entry(i)(25 downto 10))) = 0) then
 									loop_spec2 : for j in 0 to 50 loop
 										if (j>i-1) then

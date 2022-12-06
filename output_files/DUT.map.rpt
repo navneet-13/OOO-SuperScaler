@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Mon Dec 05 23:32:16 2022
+Tue Dec 06 19:39:45 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -44,13 +44,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Mon Dec 05 23:32:16 2022       ;
+; Analysis & Synthesis Status ; Successful - Tue Dec 06 19:39:45 2022       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
 ; Top-level Entity Name       ; ROB                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 19,510                                      ;
-; Total pins                  ; 433                                         ;
+; Total logic elements        ; 22,159                                      ;
+; Total pins                  ; 498                                         ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -157,33 +157,33 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 19510 ;
-;     -- Combinational with no register       ; 16284 ;
-;     -- Register only                        ; 36    ;
-;     -- Combinational with a register        ; 3190  ;
+; Total logic elements                        ; 22159 ;
+;     -- Combinational with no register       ; 18084 ;
+;     -- Register only                        ; 37    ;
+;     -- Combinational with a register        ; 4038  ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 15539 ;
-;     -- 3 input functions                    ; 3563  ;
-;     -- 2 input functions                    ; 364   ;
-;     -- 1 input functions                    ; 8     ;
+;     -- 4 input functions                    ; 18228 ;
+;     -- 3 input functions                    ; 3532  ;
+;     -- 2 input functions                    ; 356   ;
+;     -- 1 input functions                    ; 6     ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 19263 ;
+;     -- normal mode                          ; 21912 ;
 ;     -- arithmetic mode                      ; 247   ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 119   ;
-;     -- asynchronous clear/load mode         ; 3128  ;
+;     -- synchronous clear/load mode          ; 124   ;
+;     -- asynchronous clear/load mode         ; 3945  ;
 ;                                             ;       ;
-; Total registers                             ; 3226  ;
+; Total registers                             ; 4075  ;
 ; Total logic cells in carry chains           ; 256   ;
-; I/O pins                                    ; 433   ;
+; I/O pins                                    ; 498   ;
 ; Maximum fan-out node                        ; clock ;
-; Maximum fan-out                             ; 3226  ;
-; Total fan-out                               ; 83477 ;
-; Average fan-out                             ; 4.19  ;
+; Maximum fan-out                             ; 4075  ;
+; Total fan-out                               ; 96679 ;
+; Average fan-out                             ; 4.27  ;
 +---------------------------------------------+-------+
 
 
@@ -192,7 +192,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------+--------------+------------+------+--------------+---------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells   ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs  ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------+--------------+------------+------+--------------+---------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |ROB                       ; 19510 (19510) ; 3226         ; 0          ; 433  ; 0            ; 16284 (16284) ; 36 (36)           ; 3190 (3190)      ; 256 (256)       ; 0 (0)      ; |ROB                ; ROB         ; work         ;
+; |ROB                       ; 22159 (22159) ; 4075         ; 0          ; 498  ; 0            ; 18084 (18084) ; 37 (37)           ; 4038 (4038)      ; 256 (256)       ; 0 (0)      ; |ROB                ; ROB         ; work         ;
 +----------------------------+---------------+--------------+------------+------+--------------+---------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -217,186 +217,191 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 3226  ;
-; Number of registers using Synchronous Clear  ; 4     ;
-; Number of registers using Synchronous Load   ; 115   ;
-; Number of registers using Asynchronous Clear ; 3128  ;
+; Total registers                              ; 4075  ;
+; Number of registers using Synchronous Clear  ; 5     ;
+; Number of registers using Synchronous Load   ; 119   ;
+; Number of registers using Asynchronous Clear ; 3945  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 3171  ;
+; Number of registers using Clock Enable       ; 4019  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[0][43]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[1][36]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[2][28]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[3][34]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[4][34]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[5][34]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[6][53]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[7][45]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[8][46]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[9][59]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[10][49]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[11][37]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[12][26]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[13][7]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[14][29]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[15][33]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[16][31]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[17][40]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[18][40]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[19][46]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[20][40]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[21][40]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[22][40]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[23][31]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[24][58]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[25][57]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[26][55]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[27][27]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[28][38]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[29][54]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[30][41]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[31][40]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[32][42]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[33][30]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[34][38]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[35][42]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[36][52]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[37][51]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[38][26]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[39][26]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[40][8]      ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[41][44]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[42][41]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[43][45]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[44][54]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[45][40]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[46][46]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[47][27]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[48][38]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[49][44]     ;
-; 3:1                ; 37 bits   ; 74 LEs        ; 37 LEs               ; 37 LEs                 ; Yes        ; |ROB|rob_entry[50][44]     ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[0][2]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[1][2]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[2][4]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[3][4]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[4][2]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[5][2]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[6][4]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[7][4]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[8][2]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[9][4]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[10][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[11][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[12][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[13][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[14][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[15][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[16][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[17][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[18][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[19][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[20][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[21][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[22][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[23][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[24][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[25][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[26][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[27][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[28][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[29][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[30][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[31][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[32][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[33][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[34][4]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[35][4]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[36][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[37][4]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[38][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[39][4]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[40][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[41][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[42][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[43][4]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[44][4]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[45][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[46][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[47][3]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[48][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[49][2]      ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[50][4]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[0][12]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[1][15]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[2][24]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[3][19]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[4][17]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[5][23]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[6][18]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[7][17]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[8][9]       ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[9][18]      ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[10][16]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[11][15]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[12][15]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[13][23]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[14][24]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[15][14]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[16][19]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[17][25]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[18][23]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[19][15]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[20][24]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[21][19]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[22][14]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[23][19]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[24][21]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[25][11]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[26][23]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[27][11]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[28][18]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[29][24]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[30][21]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[31][21]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[32][14]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[33][12]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[34][12]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[35][13]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[36][10]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[37][14]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[38][14]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[39][24]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[40][17]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[41][11]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[42][15]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[43][24]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[44][16]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[45][19]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[46][12]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[47][21]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[48][24]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[49][13]     ;
-; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[50][24]     ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 32 LEs               ; 128 LEs                ; Yes        ; |ROB|dest_val1[13]~reg0    ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 32 LEs               ; 128 LEs                ; Yes        ; |ROB|dest_val2[3]~reg0     ;
-; 19:1               ; 16 bits   ; 192 LEs       ; 16 LEs               ; 176 LEs                ; Yes        ; |ROB|mem_add1[15]~reg0     ;
-; 19:1               ; 16 bits   ; 192 LEs       ; 16 LEs               ; 176 LEs                ; Yes        ; |ROB|mem_add2[9]~reg0      ;
-; 13:1               ; 6 bits    ; 48 LEs        ; 6 LEs                ; 42 LEs                 ; Yes        ; |ROB|cz_write_add1[3]~reg0 ;
-; 13:1               ; 10 bits   ; 80 LEs        ; 10 LEs               ; 70 LEs                 ; Yes        ; |ROB|dest_RRF1[1]~reg0     ;
-; 13:1               ; 16 bits   ; 128 LEs       ; 16 LEs               ; 112 LEs                ; Yes        ; |ROB|dest_ARF2[4]~reg0     ;
-; 51:1               ; 58 bits   ; 1972 LEs      ; 1972 LEs             ; 0 LEs                  ; No         ; |ROB|Mux48                 ;
-; 51:1               ; 16 bits   ; 544 LEs       ; 544 LEs              ; 0 LEs                  ; No         ; |ROB|Mux21                 ;
-; 51:1               ; 58 bits   ; 1972 LEs      ; 1972 LEs             ; 0 LEs                  ; No         ; |ROB|Mux400                ;
-; 51:1               ; 16 bits   ; 544 LEs       ; 544 LEs              ; 0 LEs                  ; No         ; |ROB|Mux358                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[0][48]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[1][31]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[2][46]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[3][70]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[4][51]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[5][8]        ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[6][33]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[7][51]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[8][6]        ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[9][26]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[10][42]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[11][75]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[12][74]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[13][40]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[14][60]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[15][57]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[16][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[17][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[18][66]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[19][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[20][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[21][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[22][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[23][53]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[24][70]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[25][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[26][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[27][49]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[28][30]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[29][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[30][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[31][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[32][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[33][28]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[34][67]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[35][67]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[36][59]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[37][5]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[38][42]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[39][43]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[40][8]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[41][44]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[42][47]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[43][44]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[44][38]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[45][66]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[46][66]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[47][47]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[48][35]      ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[49][8]       ;
+; 3:1                ; 53 bits   ; 106 LEs       ; 53 LEs               ; 53 LEs                 ; Yes        ; |ROB|rob_entry[50][36]      ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[0][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[1][4]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[2][4]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[3][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[4][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[5][4]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[6][2]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[7][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[8][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[9][3]        ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[10][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[11][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[12][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[13][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[14][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[15][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[16][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[17][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[18][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[19][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[20][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[21][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[22][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[23][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[24][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[25][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[26][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[27][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[28][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[29][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[30][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[31][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[32][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[33][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[34][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[35][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[36][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[37][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[38][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[39][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[40][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[41][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[42][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[43][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[44][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[45][2]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[46][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[47][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[48][3]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[49][4]       ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ROB|rob_entry[50][3]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[0][20]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[1][19]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[2][12]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[3][17]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[4][21]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[5][22]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[6][15]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[7][20]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[8][23]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[9][23]       ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[10][24]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[11][23]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[12][18]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[13][25]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[14][22]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[15][24]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[16][18]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[17][20]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[18][15]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[19][23]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[20][22]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[21][24]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[22][23]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[23][18]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[24][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[25][21]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[26][16]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[27][21]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[28][20]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[29][21]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[30][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[31][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[32][21]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[33][18]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[34][21]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[35][16]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[36][19]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[37][13]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[38][16]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[39][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[40][19]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[41][19]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[42][19]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[43][13]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[44][24]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[45][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[46][15]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[47][16]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[48][14]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[49][11]      ;
+; 9:1                ; 17 bits   ; 102 LEs       ; 85 LEs               ; 17 LEs                 ; Yes        ; |ROB|rob_entry[50][9]       ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 16 LEs               ; 144 LEs                ; Yes        ; |ROB|current_pc[0]~reg0     ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 32 LEs               ; 128 LEs                ; Yes        ; |ROB|dest_val1[9]~reg0      ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 32 LEs               ; 128 LEs                ; Yes        ; |ROB|dest_val2[12]~reg0     ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 16 LEs               ; 176 LEs                ; Yes        ; |ROB|mem_add1[7]~reg0       ;
+; 13:1               ; 6 bits    ; 48 LEs        ; 6 LEs                ; 42 LEs                 ; Yes        ; |ROB|cz_write_data1[0]~reg0 ;
+; 13:1               ; 10 bits   ; 80 LEs        ; 10 LEs               ; 70 LEs                 ; Yes        ; |ROB|dest_ARF1[1]~reg0      ;
+; 13:1               ; 6 bits    ; 48 LEs        ; 6 LEs                ; 42 LEs                 ; Yes        ; |ROB|cz_write_add2[1]~reg0  ;
+; 22:1               ; 14 bits   ; 196 LEs       ; 28 LEs               ; 168 LEs                ; Yes        ; |ROB|mem_add2[9]~reg0       ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 16 LEs               ; 64 LEs                 ; Yes        ; |ROB|dest_RRF2[4]~reg0      ;
+; 116:1              ; 16 bits   ; 1232 LEs      ; 544 LEs              ; 688 LEs                ; Yes        ; |ROB|target_address[0]~reg0 ;
+; 122:1              ; 2 bits    ; 162 LEs       ; 70 LEs               ; 92 LEs                 ; Yes        ; |ROB|mem_add2[15]~reg0      ;
+; 116:1              ; 2 bits    ; 154 LEs       ; 70 LEs               ; 84 LEs                 ; Yes        ; |ROB|dest_RRF2[0]~reg0      ;
+; 51:1               ; 55 bits   ; 1870 LEs      ; 1870 LEs             ; 0 LEs                  ; No         ; |ROB|Mux4                   ;
+; 51:1               ; 16 bits   ; 544 LEs       ; 544 LEs              ; 0 LEs                  ; No         ; |ROB|Mux23                  ;
+; 51:1               ; 55 bits   ; 1870 LEs      ; 1870 LEs             ; 0 LEs                  ; No         ; |ROB|Mux429                 ;
+; 51:1               ; 16 bits   ; 544 LEs       ; 544 LEs              ; 0 LEs                  ; No         ; |ROB|Mux417                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
 
 
 +---------------------------------------------------------------------+
@@ -404,7 +409,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+-------+--------------------------------------------+
 ; Parameter Name ; Value ; Type                                       ;
 +----------------+-------+--------------------------------------------+
-; word_width     ; 60    ; Signed Integer                             ;
+; word_width     ; 76    ; Signed Integer                             ;
 +----------------+-------+--------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -415,26 +420,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Dec 05 23:30:09 2022
+    Info: Processing started: Tue Dec 06 19:38:14 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_SuperScaler -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file rob.vhdl
-    Info (12022): Found design unit 1: ROB-beh File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 52
+    Info (12022): Found design unit 1: ROB-beh File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 55
     Info (12023): Found entity 1: ROB File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 8
 Info (12127): Elaborating entity "ROB" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at ROB.vhdl(55): object "which_load" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 55
-Warning (10492): VHDL Process Statement warning at ROB.vhdl(71): signal "rob_entry" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 71
+Warning (10036): Verilog HDL or VHDL warning at ROB.vhdl(58): object "which_load" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 58
+Warning (10492): VHDL Process Statement warning at ROB.vhdl(74): signal "rob_entry" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 74
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "rob_full" is stuck at GND File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 48
-Info (21057): Implemented 19943 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 331 input pins
-    Info (21059): Implemented 102 output pins
-    Info (21061): Implemented 19510 logic cells
+    Warning (13410): Pin "rob_full" is stuck at GND File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 51
+Info (21057): Implemented 22657 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 363 input pins
+    Info (21059): Implemented 135 output pins
+    Info (21061): Implemented 22159 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4857 megabytes
-    Info: Processing ended: Mon Dec 05 23:32:16 2022
-    Info: Elapsed time: 00:02:07
-    Info: Total CPU time (on all processors): 00:02:21
+    Info: Peak virtual memory: 4877 megabytes
+    Info: Processing ended: Tue Dec 06 19:39:45 2022
+    Info: Elapsed time: 00:01:31
+    Info: Total CPU time (on all processors): 00:01:36
 
 
