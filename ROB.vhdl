@@ -51,6 +51,8 @@ entity ROB is
 		current_pc: out std_logic_vector(15 downto 0);          -- Current PC for branch Predictor
 		branch_pred_en : out std_logic;                         -- Enable to update 
 		branch_instr_opcode: out std_logic_vector(3 downto 0);
+		mispred_tag: out std_logic_vector(2 downto 0);
+		mispred_tag_en : out std_logic;
 		rob_full: out std_logic											  -- rob become full
 		
 	);
@@ -88,6 +90,7 @@ begin
 			which_load  <= "00";
 			which_store <= "00";
 			branch_pred_en <= '0';
+			mispred_tag_en <= '0';
 			
 		elsif (clock'event AND clock = '1') then
 			branch_flush <='0';
@@ -98,6 +101,7 @@ begin
 			retire := 0;
 			no_instr := 0;
 			branch_pred_en <= '0';
+			mispred_tag_en  <= '0';
 			
 			if tail_pointer = 50 then
 				tail_pointer := 0;
@@ -537,10 +541,15 @@ begin
 					if (rob_entry(i)(1) = '1') then	
 						if (no_instr = 1 ) then
 							retire := retire + 1;
+							target_address <= rob_entry(i)(75 downto 60);
+							current_pc <= rob_entry(i)(59 downto 44);
+							branch_pred_en <= '1';
 							if(to_integer(unsigned(rob_entry(i)(25 downto 10))) = 0) then
 								loop_spec : for j in 0 to 50 loop
 									if (j>i) then
 										if(rob_entry(j)(38 downto 36) = rob_entry(i)(38 downto 36)) then
+											mispred_tag <= rob_entry(head_pointer)(38 downto 36);
+											mispred_tag_en <= '1';
 											rob_entry(j)(39) <= '0';
 										else
 											exit;
@@ -649,6 +658,8 @@ begin
 									if (j>i-1) then
 										if(rob_entry(j)(38 downto 36) = rob_entry(head_pointer)(38 downto 36)) then
 											rob_entry(j)(39) <= '0';
+											mispred_tag <= rob_entry(head_pointer)(38 downto 36);
+											mispred_tag_en <= '1';
 										else
 											exit;
 										end if;
@@ -693,6 +704,8 @@ begin
 								loop_spec2 : for j in 0 to 50 loop
 									if (j>i-1) then
 										if(rob_entry(j)(38 downto 36) = rob_entry(head_pointer)(38 downto 36)) then
+											mispred_tag <= rob_entry(head_pointer)(38 downto 36);
+											mispred_tag_en <= '1';
 											rob_entry(j)(39) <= '0';
 										else
 											exit;
