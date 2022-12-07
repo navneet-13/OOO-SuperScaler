@@ -47,6 +47,7 @@ reg_rename_en_2: in std_logic
 end entity Main_register_file;
 
 architecture behavioural of Main_register_file is 
+
 type registerFile is array(0 to 31) of std_logic_vector(22 downto 0);
   shared variable registers : registerFile;
   

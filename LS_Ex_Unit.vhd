@@ -18,11 +18,14 @@ entity alu_LS is
 	);
 	port (
 		opr1: in std_logic_vector(operand_width-1 downto 0); 
-        opr2: in std_logic_vector(operand_width-1 downto 0);
+      opr2: in std_logic_vector(operand_width-1 downto 0);
 		dest: out std_logic_vector(operand_width-1 downto 0);
+		PC_in: in std_logic_vector(15 downto 0);
+		PC_out: out std_logic_vector(15 downto 0);
 		opcode: in std_logic_vector(sel_line-1 downto 0);
 		enable, reset: in std_logic;
-		C, Z: out std_logic
+		C, Z: out std_logic;
+		inst_valid: out std_logic
 	);
 end alu_LS;
 
@@ -41,7 +44,7 @@ architecture beh of alu_LS is
 					carry(i) := (A(i) and B(i) ) or ( B(i) and carry(i-1) ) or ( A(i) and carry(i-1) );
 				end loop;
 				sum(operand_width) := carry(operand_width-1);
-			return sum;
+			return sum(operand_width-1 downto 0);
 	end function add;
 	signal dest_temp : std_logic_vector(operand_width-1 downto 0) := (others => '0');
 	
@@ -74,7 +77,7 @@ begin
 				
 			end if;
 		end if;
-
+      inst_valid <= enable;
 	end process;
 
 end beh;

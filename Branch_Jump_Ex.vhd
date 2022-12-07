@@ -19,11 +19,18 @@ entity alu_Branch_Jump is
 	);
 	port (
 		opr1: in std_logic_vector(operand_width-1 downto 0); 
-        opr2: in std_logic_vector(operand_width-1 downto 0);
+      opr2: in std_logic_vector(operand_width-1 downto 0);
 		dest: out std_logic_vector(operand_width-1 downto 0);
+		imm: in std_logic_vector(operand_width-1 downto 0);
+		PC_in: in std_logic_vector(15 downto 0);
+		PC_out: out std_logic_vector(15 downto 0);
+		
 		opcode: in std_logic_vector(sel_line-1 downto 0);
 		enable, reset: in std_logic;
-		C, Z: out std_logic
+		predicted_address : in std_logic_vector(15 downto 0);
+		C, Z: out std_logic;
+		actual_branch_addr: out std_logic_vector(15 downto 0);
+		inst_valid: out std_logic
 	);
 end alu_Branch_Jump;
 
@@ -42,7 +49,7 @@ architecture beh of alu_Branch_Jump is
 					carry(i) := (A(i) and B(i) ) or ( B(i) and carry(i-1) ) or ( A(i) and carry(i-1) );
 				end loop;
 				sum(operand_width) := carry(operand_width-1);
-			return sum;
+			return sum(operand_width-1 downto 0);
 	end function add;
 	
 	
@@ -51,25 +58,33 @@ begin
 	main: process(opr1, opr2, Opcode, enable, reset)
 	begin
 		if reset = '1' THEN
-			C <= '0';
+				 C <= '0';
 			    Z <= '0';
 		else 
 			if enable = '1' then
 			-- NAND
 				if unsigned(Opcode) = 8 then
 					dest <= opr1 xor opr2;
+					if((opr1 xor opr2) = x"0000") then
+					  actual_branch_addr <= add(PC_in , imm);
+					else
+					  actual_branch_addr <= add(PC_in, x"0001");
+					end if;
 				-- BEQ
                 -- Storing opr1 xor opr2 to output
 				elsif unsigned(Opcode) = 10 then
-					dest <= add(opr1, "0000000000000001");
+					dest <= opr2 xor predicted_address;
+					actual_branch_addr <= opr2;
 				-- JLR
                 -- Storing opr1(PC) + 1 to output
 				elsif unsigned(Opcode) = 9 then
 					dest <= add(opr1, "0000000000000001");
+					actual_branch_addr <= add(PC_in, imm);
 				-- JAL
                 -- Storing opr1(PC) + 1 to output
 				elsif unsigned(Opcode) = 11 then
-					dest <= add(opr1, opr2);
+					dest <= add(opr1, opr2) xor predicted_address;
+					actual_branch_addr <= add(opr1, opr2);
 				--- JRI
                 -- Storing opr1(RA) + opr2(Imm) to output
 				end if;
@@ -77,7 +92,7 @@ begin
 				-- Z <= or_reduce(dest);
 			end if;
 		end if;
-
+      inst_valid <= enable;
 	end process;
 
 end beh;

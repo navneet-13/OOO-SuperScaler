@@ -25,10 +25,10 @@ end Multiple_port_RAM_VHDL;
 
 architecture Behavioral of Multiple_port_RAM_VHDL is
 -- define the new type for the 64x16 RAM 
-signal RAM_ADDR_Write_1_latch std_logic_vector(15 downto 0); -- Address_1_latch
-signal RAM_ADDR_Write_2_latch std_logic_vector(15 downto 0); -- Address_2_latch
-signal RAM_DATA_IN_1_latch std_logic_vector(15 downto 0); -- 16 bit Data_1_latch
-signal RAM_DATA_IN_2_latch std_logic_vector(15 downto 0); -- 16 bit Data_2_latch
+signal RAM_ADDR_Write_1_latch: std_logic_vector(15 downto 0); -- Address_1_latch
+signal RAM_ADDR_Write_2_latch: std_logic_vector(15 downto 0); -- Address_2_latch
+signal RAM_DATA_IN_1_latch: std_logic_vector(15 downto 0); -- 16 bit Data_1_latch
+signal RAM_DATA_IN_2_latch: std_logic_vector(15 downto 0); -- 16 bit Data_2_latch
 
 type RAM_ARRAY is array (0 to  63) of std_logic_vector (15 downto 0);
 -- initial values in the RAM
@@ -48,58 +48,8 @@ signal RAM: RAM_ARRAY :=(
    x"0000",x"0000",x"0000",x"0000",-- 0x30: 
    x"0000",x"0000",x"0000",x"0000",-- 0x34: 
    x"0000",x"0000",x"0000",x"0000",-- 0x38: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x3C: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x40: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x44: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x48: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x4C: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x50: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x54: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x58: 
-   x"0000",x"0000",x"0000",x"0000",-- 0x5C: 
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
-   x"0000",x"0000",x"0000",x"0000",
    x"0000",x"0000",x"0000",x"0000"
-
-   ); 
+	); 
 begin
 process(RAM_CLOCK)
 

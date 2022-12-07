@@ -1,11 +1,11 @@
-Fitter Status : Successful - Wed Nov 30 15:43:33 2022
+Fitter Status : Successful - Wed Dec 07 15:34:42 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : DUT
-Top-level Entity Name : alu
+Top-level Entity Name : datapath
 Family : MAX V
-Device : 5M1270ZT144C5
+Device : 5M1270ZF324C5
 Timing Models : Final
-Total logic elements : 156 / 1,270 ( 12 % )
-Total pins : 76 / 114 ( 67 % )
+Total logic elements : 0 / 1,270 ( 0 % )
+Total pins : 2 / 271 ( < 1 % )
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

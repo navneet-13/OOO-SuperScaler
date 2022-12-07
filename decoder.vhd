@@ -12,12 +12,14 @@ generic(input_width: integer := 6;
 		flag_reg_pointer_size: integer := 4;
 		opcode_size: integer := 4;
 		condition_size: integer := 2;
-		output_size: integer := 116;
+		output_size: integer := 132;
 		pc_size: integer := 16;
 		instr_word_size: integer := 32;
 		busy_arf: integer:= 6;
 
 --bit structrue of RS buffer
+predicted_addr_h: integer:= 131;
+predicted_addr_l: integer:= 116;
 dest_flag_rr_h: integer:= 115;
 dest_flag_rr_l: integer:= 112;
 dest_arf_h: integer:= 111;
@@ -104,7 +106,11 @@ port(
  --PC_Imm: out std_logic_vector(pc_size - 1 downto 0);--remaining to assign
  
  rs_wr_en_1: out std_logic;
- rs_wr_en_2: out std_logic
+ rs_wr_en_2: out std_logic;
+ 
+ --next address prediction from branch predictor
+ predicted_addr1: in std_logic_vector(15 downto 0);
+ predicted_addr2: in std_logic_vector(15 downto 0)
 );
 end Decoder;
 
@@ -131,12 +137,14 @@ begin
  if(rising_edge(CLOCK)) then
  
  Instr_OUT_1(spec) <= speculative_indicator;
- Instr_OUT_1(tag_h downto tag_l) <= std_logic_vector(to_unsigned(tag_counter, 3));
  Instr_OUT_1(pc_h downto pc_l) <= PC_1;
  Instr_OUT_1(opcode_h downto opcode_l) <= Opcode1;
  Instr_OUT_1(cond_h downto cond_l) <= Condition1;
  Instr_OUT_1(rs_busy) <= '1';
  Instr_OUT_2(rs_busy) <= '1';
+ Instr_OUT_1(131 downto 116) <= predicted_addr1;
+ Instr_OUT_2(131 downto 116) <= predicted_addr2;
+ 
  
  rs_wr_en_1 <= '1'; --we will always write first entry in rs
  rs_wr_en_2 <= '1'; --initialized
@@ -727,6 +735,8 @@ begin
 	when others =>
 		
 	end case;
+	Instr_OUT_1(tag_h downto tag_l) <= std_logic_vector(to_unsigned(tag_counter, 3));
+ 
 --end if;
 --end process;
  -- Data to be read out
@@ -743,7 +753,6 @@ begin
 -- if(rising_edge(CLOCK)) then
  
  Instr_OUT_2(spec) <= speculative_indicator;
- Instr_OUT_2(tag_h downto tag_l) <= std_logic_vector(to_unsigned(tag_counter,3));
  Instr_OUT_2(pc_h downto pc_l) <= PC_2;
  Instr_OUT_2(opcode_h downto opcode_l) <= Opcode2;
  Instr_OUT_2(cond_h downto cond_l) <= Condition2;
@@ -1331,6 +1340,8 @@ begin
 	when others =>
 		
 	end case;
+	Instr_OUT_2(tag_h downto tag_l) <= std_logic_vector(to_unsigned(tag_counter,3));
+ 
 end if;
 end process;
 
@@ -1339,3 +1350,8 @@ end process;
 
    
 end Behavioral;
+
+
+
+
+

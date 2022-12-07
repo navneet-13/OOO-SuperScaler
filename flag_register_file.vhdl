@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 --latch the rename data first
-entity flag_register_file is
+entity flag_rf_file is
 port (
 read_addr_a : in std_logic_vector(3 downto 0);
 read_addr_b : in std_logic_vector(3 downto 0);
@@ -31,9 +31,10 @@ reg_rename_en_a: in std_logic;
 reg_rename_en_b: in std_logic
 
 );
-end entity flag_register_file;
+end entity flag_rf_file;
 
-architecture behavioural of flag_register_file is
+architecture behavioural of flag_rf_file is
+
 type flagRegFile is array(0 to 15) of std_logic_vector(7 downto 0);
 shared variable cz : flagRegFile ;
 
@@ -166,3 +167,5 @@ end architecture;
 --2 enable for renaming
 --2 writes from ROB(2 ar and 2 rr)
 --2 reads from decode
+
+

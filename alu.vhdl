@@ -23,9 +23,13 @@ entity alu is
 		dest: in std_logic_vector(operand_width-1 downto 0);
 		output: out std_logic_vector(operand_width-1 downto 0);
 		opcode: in std_logic_vector(sel_line-1 downto 0);
+		PC_in: in std_logic_vector(15 downto 0);
+		PC_out: out std_logic_vector(15 downto 0);
+		
 		cin, zin: in std_logic;
 		enable, reset: in std_logic;
-		C, Z: out std_logic
+		C, Z: out std_logic;
+		inst_valid: out std_logic
 	);
 end alu;
 
@@ -97,12 +101,6 @@ begin
 							C <= cin;
 							Z <= zin;
 						end if;
-				---ADI
-				elsif (opcode(sel_line-1 downto 2) = "0011") then
-					output <= add_temp(operand_width-1 downto 0);
-					output_temp <= add_temp(operand_width-1 downto 0);
-					C <= add_temp(operand_width);
-					Z <= or_reduce(output_temp);
 				-- ADZ
 					elsif opcode(1 downto 0) = "01" then
 						if zin = '1' then 
@@ -158,7 +156,7 @@ begin
 				end if;	
 			end if;
 		end if;
-
+      inst_valid <= enable;
 	end process;
 
 end beh;
