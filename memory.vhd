@@ -19,7 +19,8 @@ RAM_CLOCK: in std_logic; -- clock input for RAM
 instr_out_1: out std_logic_vector(15 downto 0);
 instr_out_2: out std_logic_vector(15 downto 0);
 RAM_DATA_OUT_1: out std_logic_vector(15 downto 0); -- Data output 1 of RAM
-RAM_DATA_OUT_2: out std_logic_vector(15 downto 0) -- Data output 2 of RAM
+RAM_DATA_OUT_2: out std_logic_vector(15 downto 0); -- Data output 2 of RAM
+reset: in std_logic
 );
 end Multiple_port_RAM_VHDL;
 
@@ -54,25 +55,28 @@ begin
 process(RAM_CLOCK)
 
 begin
-   if(rising_edge(RAM_CLOCK)) then
+	if (reset = '1') then
+		RAM(0) <= "0011001010101100";
+		RAM(1) <= "0011011100101100";
+   elsif(rising_edge(RAM_CLOCK)) then
       RAM_ADDR_Write_1_latch <= RAM_ADDR_Write_1;
       RAM_DATA_IN_1_latch <= RAM_DATA_IN_1; 
       RAM_ADDR_Write_2_latch <= RAM_ADDR_Write_2;
       RAM_DATA_IN_2_latch <= RAM_DATA_IN_2; 
 
-   if(RAM_WR_1='1') then -- when write enable = 1, 
-   -- write input data into RAM at the provided address
-   RAM(to_integer(unsigned(RAM_ADDR_Write_1_latch))) <= RAM_DATA_IN_1_latch;
-   -- The index of the RAM array type needs to be integer so
-   -- converts RAM_ADDR from std_logic_vector -> Unsigned -> Interger using numeric_std library
-   end if;
-   
-   if(RAM_WR_2='1') then -- when write enable = 1, 
-   -- write input data into RAM at the provided address
-   RAM(to_integer(unsigned(RAM_ADDR_Write_2_latch))) <= RAM_DATA_IN_2_latch;
-   -- The index of the RAM array type needs to be integer so
-   -- converts RAM_ADDR from std_logic_vector -> Unsigned -> Interger using numeric_std library
-   end if;
+		if(RAM_WR_1='1') then -- when write enable = 1, 
+		-- write input data into RAM at the provided address
+		RAM(to_integer(unsigned(RAM_ADDR_Write_1_latch))) <= RAM_DATA_IN_1_latch;
+		-- The index of the RAM array type needs to be integer so
+		-- converts RAM_ADDR from std_logic_vector -> Unsigned -> Interger using numeric_std library
+		end if;
+		
+		if(RAM_WR_2='1') then -- when write enable = 1, 
+		-- write input data into RAM at the provided address
+		RAM(to_integer(unsigned(RAM_ADDR_Write_2_latch))) <= RAM_DATA_IN_2_latch;
+		-- The index of the RAM array type needs to be integer so
+		-- converts RAM_ADDR from std_logic_vector -> Unsigned -> Interger using numeric_std library
+		end if;
    
    end if;
 

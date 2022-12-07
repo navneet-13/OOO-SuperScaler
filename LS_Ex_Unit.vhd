@@ -49,7 +49,7 @@ architecture beh of alu_LS is
 	signal dest_temp : std_logic_vector(operand_width-1 downto 0) := (others => '0');
 	
 begin
-	
+	PC_out <= PC_in;
 	main: process(opr1, opr2, Opcode, enable, reset)
 	begin
 		if reset = '1' THEN

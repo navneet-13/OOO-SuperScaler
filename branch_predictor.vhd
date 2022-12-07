@@ -126,6 +126,8 @@ ARCHITECTURE arch OF  branch_predictor IS
 								if (predict1 = '1') then
 									LUT(i)(18 downto 17) := "01";
 								end if;
+							when others =>
+							
 						end case;
 				
 				-- write address in for jri and jlr instructions
@@ -161,6 +163,8 @@ ARCHITECTURE arch OF  branch_predictor IS
 								if (predict2 = '1') then
 									LUT(i)(18 downto 17) := "01";
 								end if;
+							when others =>
+							
 						end case;
 				
 				-- write address in for jri and jlr instructions

@@ -116,10 +116,10 @@ end Decoder;
 
 architecture Behavioral of Decoder is
 
-signal Opcode1: std_logic_vector(opcode_size - 1 downto 0) := "0000";
-signal Opcode2: std_logic_vector(opcode_size - 1 downto 0) := "0000"; 
-signal Condition1: std_logic_vector(condition_size - 1 downto 0) := "00";
-signal Condition2: std_logic_vector(condition_size - 1 downto 0) := "00";
+signal Opcode1: std_logic_vector(3 downto 0) := "0000";
+signal Opcode2: std_logic_vector(3 downto 0) := "0000"; 
+signal Condition1: std_logic_vector(condition_size - 1 downto 0):= "00";
+signal Condition2: std_logic_vector(condition_size - 1 downto 0):= "00";
 signal speculative_indicator: std_logic := '0';
 
 begin
@@ -134,6 +134,7 @@ Condition2 <= Instruction_Word(1 downto 0);
 Decode_process_1: process(CLOCK)
 variable tag_counter: integer:= 0;
 begin
+
  if(rising_edge(CLOCK)) then
  
  Instr_OUT_1(spec) <= speculative_indicator;

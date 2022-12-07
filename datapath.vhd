@@ -19,7 +19,7 @@ signal fetch_enable, flush, reg_rename_en_1,reg_rename_en_2, flag_rename_en_1, f
 		 branch_predictor_write_en2, branch_actual_result1, branch_actual_result2, pc_buffer_clear,
 		 lwsw1_en, lwsw2_en, branch1_en, branch2_en, alu1_en, alu2_en,
 		 alu_out_valid1, alu_out_valid2, branch_out_valid2, branch_out_valid1, ls_out_valid2, ls_out_valid1,
-	    rob_full, RS_fetch_stall,reset_rob, rs_clear, unspeculate_en	 : std_logic;
+	    rob_full, RS_fetch_stall,reset_rob, rs_clear, unspeculate_en, reset_rob_or_reset	 : std_logic;
 
 -----------------------------------------------------------------------------------------------------------
 signal instr_word_1, instr_word_2, rf_data_in1, rf_data_in2, ram_addr_read_1, ram_addr_read_2, 
@@ -99,6 +99,18 @@ signal c_branch1_result, c_branch2_result, z_branch1_result, z_branch2_result,
 		 c_alu1_out, c_alu2_out, z_alu1_out, z_alu2_out :std_logic;
 ------------------------------------------------------------------------------------
 signal ROB_new_entry1, ROB_new_entry2 : std_logic_vector(57 downto 0);
+
+function to_string ( a: std_logic_vector) return string is
+	variable b : string (1 to a'length) := (others => NUL);
+	variable stri : integer := 1; 
+	begin
+	 for i in a'range loop
+		  b(stri) := std_logic'image(a((i)))(2);
+	 stri := stri+1;
+	 end loop;
+	return b;
+end function;
+		
 component Main_register_file is
 port (
 read_addr_a : in std_logic_vector(4 downto 0);
@@ -313,7 +325,8 @@ RAM_CLOCK: in std_logic; -- clock input for RAM
 instr_out_1: out std_logic_vector(15 downto 0);
 instr_out_2: out std_logic_vector(15 downto 0);
 RAM_DATA_OUT_1: out std_logic_vector(15 downto 0); -- Data output 1 of RAM
-RAM_DATA_OUT_2: out std_logic_vector(15 downto 0) -- Data output 2 of RAM
+RAM_DATA_OUT_2: out std_logic_vector(15 downto 0); -- Data output 2 of RAM
+reset: in std_logic
 );
 end component Multiple_port_RAM_VHDL;
 
@@ -689,6 +702,13 @@ END component;
 
 begin
 
+pr: process(clk)
+begin
+	if(clk'event and clk = '1') then
+		report "INstr_output"& ": " & to_string(pc_buffer_out);
+	end if;
+end process;
+
 fetch: fetch_buffer port map(clk => clk, ena => fetch_enable,clr => flush, Din1 => instr_word_1, 
         Din2 => instr_word_2, Dout => instr_word_out );
 decode: decoder port map(Instruction_Word => instr_word_out,
@@ -735,8 +755,10 @@ register_file: main_register_file port map(
 					 read_addr_d => opr2_addr_out_2,
 					 read_addr_e => dest_addr_out_1,
 					 read_addr_f => dest_addr_out_2,
-					 write_addr_a => dest_ARF1 & dest_RRF1,              --write_addr_a,
-					 write_addr_b => dest_ARF2 & dest_RRF2,              --write_addr_b,
+					 write_addr_a(9 downto 5) => dest_ARF1,
+					 write_addr_a(4 downto 0) => dest_RRF1,              --write_addr_a,
+					 write_addr_b(9 downto 5) => dest_ARF2,
+					 write_addr_b(4 downto 0) => dest_RRF2,              --write_addr_b,
 					 data_in_a => rf_data_in1,
 					 data_in_b => rf_data_in2,
 					 data_out_a => opr1_in_1,
@@ -794,7 +816,8 @@ memory: Multiple_port_RAM_VHDL port map(
 					instr_out_1 => instr_word_1,--
 					instr_out_2 => instr_word_2,--
 					RAM_DATA_OUT_1 => ram_data_out_1,
-					RAM_DATA_OUT_2 => ram_data_out_2
+					RAM_DATA_OUT_2 => ram_data_out_2,
+					reset => reset
 		);
 		
 branch_predictor_instance: branch_predictor port map(
@@ -803,7 +826,8 @@ branch_predictor_instance: branch_predictor port map(
 					PC_update_rob2 => PC_update_rob2,
 					update_opcode1 => update_opcode1,
 					update_opcode2 => update_opcode2,
-					inst => instr_word_1 & instr_word_2,
+					inst(31 downto 16) => instr_word_1,
+					inst(15 downto 0) => instr_word_2,
 					PC_cond_jmp1 => actual_branch_addr_rob1,
 					PC_cond_jmp2 => actual_branch_addr_rob2,
 					read_en => branch_predictor_read_en,
@@ -1032,9 +1056,12 @@ rs_rob_translator2: rs_rob_translator port map(
 --alu
 --ls
 --branch
+reset_rob_or_reset <= reset_rob or reset;
 re_order_buffer: ROB port map(
-               entry_word_1 => "0000000000000000" & ROB_new_entry1,
-					entry_word_2 => "0000000000000000" & ROB_new_entry2,
+               entry_word_1(75 downto 60) => "0000000000000000",
+					entry_word_1(59 downto 2) => ROB_new_entry1,
+					entry_word_2(75 downto 60) => "0000000000000000",
+					entry_word_2(59 downto 2) => ROB_new_entry2,
 					clock => clk,
 					PC1 => PC5_rob_in,
 					PC2 => PC6_rob_in,
@@ -1060,10 +1087,14 @@ re_order_buffer: ROB port map(
 					cz_en2  => alu_out_valid2,
 					cz_en3  => ls_out_valid1,
 				   cz_en4  => ls_out_valid2,
-					cz_data1 => c_alu1_result & z_alu1_result,  
-					cz_data2 => c_alu2_result & z_alu2_result,
-					cz_data3 => c_lwsw1_result & z_lwsw1_result,
-					cz_data4 => c_lwsw2_result & z_lwsw2_result,
+					cz_data1(1) => c_alu1_result,
+					cz_data1(0) => z_alu1_result,  
+					cz_data2(1) => c_alu2_result,
+					cz_data2(0) => z_alu2_result,
+					cz_data3(1) => c_lwsw1_result,
+					cz_data3(0) => z_lwsw1_result,
+					cz_data4(1) => c_lwsw2_result,
+					cz_data4(0) => z_lwsw2_result,
 					cz_write_add1 => flag_write_addr_a,
 					cz_write_add2 => flag_write_addr_b,
 					cz_write_en1 => flag_write_en_a,
@@ -1071,7 +1102,7 @@ re_order_buffer: ROB port map(
 					cz_write_data1 => flag_data_in1,
 					cz_write_data2 => flag_data_in2,
 					
-					reset => reset_rob or reset,
+					reset => reset_rob_or_reset,
 				   entry_write_1 => rs_wr_en_1,
 					entry_write_2 =>  rs_wr_en_2,
 					mem_add1 => ram_addr_write_1,

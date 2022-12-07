@@ -15,12 +15,13 @@ architecture struct of pc_buffer is
 begin
 	process(clk, clr)	
 	begin
-		if(clk'event and clk='1') then
+		if(clr = '1') then
+				Dout <= (others => '0');
+			
+		elsif(clk'event and clk='1') then
 				Dout <= Din1;
 		end if;
-		if(clr = '1') then
-			Dout <= (others => '0');
-		end if;
+		
 	end process;
 	
 end architecture;

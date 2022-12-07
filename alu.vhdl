@@ -34,6 +34,16 @@ entity alu is
 end alu;
 
 architecture beh of alu is
+		function to_string ( a: std_logic_vector) return string is
+		variable b : string (1 to a'length) := (others => NUL);
+		variable stri : integer := 1; 
+		begin
+			 for i in a'range loop
+				  b(stri) := std_logic'image(a((i)))(2);
+			 stri := stri+1;
+			 end loop;
+		return b;
+		end function;
 	--- Addition Function
 	function add(A: in std_logic_vector(operand_width-1 downto 0); B: in std_logic_vector(operand_width-1 downto 0)) 
 	return std_logic_vector is
@@ -75,7 +85,7 @@ architecture beh of alu is
 begin
 	add_temp <= add(opr1, opr2);
 	adl_temp <= adl(opr1, opr2);
-
+	PC_out <= PC_in;
 	main: process(opr1, opr2, dest, cin, zin, opcode, enable, reset)
 	begin
 		if reset = '1' THEN

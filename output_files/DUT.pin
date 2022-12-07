@@ -96,7 +96,7 @@ GND*                         : B10       :        :                   :         
 GND*                         : B11       :        :                   :         : 2         :                
 GND*                         : B12       :        :                   :         : 2         :                
 GND*                         : B13       :        :                   :         : 2         :                
-GND*                         : B14       :        :                   :         : 2         :                
+output_vector[1]             : B14       : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : B15       :        :                   :         : 2         :                
 GND*                         : B16       :        :                   :         : 2         :                
 GNDIO                        : B17       : gnd    :                   :         :           :                
@@ -113,7 +113,7 @@ GND*                         : C9        :        :                   :         
 GND*                         : C10       :        :                   :         : 2         :                
 GND*                         : C11       :        :                   :         : 2         :                
 GND*                         : C12       :        :                   :         : 2         :                
-clk                          : C13       : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : C13       :        :                   :         : 2         :                
 GND*                         : C14       :        :                   :         : 2         :                
 GND*                         : C15       :        :                   :         : 2         :                
 GND*                         : C16       :        :                   :         : 3         :                
@@ -206,7 +206,7 @@ VCCINT                       : H12       : power  :                   : 1.8V    
 GND*                         : H13       :        :                   :         : 3         :                
 GND*                         : H14       :        :                   :         : 3         :                
 GND*                         : H15       :        :                   :         : 3         :                
-GND*                         : H16       :        :                   :         : 3         :                
+output_vector[0]             : H16       : output : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : H17       :        :                   :         : 3         :                
 GND*                         : H18       :        :                   :         : 3         :                
 GND*                         : J1        :        :                   :         : 1         :                
@@ -223,7 +223,7 @@ VCCINT                       : J11       : power  :                   : 1.8V    
 VCCIO3                       : J12       : power  :                   : 3.3V    : 3         :                
 GND*                         : J13       :        :                   :         : 3         :                
 GND*                         : J14       :        :                   :         : 3         :                
-GND*                         : J15       :        :                   :         : 3         :                
+input_vector[0]              : J15       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : J16       :        :                   :         : 3         :                
 GND*                         : J17       :        :                   :         : 3         :                
 GND*                         : J18       :        :                   :         : 3         :                
@@ -285,7 +285,7 @@ GND*                         : N1        :        :                   :         
 GND*                         : N2        :        :                   :         : 1         :                
 GND*                         : N3        :        :                   :         : 1         :                
 GND*                         : N4        :        :                   :         : 1         :                
-GND*                         : N5        :        :                   :         : 1         :                
+input_vector[1]              : N5        : input  : 3.3-V LVTTL       :         : 1         : N              
 TDO                          : N6        : output :                   :         : 1         :                
 GND*                         : N7        :        :                   :         : 4         :                
 GND*                         : N8        :        :                   :         : 4         :                
@@ -372,7 +372,7 @@ GND*                         : U16       :        :                   :         
 GNDIO                        : U17       : gnd    :                   :         :           :                
 GND*                         : U18       :        :                   :         : 4         :                
 GNDIO                        : V1        : gnd    :                   :         :           :                
-reset                        : V2        : input  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : V2        :        :                   :         : 4         :                
 VCCIO4                       : V3        : power  :                   : 3.3V    : 4         :                
 GND*                         : V4        :        :                   :         : 4         :                
 GND*                         : V5        :        :                   :         : 4         :                

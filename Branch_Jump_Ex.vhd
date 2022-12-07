@@ -54,7 +54,7 @@ architecture beh of alu_Branch_Jump is
 	
 	
 begin
-	
+	PC_out <= PC_in;
 	main: process(opr1, opr2, Opcode, enable, reset)
 	begin
 		if reset = '1' THEN

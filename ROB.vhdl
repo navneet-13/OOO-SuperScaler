@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 use ieee.std_logic_misc.all;
 
 entity ROB is
-	generic( word_width : integer:= 76	);
+	generic( CONSTANT word_width : integer:= 76	);
 	port(entry_word_1 : in std_logic_vector(word_width-1 downto 2);
 		entry_word_2: in std_logic_vector(word_width-1 downto 2);
 		clock: in std_logic;
@@ -182,7 +182,7 @@ begin
 			
 			ret_loop : for k in 0 to 1 loop	
 			i := head_pointer;
-			case rob_entry(head_pointer)(word_width - 17 downto word_width - 20) is 
+			case rob_entry(head_pointer)(43 downto 40) is 
 				when "0001" | "0010" => 
 					rob_entry(i)(1) <=  rob_entry(i)(9) and rob_entry(i)(2) and not(rob_entry(i)(39));
 					no_instr := no_instr + 1;

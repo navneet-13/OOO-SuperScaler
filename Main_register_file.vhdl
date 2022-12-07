@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use std.textio.all;
 
 
 entity Main_register_file is
@@ -55,6 +56,17 @@ type registerFile is array(0 to 31) of std_logic_vector(22 downto 0);
   signal rename_reg_addr_in_2_lat: std_logic_vector(4 downto 0);
   signal reg_rename_en_1_lat: std_logic;
   signal reg_rename_en_2_lat: std_logic;
+  
+  function to_string ( a: std_logic_vector) return string is
+variable b : string (1 to a'length) := (others => NUL);
+variable stri : integer := 1; 
+begin
+    for i in a'range loop
+        b(stri) := std_logic'image(a((i)))(2);
+    stri := stri+1;
+    end loop;
+return b;
+end function;
 
   
   begin 
@@ -206,9 +218,10 @@ type registerFile is array(0 to 31) of std_logic_vector(22 downto 0);
 	full <= '1';
 	end if;
 	 
-	  
+	 for i in 0 to 31 loop
+	 report "R"& integer'image(i)& ": " & to_string(registers(i));
+	
+	 end loop;
 	 end if;
 	end process;
 	end behavioural;
-	
-
