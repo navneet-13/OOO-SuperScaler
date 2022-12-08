@@ -65,11 +65,13 @@ begin
 	l1: for k in 0 to 15 loop
 	  cz(k) := (others => '0');
 	end loop l1; 
+	full<='0';
 	 
    elsif (clear = '1') then
 	 l2: for k in 0 to 15 loop
 	  cz(k)(5 downto 0) := "000000";
 	 end loop l2; 
+	 full<='0';
 	
    elsif(rising_edge(clk)) then
 	  

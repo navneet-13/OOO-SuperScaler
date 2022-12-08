@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DUT
-Wed Dec 07 21:09:41 2022
+Thu Dec 08 19:12:14 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -15,23 +15,24 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Parameter Settings for User Entity Instance: datapath:add_instance|Decoder:decode
- 10. Parameter Settings for User Entity Instance: datapath:add_instance|operand_translator:operand_translator_instance
- 11. Parameter Settings for User Entity Instance: datapath:add_instance|alu_LS:LS_Ex_unit_instance1
- 12. Parameter Settings for User Entity Instance: datapath:add_instance|alu_LS:LS_Ex_unit_instance2
- 13. Parameter Settings for User Entity Instance: datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance1
- 14. Parameter Settings for User Entity Instance: datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance2
- 15. Parameter Settings for User Entity Instance: datapath:add_instance|alu:ADD_Ex_Unit_instance1
- 16. Parameter Settings for User Entity Instance: datapath:add_instance|alu:ADD_Ex_Unit_instance2
- 17. Parameter Settings for User Entity Instance: datapath:add_instance|ROB:re_order_buffer
- 18. Parameter Settings for User Entity Instance: datapath:add_instance|res_station_updated:reservation_station
- 19. Port Connectivity Checks: "datapath:add_instance|res_station_updated:reservation_station"
- 20. Port Connectivity Checks: "datapath:add_instance|ROB:re_order_buffer"
- 21. Port Connectivity Checks: "datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance2"
- 22. Port Connectivity Checks: "datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance1"
- 23. Port Connectivity Checks: "datapath:add_instance|branch_predictor:branch_predictor_instance"
- 24. Port Connectivity Checks: "datapath:add_instance|Multiple_port_RAM_VHDL:memory"
- 25. Port Connectivity Checks: "datapath:add_instance|Main_register_file:register_file"
- 26. Analysis & Synthesis Messages
+ 10. Parameter Settings for User Entity Instance: datapath:add_instance|branch_predictor:branch_predictor_instance
+ 11. Parameter Settings for User Entity Instance: datapath:add_instance|operand_translator:operand_translator_instance
+ 12. Parameter Settings for User Entity Instance: datapath:add_instance|alu_LS:LS_Ex_unit_instance1
+ 13. Parameter Settings for User Entity Instance: datapath:add_instance|alu_LS:LS_Ex_unit_instance2
+ 14. Parameter Settings for User Entity Instance: datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance1
+ 15. Parameter Settings for User Entity Instance: datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance2
+ 16. Parameter Settings for User Entity Instance: datapath:add_instance|alu:ADD_Ex_Unit_instance1
+ 17. Parameter Settings for User Entity Instance: datapath:add_instance|alu:ADD_Ex_Unit_instance2
+ 18. Parameter Settings for User Entity Instance: datapath:add_instance|ROB:re_order_buffer
+ 19. Parameter Settings for User Entity Instance: datapath:add_instance|res_station_updated:reservation_station
+ 20. Port Connectivity Checks: "datapath:add_instance|res_station_updated:reservation_station"
+ 21. Port Connectivity Checks: "datapath:add_instance|ROB:re_order_buffer"
+ 22. Port Connectivity Checks: "datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance2"
+ 23. Port Connectivity Checks: "datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance1"
+ 24. Port Connectivity Checks: "datapath:add_instance|branch_predictor:branch_predictor_instance"
+ 25. Port Connectivity Checks: "datapath:add_instance|Multiple_port_RAM_VHDL:memory"
+ 26. Port Connectivity Checks: "datapath:add_instance|Main_register_file:register_file"
+ 27. Analysis & Synthesis Messages
 
 
 
@@ -58,7 +59,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Dec 07 21:09:41 2022       ;
+; Analysis & Synthesis Status ; Successful - Thu Dec 08 19:12:14 2022       ;
 ; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name               ; DUT                                         ;
 ; Top-level Entity Name       ; DUT                                         ;
@@ -293,6 +294,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datapath:add_instance|branch_predictor:branch_predictor_instance ;
++----------------+-------+--------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                 ;
++----------------+-------+--------------------------------------------------------------------------------------+
+; operand_width  ; 16    ; Signed Integer                                                                       ;
++----------------+-------+--------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: datapath:add_instance|operand_translator:operand_translator_instance ;
 +----------------+-------+------------------------------------------------------------------------------------------+
@@ -498,7 +509,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Dec 07 21:08:59 2022
+    Info: Processing started: Thu Dec 08 19:11:33 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OOO_Extra -c DUT
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -509,7 +520,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file dut.vhd
     Info (12022): Found design unit 1: DUT-DutWrap File: D:/Desktop/GitHub/OOO-SuperScaler/DUT.vhdl Line: 13
     Info (12023): Found entity 1: DUT File: D:/Desktop/GitHub/OOO-SuperScaler/DUT.vhdl Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file res_station_updated.vhd
-    Info (12022): Found design unit 1: res_station_updated-arch File: D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd Line: 101
+    Info (12022): Found design unit 1: res_station_updated-arch File: D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd Line: 103
     Info (12023): Found entity 1: res_station_updated File: D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd Line: 11
 Info (12021): Found 2 design units, including 1 entities, in source file rs_rob_translator.vhd
     Info (12022): Found design unit 1: rs_rob_translator-mapping File: D:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd Line: 13
@@ -530,13 +541,13 @@ Info (12021): Found 2 design units, including 1 entities, in source file flag_re
     Info (12022): Found design unit 1: flag_rf_file-behavioural File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 36
     Info (12023): Found entity 1: flag_rf_file File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file fetch.vhd
-    Info (12022): Found design unit 1: fetch_buffer-struct File: D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd Line: 15
+    Info (12022): Found design unit 1: fetch_buffer-struct File: D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd Line: 16
     Info (12023): Found entity 1: fetch_buffer File: D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file decoder.vhd
     Info (12022): Found design unit 1: Decoder-Behavioral File: D:/Desktop/GitHub/OOO-SuperScaler/decoder.vhd Line: 117
     Info (12023): Found entity 1: Decoder File: D:/Desktop/GitHub/OOO-SuperScaler/decoder.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file branch_predictor.vhd
-    Info (12022): Found design unit 1: branch_predictor-arch File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 25
+    Info (12022): Found design unit 1: branch_predictor-arch File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 27
     Info (12023): Found entity 1: branch_predictor File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
     Info (12022): Found design unit 1: datapath-arch File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 13
@@ -557,14 +568,7 @@ Info (12127): Elaborating entity "DUT" for the top level hierarchy
 Info (12128): Elaborating entity "datapath" for hierarchy "datapath:add_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/DUT.vhdl Line: 26
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "ram_wr_en_1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "ram_wr_en_2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "branch_predictor_read_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "branch_actual_result2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "lwsw1_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "lwsw2_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "branch1_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "branch2_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "alu1_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(15): used implicit default value for signal "alu2_en" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 15
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(25): used implicit default value for signal "ram_addr_read_1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 25
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(25): used implicit default value for signal "ram_addr_read_2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 25
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(25): used implicit default value for signal "ram_data_in_1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 25
@@ -583,8 +587,6 @@ Warning (10541): VHDL Signal Declaration warning at datapath.vhd(37): used impli
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(37): used implicit default value for signal "PC5_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 37
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(37): used implicit default value for signal "PC6_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 37
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(51): used implicit default value for signal "flag_reg_in_2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 51
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(54): used implicit default value for signal "PC_1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 54
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(54): used implicit default value for signal "PC_2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 54
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(54): used implicit default value for signal "actual_branch_addr_rob2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 54
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(54): used implicit default value for signal "PC_update_rob2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 54
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(54): used implicit default value for signal "pc_rs_1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 54
@@ -592,12 +594,6 @@ Warning (10541): VHDL Signal Declaration warning at datapath.vhd(54): used impli
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(75): used implicit default value for signal "alu_cond1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 75
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(75): used implicit default value for signal "alu_cond2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 75
 Warning (10541): VHDL Signal Declaration warning at datapath.vhd(78): used implicit default value for signal "update_opcode2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 78
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(78): used implicit default value for signal "opcode1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 78
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(78): used implicit default value for signal "opcode2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 78
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(78): used implicit default value for signal "opcode3" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 78
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(78): used implicit default value for signal "opcode4" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 78
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(78): used implicit default value for signal "opcode5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 78
-Warning (10541): VHDL Signal Declaration warning at datapath.vhd(78): used implicit default value for signal "opcode6" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 78
 Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(91): object "cz_branch1" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 91
 Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(91): object "cz_branch2" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 91
 Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(91): object "cz_lwsw1" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 91
@@ -606,179 +602,177 @@ Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(96): object "c_bran
 Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(96): object "c_branch2_result" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 96
 Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(96): object "z_branch1_result" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 96
 Warning (10036): Verilog HDL or VHDL warning at datapath.vhd(96): object "z_branch2_result" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 96
-Info (12128): Elaborating entity "fetch_buffer" for hierarchy "datapath:add_instance|fetch_buffer:fetch" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 712
-Info (12128): Elaborating entity "Decoder" for hierarchy "datapath:add_instance|Decoder:decode" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 714
+Info (12128): Elaborating entity "fetch_buffer" for hierarchy "datapath:add_instance|fetch_buffer:fetch" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 729
+Info (12128): Elaborating entity "Decoder" for hierarchy "datapath:add_instance|Decoder:decode" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 732
 Warning (10873): Using initial value X (don't care) for net "Instr_OUT_1[0]" at decoder.vhd(104) File: D:/Desktop/GitHub/OOO-SuperScaler/decoder.vhd Line: 104
 Warning (10873): Using initial value X (don't care) for net "Instr_OUT_2[0]" at decoder.vhd(105) File: D:/Desktop/GitHub/OOO-SuperScaler/decoder.vhd Line: 105
-Info (12128): Elaborating entity "Main_register_file" for hierarchy "datapath:add_instance|Main_register_file:register_file" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 751
-Warning (10492): VHDL Process Statement warning at Main_register_file.vhdl(79): signal "read_addr_e" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 79
-Warning (10492): VHDL Process Statement warning at Main_register_file.vhdl(80): signal "read_addr_f" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 80
+Info (12128): Elaborating entity "Main_register_file" for hierarchy "datapath:add_instance|Main_register_file:register_file" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 769
+Warning (10620): VHDL warning at Main_register_file.vhdl(154): comparison between unequal length operands always returns FALSE File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 154
 Warning (10631): VHDL Process Statement warning at Main_register_file.vhdl(83): inferring latch(es) for signal or variable "registers", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 83
-Warning (10620): VHDL warning at Main_register_file.vhdl(149): comparison between unequal length operands always returns FALSE File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 149
-Info (10041): Inferred latch for "registers[31][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[31][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[31][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[31][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[31][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[30][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[30][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[30][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[30][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[30][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[29][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[29][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[29][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[29][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[29][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[28][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[28][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[28][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[28][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[28][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[27][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[27][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[27][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[27][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[27][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[26][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[26][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[26][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[26][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[26][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[25][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[25][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[25][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[25][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[25][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[24][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[24][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[24][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[24][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[24][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[23][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[23][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[23][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[23][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[23][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[22][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[22][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[22][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[22][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[22][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[21][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[21][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[21][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[21][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[21][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[20][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[20][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[20][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[20][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[20][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[19][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[19][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[19][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[19][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[19][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[18][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[18][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[18][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[18][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[18][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[17][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[17][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[17][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[17][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[17][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[16][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[16][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[16][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[16][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[16][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[15][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[15][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[15][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[15][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[15][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[14][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[14][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[14][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[14][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[14][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[13][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[13][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[13][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[13][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[13][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[12][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[12][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[12][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[12][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[12][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[11][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[11][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[11][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[11][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[11][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[10][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[10][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[10][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[10][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[10][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[9][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[9][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[9][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[9][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[9][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[8][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[8][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[8][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[8][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[8][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[7][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[7][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[7][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[7][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[7][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[6][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[6][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[6][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[6][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[6][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[5][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[5][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[5][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[5][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[5][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[4][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[4][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[4][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[4][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[4][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[3][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[3][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[3][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[3][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[3][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[2][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[2][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[2][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[2][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[2][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[1][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[1][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[1][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[1][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[1][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[0][1]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[0][2]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[0][3]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[0][4]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (10041): Inferred latch for "registers[0][5]" at Main_register_file.vhdl(85) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 85
-Info (12128): Elaborating entity "flag_rf_file" for hierarchy "datapath:add_instance|flag_rf_file:flag_register_file_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 784
+Info (10041): Inferred latch for "registers[31][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[31][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[31][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[31][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[31][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[30][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[30][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[30][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[30][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[30][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[29][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[29][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[29][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[29][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[29][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[28][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[28][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[28][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[28][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[28][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[27][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[27][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[27][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[27][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[27][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[26][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[26][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[26][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[26][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[26][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[25][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[25][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[25][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[25][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[25][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[24][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[24][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[24][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[24][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[24][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[23][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[23][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[23][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[23][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[23][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[22][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[22][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[22][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[22][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[22][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[21][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[21][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[21][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[21][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[21][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[20][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[20][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[20][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[20][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[20][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[19][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[19][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[19][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[19][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[19][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[18][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[18][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[18][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[18][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[18][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[17][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[17][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[17][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[17][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[17][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[16][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[16][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[16][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[16][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[16][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[15][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[15][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[15][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[15][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[15][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[14][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[14][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[14][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[14][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[14][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[13][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[13][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[13][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[13][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[13][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[12][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[12][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[12][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[12][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[12][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[11][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[11][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[11][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[11][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[11][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[10][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[10][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[10][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[10][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[10][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[9][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[9][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[9][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[9][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[9][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[8][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[8][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[8][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[8][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[8][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[7][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[7][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[7][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[7][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[7][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[6][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[6][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[6][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[6][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[6][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[5][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[5][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[5][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[5][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[5][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[4][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[4][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[4][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[4][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[4][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[3][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[3][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[3][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[3][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[3][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[2][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[2][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[2][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[2][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[2][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[1][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[1][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[1][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[1][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[1][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[0][1]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[0][2]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[0][3]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[0][4]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (10041): Inferred latch for "registers[0][5]" at Main_register_file.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl Line: 88
+Info (12128): Elaborating entity "flag_rf_file" for hierarchy "datapath:add_instance|flag_rf_file:flag_register_file_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 802
 Warning (10541): VHDL Signal Declaration warning at flag_register_file.vhdl(43): used implicit default value for signal "reg_rename_en_b_lat" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 43
-Warning (10620): VHDL warning at flag_register_file.vhdl(80): comparison between unequal length operands always returns TRUE File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 80
-Warning (10620): VHDL warning at flag_register_file.vhdl(90): comparison between unequal length operands always returns TRUE File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 90
+Warning (10620): VHDL warning at flag_register_file.vhdl(82): comparison between unequal length operands always returns TRUE File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 82
+Warning (10620): VHDL warning at flag_register_file.vhdl(92): comparison between unequal length operands always returns TRUE File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 92
 Warning (10631): VHDL Process Statement warning at flag_register_file.vhdl(57): inferring latch(es) for signal or variable "cz", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 57
 Info (10041): Inferred latch for "cz[15][1]" at flag_register_file.vhdl(64) File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 64
 Info (10041): Inferred latch for "cz[15][2]" at flag_register_file.vhdl(64) File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 64
@@ -844,21 +838,23 @@ Info (10041): Inferred latch for "cz[0][1]" at flag_register_file.vhdl(64) File:
 Info (10041): Inferred latch for "cz[0][2]" at flag_register_file.vhdl(64) File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 64
 Info (10041): Inferred latch for "cz[0][3]" at flag_register_file.vhdl(64) File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 64
 Info (10041): Inferred latch for "cz[0][4]" at flag_register_file.vhdl(64) File: D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl Line: 64
-Info (12128): Elaborating entity "Multiple_port_RAM_VHDL" for hierarchy "datapath:add_instance|Multiple_port_RAM_VHDL:memory" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 805
+Info (12128): Elaborating entity "Multiple_port_RAM_VHDL" for hierarchy "datapath:add_instance|Multiple_port_RAM_VHDL:memory" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 823
 Warning (10492): VHDL Process Statement warning at memory.vhd(58): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/memory.vhd Line: 58
-Info (12128): Elaborating entity "branch_predictor" for hierarchy "datapath:add_instance|branch_predictor:branch_predictor_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 823
-Warning (10492): VHDL Process Statement warning at branch_predictor.vhd(48): signal "inst" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 48
-Warning (10492): VHDL Process Statement warning at branch_predictor.vhd(49): signal "inst" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 49
-Info (12128): Elaborating entity "pc_buffer" for hierarchy "datapath:add_instance|pc_buffer:pc_buffer_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 844
-Info (12128): Elaborating entity "operand_translator" for hierarchy "datapath:add_instance|operand_translator:operand_translator_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 851
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(264): signal "alu_cond1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 264
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(265): signal "alu_cond2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 265
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(270): signal "PC1_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 270
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(271): signal "PC2_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 271
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(272): signal "PC3_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 272
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(273): signal "PC4_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 273
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(274): signal "PC5_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 274
-Warning (10492): VHDL Process Statement warning at operand_translator.vhd(275): signal "PC6_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 275
+Info (12128): Elaborating entity "branch_predictor" for hierarchy "datapath:add_instance|branch_predictor:branch_predictor_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 841
+Warning (10492): VHDL Process Statement warning at branch_predictor.vhd(66): signal "inst" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 66
+Warning (10492): VHDL Process Statement warning at branch_predictor.vhd(67): signal "inst" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 67
+Warning (10492): VHDL Process Statement warning at branch_predictor.vhd(68): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 68
+Warning (10631): VHDL Process Statement warning at branch_predictor.vhd(55): inferring latch(es) for signal or variable "LUT", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd Line: 55
+Info (12128): Elaborating entity "pc_buffer" for hierarchy "datapath:add_instance|pc_buffer:pc_buffer_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 862
+Info (12128): Elaborating entity "operand_translator" for hierarchy "datapath:add_instance|operand_translator:operand_translator_instance" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 869
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(265): signal "alu_cond1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 265
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(266): signal "alu_cond2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 266
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(271): signal "PC1_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 271
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(272): signal "PC2_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 272
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(273): signal "PC3_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 273
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(274): signal "PC4_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 274
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(275): signal "PC5_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 275
+Warning (10492): VHDL Process Statement warning at operand_translator.vhd(276): signal "PC6_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 276
 Warning (10631): VHDL Process Statement warning at operand_translator.vhd(128): inferring latch(es) for signal or variable "opr1_branch1_out", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 128
 Warning (10631): VHDL Process Statement warning at operand_translator.vhd(128): inferring latch(es) for signal or variable "opr2_branch1_out", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 128
 Warning (10631): VHDL Process Statement warning at operand_translator.vhd(128): inferring latch(es) for signal or variable "imm_branch1_out", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 128
@@ -1097,7 +1093,7 @@ Info (10041): Inferred latch for "opr1_branch1_out[12]" at operand_translator.vh
 Info (10041): Inferred latch for "opr1_branch1_out[13]" at operand_translator.vhd(128) File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 128
 Info (10041): Inferred latch for "opr1_branch1_out[14]" at operand_translator.vhd(128) File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 128
 Info (10041): Inferred latch for "opr1_branch1_out[15]" at operand_translator.vhd(128) File: D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd Line: 128
-Info (12128): Elaborating entity "alu_LS" for hierarchy "datapath:add_instance|alu_LS:LS_Ex_unit_instance1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 943
+Info (12128): Elaborating entity "alu_LS" for hierarchy "datapath:add_instance|alu_LS:LS_Ex_unit_instance1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 961
 Warning (10492): VHDL Process Statement warning at LS_Ex_Unit.vhd(67): signal "dest_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 67
 Warning (10492): VHDL Process Statement warning at LS_Ex_Unit.vhd(68): signal "dest_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 68
 Warning (10631): VHDL Process Statement warning at LS_Ex_Unit.vhd(53): inferring latch(es) for signal or variable "C", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 53
@@ -1138,7 +1134,7 @@ Info (10041): Inferred latch for "dest[14]" at LS_Ex_Unit.vhd(53) File: D:/Deskt
 Info (10041): Inferred latch for "dest[15]" at LS_Ex_Unit.vhd(53) File: D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 53
 Info (10041): Inferred latch for "Z" at LS_Ex_Unit.vhd(53) File: D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 53
 Info (10041): Inferred latch for "C" at LS_Ex_Unit.vhd(53) File: D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd Line: 53
-Info (12128): Elaborating entity "alu_Branch_Jump" for hierarchy "datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 973
+Info (12128): Elaborating entity "alu_Branch_Jump" for hierarchy "datapath:add_instance|alu_Branch_Jump:Branch_Ex_unit_instance1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 991
 Warning (10492): VHDL Process Statement warning at Branch_Jump_Ex.vhd(69): signal "PC_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 69
 Warning (10492): VHDL Process Statement warning at Branch_Jump_Ex.vhd(69): signal "imm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 69
 Warning (10492): VHDL Process Statement warning at Branch_Jump_Ex.vhd(71): signal "PC_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 71
@@ -1184,69 +1180,59 @@ Info (10041): Inferred latch for "dest[14]" at Branch_Jump_Ex.vhd(58) File: D:/D
 Info (10041): Inferred latch for "dest[15]" at Branch_Jump_Ex.vhd(58) File: D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 58
 Info (10041): Inferred latch for "Z" at Branch_Jump_Ex.vhd(58) File: D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 58
 Info (10041): Inferred latch for "C" at Branch_Jump_Ex.vhd(58) File: D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd Line: 58
-Info (12128): Elaborating entity "alu" for hierarchy "datapath:add_instance|alu:ADD_Ex_Unit_instance1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1010
-Warning (10492): VHDL Process Statement warning at alu.vhdl(99): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 99
-Warning (10492): VHDL Process Statement warning at alu.vhdl(100): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 100
-Warning (10492): VHDL Process Statement warning at alu.vhdl(104): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 104
-Warning (10492): VHDL Process Statement warning at alu.vhdl(105): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 105
-Warning (10492): VHDL Process Statement warning at alu.vhdl(106): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 106
-Warning (10492): VHDL Process Statement warning at alu.vhdl(107): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 107
-Warning (10492): VHDL Process Statement warning at alu.vhdl(117): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 117
-Warning (10492): VHDL Process Statement warning at alu.vhdl(118): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 118
-Warning (10492): VHDL Process Statement warning at alu.vhdl(119): signal "add_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 119
-Warning (10492): VHDL Process Statement warning at alu.vhdl(120): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 120
-Warning (10492): VHDL Process Statement warning at alu.vhdl(127): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 127
-Warning (10492): VHDL Process Statement warning at alu.vhdl(128): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 128
-Warning (10492): VHDL Process Statement warning at alu.vhdl(129): signal "adl_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 129
-Warning (10492): VHDL Process Statement warning at alu.vhdl(130): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 130
-Warning (10492): VHDL Process Statement warning at alu.vhdl(137): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 137
-Warning (10492): VHDL Process Statement warning at alu.vhdl(144): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 144
-Warning (10492): VHDL Process Statement warning at alu.vhdl(157): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 157
-Warning (10631): VHDL Process Statement warning at alu.vhdl(89): inferring latch(es) for signal or variable "C", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Warning (10631): VHDL Process Statement warning at alu.vhdl(89): inferring latch(es) for signal or variable "Z", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Warning (10631): VHDL Process Statement warning at alu.vhdl(89): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Warning (10631): VHDL Process Statement warning at alu.vhdl(89): inferring latch(es) for signal or variable "output_temp", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[0]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[1]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[2]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[3]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[4]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[5]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[6]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[7]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[8]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[9]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[10]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[11]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[12]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[13]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[14]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output_temp[15]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[0]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[1]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[2]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[3]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[4]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[5]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[6]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[7]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[8]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[9]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[10]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[11]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[12]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[13]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[14]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "output[15]" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "Z" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (10041): Inferred latch for "C" at alu.vhdl(89) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 89
-Info (12128): Elaborating entity "rs_rob_translator" for hierarchy "datapath:add_instance|rs_rob_translator:rs_rob_translator1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1046
-Info (12128): Elaborating entity "ROB" for hierarchy "datapath:add_instance|ROB:re_order_buffer" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1060
-Warning (10036): Verilog HDL or VHDL warning at ROB.vhdl(64): object "which_load" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 64
-Warning (10492): VHDL Process Statement warning at ROB.vhdl(80): signal "rob_entry" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 80
-Info (12128): Elaborating entity "res_station_updated" for hierarchy "datapath:add_instance|res_station_updated:reservation_station" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1130
-Warning (10036): Verilog HDL or VHDL warning at res_station_updated.vhd(111): object "new1" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd Line: 111
-Warning (10036): Verilog HDL or VHDL warning at res_station_updated.vhd(111): object "new2" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd Line: 111
+Info (12128): Elaborating entity "alu" for hierarchy "datapath:add_instance|alu:ADD_Ex_Unit_instance1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1028
+Warning (10492): VHDL Process Statement warning at alu.vhdl(110): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 110
+Warning (10492): VHDL Process Statement warning at alu.vhdl(123): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 123
+Warning (10492): VHDL Process Statement warning at alu.vhdl(133): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 133
+Warning (10492): VHDL Process Statement warning at alu.vhdl(140): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 140
+Warning (10492): VHDL Process Statement warning at alu.vhdl(149): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 149
+Warning (10492): VHDL Process Statement warning at alu.vhdl(156): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 156
+Warning (10492): VHDL Process Statement warning at alu.vhdl(169): signal "output_temp" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 169
+Warning (10631): VHDL Process Statement warning at alu.vhdl(88): inferring latch(es) for signal or variable "C", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Warning (10631): VHDL Process Statement warning at alu.vhdl(88): inferring latch(es) for signal or variable "Z", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Warning (10631): VHDL Process Statement warning at alu.vhdl(88): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Warning (10631): VHDL Process Statement warning at alu.vhdl(88): inferring latch(es) for signal or variable "output_temp", which holds its previous value in one or more paths through the process File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[0]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[1]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[2]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[3]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[4]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[5]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[6]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[7]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[8]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[9]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[10]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[11]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[12]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[13]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[14]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output_temp[15]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[0]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[1]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[2]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[3]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[4]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[5]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[6]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[7]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[8]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[9]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[10]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[11]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[12]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[13]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[14]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "output[15]" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "Z" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (10041): Inferred latch for "C" at alu.vhdl(88) File: D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl Line: 88
+Info (12128): Elaborating entity "rs_rob_translator" for hierarchy "datapath:add_instance|rs_rob_translator:rs_rob_translator1" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1064
+Info (12128): Elaborating entity "ROB" for hierarchy "datapath:add_instance|ROB:re_order_buffer" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1078
+Warning (10036): Verilog HDL or VHDL warning at ROB.vhdl(76): object "which_load" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 76
+Warning (10492): VHDL Process Statement warning at ROB.vhdl(92): signal "rob_entry" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl Line: 92
+Info (12128): Elaborating entity "res_station_updated" for hierarchy "datapath:add_instance|res_station_updated:reservation_station" File: D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd Line: 1148
+Warning (10036): Verilog HDL or VHDL warning at res_station_updated.vhd(113): object "new1" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd Line: 113
+Warning (10036): Verilog HDL or VHDL warning at res_station_updated.vhd(113): object "new2" assigned a value but never read File: D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd Line: 113
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "output_vector[0]" is stuck at VCC File: D:/Desktop/GitHub/OOO-SuperScaler/DUT.vhdl Line: 9
     Warning (13410): Pin "output_vector[1]" is stuck at VCC File: D:/Desktop/GitHub/OOO-SuperScaler/DUT.vhdl Line: 9
@@ -1256,10 +1242,10 @@ Warning (21074): Design contains 2 input pin(s) that do not drive logic
 Info (21057): Implemented 4 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 2 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 135 warnings
-    Info: Peak virtual memory: 5086 megabytes
-    Info: Processing ended: Wed Dec 07 21:09:41 2022
-    Info: Elapsed time: 00:00:42
-    Info: Total CPU time (on all processors): 00:00:49
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 110 warnings
+    Info: Peak virtual memory: 5096 megabytes
+    Info: Processing ended: Thu Dec 08 19:12:14 2022
+    Info: Elapsed time: 00:00:41
+    Info: Total CPU time (on all processors): 00:00:54
 
 

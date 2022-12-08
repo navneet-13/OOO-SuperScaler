@@ -137,6 +137,7 @@ begin
 
  if(rising_edge(CLOCK)) then
  
+ 
  Instr_OUT_1(spec) <= speculative_indicator;
  Instr_OUT_1(pc_h downto pc_l) <= PC_1;
  Instr_OUT_1(opcode_h downto opcode_l) <= Opcode1;

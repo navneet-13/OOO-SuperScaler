@@ -51,14 +51,26 @@ entity ROB is
 		current_pc: out std_logic_vector(15 downto 0);          -- Current PC for branch Predictor
 		branch_pred_en : out std_logic;                         -- Enable to update 
 		branch_instr_opcode: out std_logic_vector(3 downto 0);
-		mispred_tag: out std_logic_vector(2 downto 0);
-		mispred_tag_en : out std_logic;
+		mispred_tag: out std_logic_vector(2 downto 0);          --speculative tag which needs to be unspeculated
+		mispred_tag_en : out std_logic;                         -- enable signal to unspeculate
 		rob_full: out std_logic											  -- rob become full
 		
 	);
 end entity;
 	
 architecture beh of ROB is
+
+function to_string ( a: std_logic_vector) return string is
+		variable b : string (1 to a'length) := (others => NUL);
+		variable stri : integer := 1; 
+		begin
+			 for i in a'range loop
+				  b(stri) := std_logic'image(a((i)))(2);
+			 stri := stri+1;
+			 end loop;
+		return b;
+		end function;
+	
 TYPE entry IS ARRAY(0 TO 50) OF std_logic_vector(word_width-1 DOWNTO 0);
 SIGNAL rob_entry : entry := (others=> (others => '0'));
 SIGNAL which_en, which_dest, which_load, which_store: std_logic_vector(1 downto 0);
@@ -80,7 +92,8 @@ begin
 			full := full and rob_entry(i)(0);
 		end loop;
 		if reset = '1' then
-			rob_entry <= (others=> (others=> '0'));
+			rob_entry <= (others=> (others=> '1'));
+
 			head_pointer := 0;
 			tail_pointer := 0;
 			branch_flush <='0';
@@ -91,6 +104,7 @@ begin
 			which_store <= "00";
 			branch_pred_en <= '0';
 			mispred_tag_en <= '0';
+			rob_full<= '0';
 			
 		elsif (clock'event AND clock = '1') then
 			branch_flush <='0';
@@ -116,12 +130,16 @@ begin
 				rob_entry(tail_pointer)(word_width - 1 downto 2) <= entry_word_1;
 				rob_entry(tail_pointer)(0) <= '1';
 				tail_pointer := tail_pointer + 1;
+				report " Tail Pointer1" & ":" & integer'image(tail_pointer);
+				
 			end if;
 			
 			if (entry_write_2 = '1') then
 				rob_entry(tail_pointer+1)(word_width - 1 downto 2) <= entry_word_2;
 				rob_entry(tail_pointer+1)(0) <= '1';
 				tail_pointer := tail_pointer + 1;
+				report " Tail Pointer2" & ":" & integer'image(tail_pointer);
+				report "ROB INSTR 2" & ":" & to_string(entry_word_2); 
 			end if;
 				
 --				loop_ready: for i in 0 to 50 loop
@@ -135,6 +153,8 @@ begin
 							rob_entry(i)(9) <= dest_ready_en1;
 							rob_entry(i)(4 downto 3) <= cz_data1;
 							rob_entry(i)(2) <= cz_en1;
+							report "ROB dest 1" & ":" & to_string(rob_entry(i)(word_width - 51 downto word_width - 66)); 
+							
 						end if;
 						
 						
@@ -144,6 +164,7 @@ begin
 							rob_entry(i)(9) <= dest_ready_en2;
 							rob_entry(i)(4 downto 3) <= cz_data2;
 							rob_entry(i)(2) <= cz_en2;
+							report "ROB dest 2" & ":" & to_string(dest_ready_val2);
 						end if;
 						
 					elsif (rob_entry(i) = PC3) then
@@ -256,12 +277,14 @@ begin
 									dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en1 <= '1';
 									which_dest <= "01";
+									
 								elsif (which_dest = "01") then
 									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
+									
 								end if;
 								
 								if which_en = "00" then

@@ -22,13 +22,13 @@ signal fetch_enable, flush, reg_rename_en_1,reg_rename_en_2, flag_rename_en_1, f
 	    rob_full, RS_fetch_stall,reset_rob, rs_clear, unspeculate_en, reset_rob_or_reset	 : std_logic;
 
 -----------------------------------------------------------------------------------------------------------
-signal instr_word_1, instr_word_2, rf_data_in1, rf_data_in2, ram_addr_read_1, ram_addr_read_2, 
+signal rf_data_in1, rf_data_in2, ram_addr_read_1, ram_addr_read_2, 
 		 ram_addr_write_1, ram_addr_write_2, ram_data_in_1, ram_data_in_2,
 	    pc_branch_predictor, ram_data_out_1, ram_data_out_2,
 		 actual_brach_addr1,actual_brach_addr2 : std_logic_vector(15 downto 0);
 			
 -----------------------------------------------------------------------------------------------------------
-signal instr_word_out: std_logic_vector(31 downto 0);
+signal instr_word_out, instr_word_1, instr_word_2, fetch_PC: std_logic_vector(31 downto 0);
 
 -----------------------------------------------------------------------------------------------------------
 signal opr1_in_1, opr1_in_2,opr2_in_1, opr2_in_2, dest_in_1, dest_in_2 :std_logic_vector(22 downto 0);
@@ -110,6 +110,8 @@ function to_string ( a: std_logic_vector) return string is
 	 end loop;
 	return b;
 end function;
+
+
 		
 component Main_register_file is
 port (
@@ -269,10 +271,11 @@ component fetch_buffer is
 	
 	port(
 		clk, ena, clr: in std_logic;
-		Din1: in std_logic_vector(15 downto 0);
-		Din2: in std_logic_vector(15 downto 0);
-		
-		Dout: out std_logic_vector(31 downto 0));
+		Din1: in std_logic_vector(31 downto 0);
+		Din2: in std_logic_vector(31 downto 0);
+		Dout: out std_logic_vector(31 downto 0);
+		PC : out std_logic_vector(31 downto 0)
+		);
 end component fetch_buffer;
 
 -----------------------------------------------------
@@ -322,8 +325,8 @@ PC_Instr: in std_logic_vector(15 downto 0);--PC address
 RAM_WR_1: in std_logic; -- Write enable 1
 RAM_WR_2: in std_logic; -- Write enable 2
 RAM_CLOCK: in std_logic; -- clock input for RAM
-instr_out_1: out std_logic_vector(15 downto 0);
-instr_out_2: out std_logic_vector(15 downto 0);
+instr_out_1: out std_logic_vector(31 downto 0);
+instr_out_2: out std_logic_vector(31 downto 0);
 RAM_DATA_OUT_1: out std_logic_vector(15 downto 0); -- Data output 1 of RAM
 RAM_DATA_OUT_2: out std_logic_vector(15 downto 0); -- Data output 2 of RAM
 reset: in std_logic
@@ -341,7 +344,7 @@ component branch_predictor IS
 		--IF_M1_OUT, PC_EXE, PC_PRED, PC_RR: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		--clk, reset, RR_EX_valid : IN STD_LOGIC;
 		read_en, write_en1, write_en2, predict1, predict2 : in std_logic; -- T,NT -predict=1,0
-		clk: in std_logic;
+		clk, reset: in std_logic;
 		--match, fush : OUT STD_LOGIC;
 		Branch_addr_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 		intermediate_addr_out : out std_logic_vector(15 downto 0)
@@ -692,6 +695,8 @@ component res_station_updated is
 		clear : in std_logic;
 		unspeculate_tag: in std_logic_vector(2 downto 0);
 		unspeculate_en: in std_logic;
+		alu_en1, alu_en2, lw_sw_en1, lw_sw_en2, branch_en1, branch_en2: out std_logic;
+		opcode_alu_1, opcode_alu_2, opcode_lw_sw_1, opcode_lw_sw_2, opcode_branch1, opcode_branch2 : out std_logic_vector(3 downto 0);
 		
 		fetch_stall : out std_logic
 	  	
@@ -704,13 +709,26 @@ begin
 
 pr: process(clk)
 begin
-	if(clk'event and clk = '1') then
-		report "INstr_output"& ": " & to_string(pc_buffer_out);
-	end if;
+		if ((clk'event and clk = '0') ) then
+		lo: for m in 0 to 100 loop
+				end loop;
+		report "PC"& ": " & to_string(pc_buffer_out);
+		report "Instr_output"& ": " & to_string(instr_word_out);
+		report "Branch Pred Output"& ": " & to_string(pc_branch_predictor);
+		report "ALU_1_OPR1" & ":" & to_string(opr2_alu1_out);
+		report "ALU_1_OPR1" & ":" & to_string(opr1_alu1_out);
+		report "ALU1 result" & ":" & to_string(alu1_result);
+		report "IMM ALU 1" & ":" & to_string(imm_alu1);
+		report "Decoder OUT 1"& ": " & to_string(decode_out1);		
+		report "ALU1 Enable" & ": " & std_logic'image(alu1_en); 
+		
+		end if;
+
 end process;
 
 fetch: fetch_buffer port map(clk => clk, ena => fetch_enable,clr => flush, Din1 => instr_word_1, 
-        Din2 => instr_word_2, Dout => instr_word_out );
+        Din2 => instr_word_2, Dout => instr_word_out, PC => fetch_PC);
+
 decode: decoder port map(Instruction_Word => instr_word_out,
                clock => clk,
 				 	free_reg_1 => free_reg_1,
@@ -725,8 +743,8 @@ decode: decoder port map(Instruction_Word => instr_word_out,
 			      dest_in_2 => dest_in_1,
 			      flag_reg_in_1 => flag_reg_in_1,
 			      flag_reg_in_2 => flag_reg_in_2,
-					PC_1 => PC_1,--check in branch predictor file
-					PC_2 => PC_2, ------
+					PC_1 =>fetch_PC(15 downto 0) ,--check in branch predictor file
+					PC_2 => fetch_PC(31 downto 16), ------
 					reg_rename_en_1 => reg_rename_en_1,
 					reg_rename_en_2 => reg_rename_en_2,
 					flag_rename_en_1 => flag_rename_en_1,
@@ -826,8 +844,8 @@ branch_predictor_instance: branch_predictor port map(
 					PC_update_rob2 => PC_update_rob2,
 					update_opcode1 => update_opcode1,
 					update_opcode2 => update_opcode2,
-					inst(31 downto 16) => instr_word_1,
-					inst(15 downto 0) => instr_word_2,
+					inst(31 downto 16) => instr_word_1(15 downto 0),
+					inst(15 downto 0) => instr_word_2(15 downto 0),
 					PC_cond_jmp1 => actual_branch_addr_rob1,
 					PC_cond_jmp2 => actual_branch_addr_rob2,
 					read_en => branch_predictor_read_en,
@@ -835,7 +853,7 @@ branch_predictor_instance: branch_predictor port map(
 					write_en2 => branch_predictor_write_en2,
 					predict1 => branch_actual_result1,
 					predict2 => branch_actual_result2,
-					clk => clk,
+					clk => clk, reset => reset,
 					Branch_addr_out => pc_branch_predictor,
 					intermediate_addr_out => intermediate_branch_addr
 		);
@@ -1172,18 +1190,31 @@ reservation_station: res_station_updated port map(
 					
 					unspeculate_tag => unspeculate_tag,
 					unspeculate_en => unspeculate_en,
-					fetch_stall => RS_fetch_stall
+					fetch_stall => RS_fetch_stall,
+					alu_en1 => alu1_en,
+					alu_en2 => alu2_en, 
+					lw_sw_en1 => lwsw1_en,
+					lw_sw_en2 => lwsw2_en,
+					branch_en1 => branch1_en,
+					branch_en2 => branch2_en,
+					opcode_alu_1 => opcode5 ,
+					opcode_alu_2 => opcode6 ,
+					opcode_lw_sw_1 => opcode3, 
+					opcode_lw_sw_2 => opcode4,
+					opcode_branch1 => opcode1,
+					opcode_branch2 => opcode2
 
 
 ); 
 
-fetch_enable <= not(RS_fetch_stall or rob_full or rf_full or flag_rf_full );
-rf_clear <= branch_actual_result1;
-flag_rf_clear <= branch_actual_result1;
-flush <= branch_actual_result1;
-pc_buffer_clear <= branch_actual_result1;
-reset_rob <= branch_actual_result1;
-RS_clear <= branch_actual_result1;
+fetch_enable <= not(RS_fetch_stall or rob_full or rf_full or flag_rf_full or reset);
+rf_clear <= branch_actual_result1 or reset;
+flag_rf_clear <= branch_actual_result1 or reset;
+flush <= branch_actual_result1 or reset;
+pc_buffer_clear <= branch_actual_result1 or reset;
+reset_rob <= branch_actual_result1 or reset;
+RS_clear <= branch_actual_result1 or reset;
+branch_predictor_read_en <= not(reset);
 
 
 					
