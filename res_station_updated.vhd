@@ -115,6 +115,7 @@ BEGIN
 	  for i in 0 to RS_size-1 loop
 	     RS(i) := (others => '0');
 	  end loop;
+	  fetch_stall<='0';
 	
 	elsif(rising_edge(clk)) then
 --		if(RS_full = 0) then

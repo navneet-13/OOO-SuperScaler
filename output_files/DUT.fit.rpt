@@ -1,5 +1,5 @@
 Fitter report for DUT
-Wed Dec 07 21:09:51 2022
+Thu Dec 08 13:01:29 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -50,7 +50,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------+
 ; Fitter Summary                                                      ;
 +-----------------------+---------------------------------------------+
-; Fitter Status         ; Successful - Wed Dec 07 21:09:51 2022       ;
+; Fitter Status         ; Successful - Thu Dec 08 13:01:29 2022       ;
 ; Quartus Prime Version ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name         ; DUT                                         ;
 ; Top-level Entity Name ; DUT                                         ;
@@ -680,15 +680,15 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
-Info (11888): Total time spent on timing analysis during the Fitter is 0.02 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.04 seconds.
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
 Warning (169174): The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
 Info (144001): Generated suppressed messages file D:/Desktop/GitHub/OOO-SuperScaler/output_files/DUT.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 7 warnings
     Info: Peak virtual memory: 5319 megabytes
-    Info: Processing ended: Wed Dec 07 21:09:51 2022
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Processing ended: Thu Dec 08 13:01:29 2022
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:02
 
 
 +----------------------------+

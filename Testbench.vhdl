@@ -107,7 +107,7 @@ begin
           input_vector <= to_std_logic_vector(input_vector_var);
 
 	  -- wait for the circuit to settle 
-	  wait for 40 ns;
+	  wait for 400 ns;
 
 	  -- check output.
           output_comp_var := (to_std_logic_vector(output_mask_var) and 
@@ -125,7 +125,7 @@ begin
           writeline(OUTFILE, OUTPUT_LINE);
 
 	  -- advance time by 4 ns.
-	  wait for 4 ns;
+	  wait for 25 ns;
     end loop;
 
     assert (err_flag) report "SUCCESS, all tests passed." severity note;

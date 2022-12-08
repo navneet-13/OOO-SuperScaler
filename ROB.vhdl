@@ -91,6 +91,7 @@ begin
 			which_store <= "00";
 			branch_pred_en <= '0';
 			mispred_tag_en <= '0';
+			rob_full<= '0';
 			
 		elsif (clock'event AND clock = '1') then
 			branch_flush <='0';

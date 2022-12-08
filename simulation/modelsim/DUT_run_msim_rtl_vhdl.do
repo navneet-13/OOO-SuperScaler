@@ -17,11 +17,11 @@ vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd}
 vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/decoder.vhd}
 vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/branch_predictor.vhd}
 vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl}
+vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd}
 vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/datapath.vhd}
 vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd}
-vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd}
 vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl}
-vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd}
+vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd}
 
 vcom -93 -work work {D:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl}
 

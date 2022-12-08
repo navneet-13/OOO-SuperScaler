@@ -110,6 +110,8 @@ function to_string ( a: std_logic_vector) return string is
 	 end loop;
 	return b;
 end function;
+
+
 		
 component Main_register_file is
 port (
@@ -702,10 +704,18 @@ END component;
 
 begin
 
-pr: process(clk)
+pr: process(clk, reset)
 begin
 	if(clk'event and clk = '1') then
-		report "INstr_output"& ": " & to_string(pc_buffer_out);
+		report "PC"& ": " & to_string(pc_buffer_out);
+		report "Instr_output"& ": " & to_string(instr_word_out);
+		report "Branch Pred Output"& ": " & to_string(pc_branch_predictor);
+		report "RS Fetch Enable" & ":" & std_logic'image(RS_fetch_stall);
+		report "ROB Full " & ":" & std_logic'image(rob_full);
+		report "RF Full" & ":" & std_logic'image(rf_full);
+		report "Flag RF Full" & ":" & std_logic'image(flag_rf_full);
+		report "Decoder OUT 1"& ": " & to_string(decode_out1);
+		
 	end if;
 end process;
 
@@ -1177,13 +1187,14 @@ reservation_station: res_station_updated port map(
 
 ); 
 
-fetch_enable <= not(RS_fetch_stall or rob_full or rf_full or flag_rf_full );
-rf_clear <= branch_actual_result1;
-flag_rf_clear <= branch_actual_result1;
-flush <= branch_actual_result1;
-pc_buffer_clear <= branch_actual_result1;
-reset_rob <= branch_actual_result1;
-RS_clear <= branch_actual_result1;
+fetch_enable <= not(RS_fetch_stall or rob_full or rf_full or flag_rf_full or reset);
+rf_clear <= branch_actual_result1 or reset;
+flag_rf_clear <= branch_actual_result1 or reset;
+flush <= branch_actual_result1 or reset;
+pc_buffer_clear <= branch_actual_result1 or reset;
+reset_rob <= branch_actual_result1 or reset;
+RS_clear <= branch_actual_result1 or reset;
+branch_predictor_read_en <= not(reset);
 
 
 					

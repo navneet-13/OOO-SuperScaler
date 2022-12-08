@@ -6,6 +6,8 @@ USE ieee.std_logic_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY branch_predictor IS
+	generic(operand_width:integer := 16);
+	
 
 	PORT (
 		PC_given, PC_update_rob1 ,PC_update_rob2,  PC_cond_jmp1, PC_cond_jmp2: in std_logic_vector(15 downto 0);
@@ -29,8 +31,21 @@ ARCHITECTURE arch OF  branch_predictor IS
 	--SIGNAL v : mul := (others => '0');
 	--SIGNAL u : STD_LOGIC := '0';
 	-- 32 entries of LUT
-	
-	signal branch_addr: std_logic_vector(15 downto 0);
+	function add(A: in std_logic_vector(operand_width-1 downto 0); B: in std_logic_vector(operand_width-1 downto 0)) 
+	return std_logic_vector is
+				variable sum: std_logic_vector(operand_width downto 0);
+				variable carry: std_logic_vector(operand_width-1 downto 0);
+				variable i : integer;
+		begin
+				sum(0) := A(0) xor B(0);
+				carry(0) := A(0) AND B(0);
+				summingBitwise: for i in 1 to operand_width-1 loop
+					sum(i) := ( A(i) xor B(i) ) xor carry(i-1);
+					carry(i) := (A(i) and B(i) ) or ( B(i) and carry(i-1) ) or ( A(i) and carry(i-1) );
+				end loop;
+				sum(operand_width) := carry(operand_width-1);
+			return sum(15 downto 0);
+	end function add;
 	signal inst1, inst2: std_logic_vector(15 downto 0);
 	
 	BEGIN
@@ -41,6 +56,7 @@ ARCHITECTURE arch OF  branch_predictor IS
 	variable LUT: LUT_type := (OTHERS => (OTHERS => '0'));
 	variable present: integer := 0; -- present in look up table --not initialized
 	variable head : integer := 0; -- present in look up table --not initialized
+	variable branch_addr: std_logic_vector(15 downto 0);
 	
 	
 
@@ -49,7 +65,7 @@ ARCHITECTURE arch OF  branch_predictor IS
 	inst2 <= inst(15 downto 0);
 	
 	 if(rising_edge(clk)) then
-	 branch_addr <= PC_given +1;
+	 branch_addr := add(PC_given, x"0001");
 		if (read_en = '1') then
 		L1 : for i in 0 to 32 loop
 			if(LUT(i)(34 downto 19) = PC_given) then
@@ -61,10 +77,10 @@ ARCHITECTURE arch OF  branch_predictor IS
 						for j in 6 to 15 loop
 							sign_ext_imm(j) := inst1(5);
 						end loop;
-						Branch_addr <= PC_given + sign_ext_imm;
+						Branch_addr := add(PC_given, sign_ext_imm);
 						
 					elsif(LUT(i)(18 downto 17) = "00" or LUT(i)(18 downto 17) = "01") then
-						Branch_addr <= PC_given + 1;
+						Branch_addr := add(PC_given, x"0001");
 					end if; 
 					
 				elsif(inst1(15 downto 12) = "1001") then --- jal inst , immed(9 bit)
@@ -72,12 +88,12 @@ ARCHITECTURE arch OF  branch_predictor IS
 						for j in 9 to 15 loop
 							sign_ext_imm(j) := inst1(8);
 						end loop;
-						Branch_addr <= PC_given + sign_ext_imm;
+						Branch_addr := add(PC_given,sign_ext_imm);
 					---Branch_addr <= PC_given + immediate;
 					
 				elsif(inst1(15 downto 12) = "1010" or inst1(15 downto 12) = "1011") then
 					-- conditional jump instruction, predict address, 
-					Branch_addr <= LUT(i)(15 downto 0);
+					Branch_addr := LUT(i)(15 downto 0);
 				end if;
 				present := 1;
 				exit;
@@ -90,7 +106,7 @@ ARCHITECTURE arch OF  branch_predictor IS
 					present := 1;
 					LUT(head)(34 downto 19) := PC_given;
 					LUT(head)(18 downto 17) := "10";
-					Branch_addr <= PC_given+1;
+					Branch_addr := add(PC_given, x"0001");
 					if(head = 31) then
 						head := 0;
 					else
@@ -98,7 +114,7 @@ ARCHITECTURE arch OF  branch_predictor IS
 					end if;
 				end if;
 			else
-				Branch_addr <= PC_given + 1;
+				Branch_addr := add(PC_given, x"0001");
 			end if;
 		end if;	
 		if(write_en1 = '1') then                     -- updating smith tag of the resolved branch
@@ -178,10 +194,10 @@ ARCHITECTURE arch OF  branch_predictor IS
 		
 		present :=0;
 		intermediate_addr_out <= branch_addr; 
-		if(branch_addr = PC_given +1) then 
+		if(branch_addr = add(PC_given, x"0001")) then 
 		  if (read_en = '1') then
 		L2 : for i in 0 to 32 loop
-			if(LUT(i)(34 downto 19) = PC_given +1) then
+			if(LUT(i)(34 downto 19) = add(PC_given, x"0001")) then
 				if(inst2(15 downto 12) = "1000") then --- beq inst
 				
 					if(LUT(i)(18 downto 17) = "10" or LUT(i)(18 downto 17) = "11") then
@@ -190,10 +206,10 @@ ARCHITECTURE arch OF  branch_predictor IS
 						for j in 6 to 15 loop
 							sign_ext_imm(j) := inst2(5);
 						end loop;
-						Branch_addr <= PC_given + sign_ext_imm +1;
+						Branch_addr := add(add(PC_given, sign_ext_imm),x"0001");
 						
 					elsif(LUT(i)(18 downto 17) = "00" or LUT(i)(18 downto 17) = "01") then
-						Branch_addr <= PC_given + 1 +1;
+						Branch_addr := add(PC_given, x"0002");
 					end if; 
 					
 				elsif(inst2(15 downto 12) = "1001") then --- jal inst , immed(9 bit)
@@ -201,12 +217,12 @@ ARCHITECTURE arch OF  branch_predictor IS
 						for j in 9 to 15 loop
 							sign_ext_imm(j) := inst2(8);
 						end loop;
-						Branch_addr <= PC_given + sign_ext_imm+1;
+						Branch_addr := add(add(PC_given, sign_ext_imm), x"0001");
 					---Branch_addr <= PC_given + immediate;
 					
 				elsif(inst2(15 downto 12) = "1010" or inst2(15 downto 12) = "1011") then
 					-- conditional jump instruction, predict address, 
-					Branch_addr <= LUT(i)(15 downto 0);
+					Branch_addr := LUT(i)(15 downto 0);
 				end if;
 				present := 1;
 				exit;
@@ -217,9 +233,9 @@ ARCHITECTURE arch OF  branch_predictor IS
 				or inst2(15 downto 12) = "1010" or inst2(15 downto 12) = "1011") then
 				if(present = 0) then
 					present := 1;
-					LUT(head)(34 downto 19) := PC_given+1;
+					LUT(head)(34 downto 19) := add(PC_given, x"0001");
 					LUT(head)(18 downto 17) := "10";
-					Branch_addr <= PC_given+1 +1;
+					Branch_addr := add(PC_given, x"0002");
 					if(head = 31) then
 						head := 0;
 					else
@@ -227,7 +243,7 @@ ARCHITECTURE arch OF  branch_predictor IS
 					end if;
 				end if;
 			else
-				Branch_addr <= PC_given + 1 +1;
+				Branch_addr := add(PC_given, x"0003");
 			end if;
 		end if;
 		  

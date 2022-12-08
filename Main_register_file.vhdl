@@ -70,27 +70,32 @@ end function;
 
   
   begin 
-  RF_read: process(read_addr_a, read_addr_b,read_addr_c, read_addr_d ) 
-  begin 
+--  RF_read: process(read_addr_a, read_addr_b,read_addr_c, read_addr_d ) 
+--  begin 
   data_out_a <= registers(to_integer(unsigned(read_addr_a)));
   data_out_b <= registers(to_integer(unsigned(read_addr_b)));
   data_out_c <= registers(to_integer(unsigned(read_addr_c)));
   data_out_d <= registers(to_integer(unsigned(read_addr_d)));
   data_out_e <= registers(to_integer(unsigned(read_addr_e)));
   data_out_f <= registers(to_integer(unsigned(read_addr_f)));
-  end process;
+--  end process;
   
-  RF_write: process(clk, clear, reset )
+  RF_write: process(clear, reset , clk)
+   variable fresh_reg_1: integer:= 8;
+   variable fresh_reg_2: integer:= 9; -- base case remaining 
+	variable loop_indx: integer:= 0;
   begin
   if(reset = '1') then
 	l1: for k in 0 to 31 loop
 	  registers(k) := (others => '0');
 	 end loop l1; 
+	 full<='0';
 	 
    elsif (clear = '1') then
 	 l2: for k in 0 to 31 loop
 	registers(k)(6 downto 0) := "0000000";
-	 end loop l2; 
+	 end loop l2;
+	full<='0'; 
 	 
   
   
@@ -126,20 +131,20 @@ end function;
 	 
 	 end if;
 	 end if;
-	 end if;
+--	 end if;
 
-	end process;
+--	end process;
 	
 	
 	
 
-	rename: process (clk)
-	variable fresh_reg_1: integer:= 8;
-	variable fresh_reg_2: integer:= 9; -- base case remaining 
-	variable loop_indx: integer:= 0;
-	
-	begin
-	if rising_edge(clk) then 
+--	rename: process (clk)
+--	variable fresh_reg_1: integer:= 8;
+--	variable fresh_reg_2: integer:= 9; -- base case remaining 
+--	variable loop_indx: integer:= 0;
+--	
+--	begin
+--	if rising_edge(clk) then 
 	rename_reg_addr_in_1_lat <= rename_reg_addr_in_1;
 	rename_reg_addr_in_2_lat <= rename_reg_addr_in_2;
 	reg_rename_en_1_lat <= reg_rename_en_1;

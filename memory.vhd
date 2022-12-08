@@ -34,7 +34,7 @@ signal RAM_DATA_IN_2_latch: std_logic_vector(15 downto 0); -- 16 bit Data_2_latc
 type RAM_ARRAY is array (0 to  63) of std_logic_vector (15 downto 0);
 -- initial values in the RAM
 signal RAM: RAM_ARRAY :=(
-   x"0000",x"0000",x"0000",x"0000",-- 0x00: 
+   x"32AC",x"372C",x"0000",x"0000",-- 0x00: 
    x"0000",x"0000",x"0000",x"0000",-- 0x04: 
    x"0000",x"0000",x"0000",x"0000",-- 0x08: 
    x"0000",x"0000",x"0000",x"0000",-- 0x0C: 
@@ -56,8 +56,8 @@ process(RAM_CLOCK)
 
 begin
 	if (reset = '1') then
-		RAM(0) <= "0011001010101100";
-		RAM(1) <= "0011011100101100";
+--		RAM(0) <= "0011001010101100";
+--		RAM(1) <= "0011011100101100";
    elsif(rising_edge(RAM_CLOCK)) then
       RAM_ADDR_Write_1_latch <= RAM_ADDR_Write_1;
       RAM_DATA_IN_1_latch <= RAM_DATA_IN_1; 
@@ -85,5 +85,5 @@ end process;
 RAM_DATA_OUT_1 <= RAM(to_integer(unsigned(RAM_ADDR_Read_1)));
 RAM_DATA_OUT_2 <= RAM(to_integer(unsigned(RAM_ADDR_Read_2)));
 instr_out_1 <= RAM(to_integer(unsigned(PC_Instr)));
-instr_out_2 <= RAM(to_integer(unsigned(PC_Instr + 1)));
+instr_out_2 <= RAM(to_integer(unsigned(PC_Instr)) + 1);
 end Behavioral;
