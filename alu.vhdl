@@ -21,7 +21,7 @@ entity alu is
 		opr1: in std_logic_vector(operand_width-1 downto 0);
 		opr2: in std_logic_vector(operand_width-1 downto 0);
 		dest: in std_logic_vector(operand_width-1 downto 0);
-		output: out std_logic_vector(operand_width-1 downto 0);
+		output: out std_logic_vector(15 downto 0);
 		opcode: in std_logic_vector(sel_line-1 downto 0);
 		PC_in: in std_logic_vector(15 downto 0);
 		PC_out: out std_logic_vector(15 downto 0);
@@ -60,6 +60,7 @@ architecture beh of alu is
 				sum(operand_width) := carry(operand_width-1);
 			return sum;
 	end function add;
+	
 	function adl(A: in std_logic_vector(operand_width-1 downto 0); B: in std_logic_vector(operand_width-1 downto 0)) 
 	return std_logic_vector is
 				variable sumL: std_logic_vector(operand_width downto 0);
@@ -78,20 +79,22 @@ architecture beh of alu is
 	
 
 
-	signal add_temp : std_logic_vector(operand_width downto 0) := (others => '0');
-	signal adl_temp : std_logic_vector(operand_width downto 0) := (others => '0');
-	signal output_temp : std_logic_vector(operand_width-1 downto 0) := (others => '0'); --(Aayush) directly using or reduce is giving some error for zero flag 
+	
+	signal output_temp : std_logic_vector(15 downto 0);  --(Aayush) directly using or reduce is giving some error for zero flag 
                                                                  -- added a signal for that
 begin
-	add_temp <= add(opr1, opr2);
-	adl_temp <= adl(opr1, opr2);
+	
 	PC_out <= PC_in;
 	main: process(opr1, opr2, dest, cin, zin, opcode, enable, reset)
+	variable add_temp : std_logic_vector(16 downto 0);
+	variable adl_temp : std_logic_vector(16 downto 0) ;
 	begin
 		if reset = '1' THEN
 			C <= '0';
 			Z <= '0';
 		else 
+			add_temp := add(opr1, opr2);
+			adl_temp := adl(opr1, opr2);
 			if enable = '1' then
 			   -- ADD
 				if opcode(sel_line-1 downto 2) = "0001" then
@@ -129,7 +132,16 @@ begin
 						C <= adl_temp(operand_width);
 						Z <= or_reduce(output_temp);
 					end if;
-			 -- NDU
+			 -- ADI
+				elsif opcode(sel_line-1 downto 2) = "0011" then
+					output <= add_temp(operand_width-1 downto 0);   --std_logic_vector(unsigned(opr1)+ unsigned(opr2));
+					output_temp <= add(opr1, opr2)(operand_width-1 downto 0);
+					C <= add_temp(operand_width);
+					Z <= or_reduce(output_temp);
+--					report "ADI EXECUTE OPR1" & ":" & to_string(opr1);
+--					report "ADI EXECUTE OPR2" & ":" & to_string(opr2);
+--					report "ADI EXECUTE" & ":" & to_string(add_temp);
+				--NDU
 				elsif opcode(sel_line-1 downto 2) = "0010" then
 					if opcode(1 downto 0) = "00" then
 						output <= opr1 nand opr2;

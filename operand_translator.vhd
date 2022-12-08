@@ -218,6 +218,7 @@ begin
 		when "0011" =>
 		  opr1_alu1_out <= opr1_alu1;
 		  opr2_alu1_out <= imm_alu1;
+		  
 		
 		when "0010" =>
 		  opr1_alu1_out <= opr1_alu1;

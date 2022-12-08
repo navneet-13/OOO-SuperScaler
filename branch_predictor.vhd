@@ -16,7 +16,7 @@ ENTITY branch_predictor IS
 		--IF_M1_OUT, PC_EXE, PC_PRED, PC_RR: IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		--clk, reset, RR_EX_valid : IN STD_LOGIC;
 		read_en, write_en1, write_en2, predict1, predict2 : in std_logic; -- T,NT -predict=1,0
-		clk: in std_logic;
+		clk, reset: in std_logic;
 		--match, fush : OUT STD_LOGIC;
 		Branch_addr_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 		intermediate_addr_out : out std_logic_vector(15 downto 0)
@@ -46,14 +46,16 @@ ARCHITECTURE arch OF  branch_predictor IS
 				sum(operand_width) := carry(operand_width-1);
 			return sum(15 downto 0);
 	end function add;
+	
 	signal inst1, inst2: std_logic_vector(15 downto 0);
+	signal final_branch_add: std_logic_vector( 15 downto 0) := (others => '0');
 	
 	BEGIN
 	
 	PROCESS (clk)
 	variable sign_ext_imm : std_logic_vector(15 downto 0);
 	TYPE LUT_type is array (0 to 32) of std_logic_vector(34 downto 0);
-	variable LUT: LUT_type := (OTHERS => (OTHERS => '0'));
+	variable LUT: LUT_type := (OTHERS => (OTHERS => '1'));
 	variable present: integer := 0; -- present in look up table --not initialized
 	variable head : integer := 0; -- present in look up table --not initialized
 	variable branch_addr: std_logic_vector(15 downto 0);
@@ -63,8 +65,15 @@ ARCHITECTURE arch OF  branch_predictor IS
 	BEGIN
 	inst1 <= inst(31 downto 16);
 	inst2 <= inst(15 downto 0);
+	if (reset ='1') then
+	LUT := (OTHERS => (OTHERS => '1'));
+	final_branch_add <= (others => '0');
+	Branch_addr_out <= (others => '0');
+	intermediate_addr_out <= (others => '0');
 	
-	 if(rising_edge(clk)) then
+	
+	elsif(rising_edge(clk)) then
+	 present := 0;
 	 branch_addr := add(PC_given, x"0001");
 		if (read_en = '1') then
 		L1 : for i in 0 to 32 loop
@@ -115,8 +124,10 @@ ARCHITECTURE arch OF  branch_predictor IS
 				end if;
 			else
 				Branch_addr := add(PC_given, x"0001");
+				report "ABCD1";
 			end if;
-		end if;	
+		end if;
+			
 		if(write_en1 = '1') then                     -- updating smith tag of the resolved branch
 			for i in 0 to 32 loop
 				if(LUT(i)(34 downto 19) = PC_update_rob1) then
@@ -194,7 +205,7 @@ ARCHITECTURE arch OF  branch_predictor IS
 		
 		present :=0;
 		intermediate_addr_out <= branch_addr; 
-		if(branch_addr = add(PC_given, x"0001")) then 
+		if(Branch_addr = add(PC_given, x"0001")) then 
 		  if (read_en = '1') then
 		L2 : for i in 0 to 32 loop
 			if(LUT(i)(34 downto 19) = add(PC_given, x"0001")) then
@@ -206,10 +217,10 @@ ARCHITECTURE arch OF  branch_predictor IS
 						for j in 6 to 15 loop
 							sign_ext_imm(j) := inst2(5);
 						end loop;
-						Branch_addr := add(add(PC_given, sign_ext_imm),x"0001");
+						final_branch_add <= add(add(PC_given, sign_ext_imm),x"0001");
 						
 					elsif(LUT(i)(18 downto 17) = "00" or LUT(i)(18 downto 17) = "01") then
-						Branch_addr := add(PC_given, x"0002");
+						final_branch_add <= add(PC_given, x"0002");
 					end if; 
 					
 				elsif(inst2(15 downto 12) = "1001") then --- jal inst , immed(9 bit)
@@ -217,12 +228,12 @@ ARCHITECTURE arch OF  branch_predictor IS
 						for j in 9 to 15 loop
 							sign_ext_imm(j) := inst2(8);
 						end loop;
-						Branch_addr := add(add(PC_given, sign_ext_imm), x"0001");
+						final_branch_add <= add(add(PC_given, sign_ext_imm), x"0001");
 					---Branch_addr <= PC_given + immediate;
 					
 				elsif(inst2(15 downto 12) = "1010" or inst2(15 downto 12) = "1011") then
 					-- conditional jump instruction, predict address, 
-					Branch_addr := LUT(i)(15 downto 0);
+					final_branch_add <= LUT(i)(15 downto 0);
 				end if;
 				present := 1;
 				exit;
@@ -235,7 +246,7 @@ ARCHITECTURE arch OF  branch_predictor IS
 					present := 1;
 					LUT(head)(34 downto 19) := add(PC_given, x"0001");
 					LUT(head)(18 downto 17) := "10";
-					Branch_addr := add(PC_given, x"0002");
+					final_branch_add <= add(PC_given, x"0002");
 					if(head = 31) then
 						head := 0;
 					else
@@ -243,14 +254,15 @@ ARCHITECTURE arch OF  branch_predictor IS
 					end if;
 				end if;
 			else
-				Branch_addr := add(PC_given, x"0003");
+				final_branch_add <= add(PC_given, x"0002");
+				report "ABCD2";
 			end if;
 		end if;
 		  
 		  
 		  
 		end if;
-		branch_addr_out <= branch_addr;
+		branch_addr_out <= final_branch_add;
 		end if;
 		
 	END PROCESS;

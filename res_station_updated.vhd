@@ -89,6 +89,8 @@ entity res_station_updated is
 		cz_alu1 : out std_logic_vector(1 downto 0);
 		cz_alu2 : out std_logic_vector(1 downto 0);
 		clear : in std_logic;
+		alu_en1, alu_en2, lw_sw_en1, lw_sw_en2, branch_en1, branch_en2: out std_logic;
+		opcode_alu_1, opcode_alu_2, opcode_lw_sw_1, opcode_lw_sw_2, opcode_branch1, opcode_branch2 : out std_logic_vector(3 downto 0);
 		
 		unspeculate_tag: in std_logic_vector(2 downto 0);
 		unspeculate_en: in std_logic;
@@ -116,8 +118,20 @@ BEGIN
 	     RS(i) := (others => '0');
 	  end loop;
 	  fetch_stall<='0';
+	  alu_en1 <= '0';
+	  alu_en2    <= '0';
+	  lw_sw_en1  <= '0';
+	  lw_sw_en2  <= '0';
+	  branch_en1 <= '0'; 
+	  branch_en2 <= '0';
 	
 	elsif(rising_edge(clk)) then
+	  alu_en1 <= '0';
+	  alu_en2    <= '0';
+	  lw_sw_en1  <= '0';
+	  lw_sw_en2  <= '0';
+	  branch_en1 <= '0'; 
+	  branch_en2 <= '0';
 --		if(RS_full = 0) then
 --			L1: for i in 0 to RS_size-2 loop
 --				if(RS(i)(busy) = '0') then
@@ -214,12 +228,18 @@ BEGIN
 							opr2_branch1 <= RS(i)(opr2_high downto opr2_low);
 							imm_branch1 <= RS(i)(imm_high downto imm_low);
 							cz_branch1 <= RS(i)(cz_high downto cz_low);
+							branch_en1 <='1';
+							opcode_branch1 <= RS(i)(opcode_high downto opcode_low);
+							
 					
 					elsif(sent_branch = 1) then
 			      		opr1_branch2 <= RS(i)(opr1_high downto opr1_low);
 							opr2_branch2 <= RS(i)(opr2_high downto opr2_low);
 							imm_branch2 <= RS(i)(imm_high downto imm_low);
 							cz_branch2 <= RS(i)(cz_high downto cz_low);
+							branch_en2 <='1';
+							opcode_branch2 <= RS(i)(opcode_high downto opcode_low);
+							
 					end if;
 					sent_branch := sent_branch+1;
 					end if;
@@ -233,6 +253,8 @@ BEGIN
 							opr2_lwsw1 <= RS(i)(opr2_high downto opr2_low);
 							imm_lwsw1 <= RS(i)(imm_high downto imm_low);
 							cz_lwsw1 <= RS(i)(cz_high downto cz_low);
+							lw_sw_en1 <='1';
+							opcode_lw_sw_1 <= RS(i)(opcode_high downto opcode_low);
 					
 					elsif(sent_lwsw = 1) then
 					 
@@ -240,6 +262,8 @@ BEGIN
 							opr2_lwsw2 <= RS(i)(opr2_high downto opr2_low);
 							imm_lwsw2 <= RS(i)(imm_high downto imm_low);
 							cz_lwsw2 <= RS(i)(cz_high downto cz_low);
+							lw_sw_en2 <='1';
+							opcode_lw_sw_2 <= RS(i)(opcode_high downto opcode_low);
 					end if;
 					sent_lwsw := sent_lwsw+1;
 					end if;
@@ -251,12 +275,16 @@ BEGIN
 							opr2_alu1 <= RS(i)(opr2_high downto opr2_low);
 							imm_alu1 <= RS(i)(imm_high downto imm_low);
 							cz_alu1 <= RS(i)(cz_high downto cz_low);
+							alu_en1 <='1';
+							opcode_alu_1 <= RS(i)(opcode_high downto opcode_low);
 					
 					elsif(sent_alu = 1) then
 			      		opr1_alu2 <= RS(i)(opr1_high downto opr1_low);
 							opr2_alu2 <= RS(i)(opr2_high downto opr2_low);
 							imm_alu2 <= RS(i)(imm_high downto imm_low);
 							cz_alu2 <= RS(i)(cz_high downto cz_low);
+							alu_en2 <='1';
+							opcode_alu_2 <= RS(i)(opcode_high downto opcode_low);
 					end if;
 					sent_alu := sent_alu+1;
 					end if;

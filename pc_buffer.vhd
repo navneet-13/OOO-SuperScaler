@@ -18,7 +18,7 @@ begin
 		if(clr = '1') then
 				Dout <= (others => '0');
 			
-		elsif(clk'event and clk='1') then
+		elsif(clk'event and clk='0') then
 				Dout <= Din1;
 		end if;
 		
