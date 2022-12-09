@@ -141,6 +141,8 @@ begin
 --					report "ADI EXECUTE OPR1" & ":" & to_string(opr1);
 --					report "ADI EXECUTE OPR2" & ":" & to_string(opr2);
 --					report "ADI EXECUTE" & ":" & to_string(add_temp);
+					report "PC ALU" & ":" & to_string(PC_in);
+			
 				--NDU
 				elsif opcode(sel_line-1 downto 2) = "0010" then
 					if opcode(1 downto 0) = "00" then

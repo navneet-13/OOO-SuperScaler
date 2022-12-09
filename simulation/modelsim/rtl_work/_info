@@ -10,7 +10,7 @@ z2
 cModel Technology
 Z0 dD:/Desktop/GitHub/OOO-SuperScaler/simulation/modelsim
 Ealu
-Z1 w1670503384
+Z1 w1670532823
 Z2 DPx8 synopsys 10 attributes 0 22 dc>JdEHRM@6GGENe5bZ?D1
 Z3 DPx4 ieee 14 std_logic_misc 0 22 dN]HY6l5ohPcZ:TaC@B;53
 Z4 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
@@ -29,9 +29,9 @@ VaLG4IDcokO`Y<h7;goQMA1
 !s100 ^3^Y]2S7nVm_3D8XUS7]_3
 Z13 OV;C;2020.1;71
 31
-Z14 !s110 1670506957
+Z14 !s110 1670533941
 !i10b 1
-Z15 !s108 1670506956.000000
+Z15 !s108 1670533940.000000
 Z16 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl|
 Z17 !s107 D:/Desktop/GitHub/OOO-SuperScaler/alu.vhdl|
 !i113 1
@@ -49,9 +49,9 @@ R9
 DEx4 work 3 alu 0 22 aLG4IDcokO`Y<h7;goQMA1
 !i122 15
 l85
-L36 149
-VXlb4:2z=h>a?TjUSAB=:70
-!s100 b;eZOPlF^o6:8iYPJeWnI0
+L36 151
+V?APO;W4Jb:7M>Y9b`[4N_0
+!s100 >Qhj:8J_eH31DnNFCkPXg1
 R13
 31
 R14
@@ -82,7 +82,7 @@ R13
 31
 R14
 !i10b 1
-Z23 !s108 1670506957.000000
+Z23 !s108 1670533941.000000
 Z24 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd|
 Z25 !s107 D:/Desktop/GitHub/OOO-SuperScaler/Branch_Jump_Ex.vhd|
 !i113 1
@@ -129,7 +129,7 @@ V[mYWmOVMfRW@lzY1b3e?c2
 !s100 <aCX8gjD3?@I^HYZRWfA62
 R13
 31
-Z29 !s110 1670506956
+Z29 !s110 1670533940
 !i10b 1
 R15
 Z30 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/LS_Ex_Unit.vhd|
@@ -210,7 +210,7 @@ R36
 R18
 R19
 Edatapath
-Z37 w1670506035
+Z37 w1670533851
 R4
 R8
 R9
@@ -238,10 +238,10 @@ R8
 R9
 DEx4 work 8 datapath 0 22 LDMYOejK4Lk@H0Xe`?13V2
 !i122 13
-l708
-L13 1209
-V0XJHj;kE;c@0YRflR;L]90
-!s100 lP>SUOmZA?zff0aczgn]e0
+l711
+L13 1224
+V:6a_iN[IY49m7fBHBLNO11
+!s100 i^jUg5D_6YN^UofU_QTjS2
 R13
 31
 R29
@@ -253,7 +253,7 @@ R41
 R18
 R19
 Edecoder
-Z42 w1670504003
+Z42 w1670529589
 R4
 R8
 R9
@@ -263,8 +263,8 @@ Z43 8D:/Desktop/GitHub/OOO-SuperScaler/decoder.vhd
 Z44 FD:/Desktop/GitHub/OOO-SuperScaler/decoder.vhd
 l0
 L6 1
-VoFRo0M5j@GjCSRkNIL;Nm3
-!s100 i]E7HQDY>k?YnNUSZlJQ`1
+VZlY=M_AGH1[3Q4Im_VKAA3
+!s100 PU[_O40hEZ@kRWD9Sj8QH3
 R13
 31
 R29
@@ -279,12 +279,12 @@ Abehavioral
 R4
 R8
 R9
-DEx4 work 7 decoder 0 22 oFRo0M5j@GjCSRkNIL;Nm3
+DEx4 work 7 decoder 0 22 ZlY=M_AGH1[3Q4Im_VKAA3
 !i122 9
-l125
-L117 1238
-VSHanHQPN@Dmb@:LWL_0933
-!s100 Z1RkJ7[alB:_zYjeIk_d:3
+l126
+L118 1243
+V:8RJojXgi>>b7kdJU<]@F2
+!s100 GS;<mnD3b6YH8iZ3RlQNP2
 R13
 31
 R29
@@ -311,9 +311,9 @@ V8;jWMi>>a>G0R4Ng@E1Ri3
 !s100 TZ<HUZPkf8G[JGUz6lZCP2
 R13
 31
-Z50 !s110 1670506954
+Z50 !s110 1670533939
 !i10b 1
-Z51 !s108 1670506954.000000
+Z51 !s108 1670533939.000000
 Z52 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/DUT.vhdl|
 Z53 !s107 D:/Desktop/GitHub/OOO-SuperScaler/DUT.vhdl|
 !i113 1
@@ -341,7 +341,7 @@ R53
 R18
 R19
 Efetch_buffer
-Z54 w1670505913
+Z54 w1670531682
 R4
 R8
 R9
@@ -351,15 +351,15 @@ Z55 8D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd
 Z56 FD:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd
 l0
 L5 1
-V^lcG28;a;RT2?02Hl6n^:3
-!s100 5;jOlKI=]knz==m09=0>G3
+V6WIUPiWW^GQbQCN=D^SdE2
+!s100 7A79Lz^UQA`g=^b^IO8FR3
 R13
 31
 R29
 !i10b 1
-Z57 !s108 1670506955.000000
-Z58 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd|
-Z59 !s107 D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd|
+R15
+Z57 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd|
+Z58 !s107 D:/Desktop/GitHub/OOO-SuperScaler/fetch.vhd|
 !i113 1
 R18
 R19
@@ -367,42 +367,42 @@ Astruct
 R4
 R8
 R9
-DEx4 work 12 fetch_buffer 0 22 ^lcG28;a;RT2?02Hl6n^:3
+DEx4 work 12 fetch_buffer 0 22 6WIUPiWW^GQbQCN=D^SdE2
 !i122 8
-l19
-L16 21
-V;i82mZbO;eI^oJ[Q_A<8^0
-!s100 lZ4QFJ=B`Jo8dVPOY[D8G1
+l21
+L18 44
+VX^Ro@@VG6gYXR2RQMi=EY2
+!s100 V8De1;__]0YTTIGAj@NXj2
 R13
 31
 R29
 !i10b 1
+R15
 R57
 R58
-R59
 !i113 1
 R18
 R19
 Eflag_rf_file
-Z60 w1670439221
+Z59 w1670439221
 R4
 R8
 R9
 !i122 7
 R0
-Z61 8D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl
-Z62 FD:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl
+Z60 8D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl
+Z61 FD:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl
 l0
 L5 1
 VN;`^DhdOZ3KH@O^_1NoE91
 !s100 9XZ^6z=@1>d^4>a^<9;6T0
 R13
 31
-Z63 !s110 1670506955
+R29
 !i10b 1
-R57
-Z64 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl|
-Z65 !s107 D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl|
+R51
+Z62 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl|
+Z63 !s107 D:/Desktop/GitHub/OOO-SuperScaler/flag_register_file.vhdl|
 !i113 1
 R18
 R19
@@ -418,34 +418,34 @@ VN67KC[B6b8bK;XIYhFYi_0
 !s100 ]I]Bg[OP6N3f5=F:EG[dN2
 R13
 31
-R63
+R29
 !i10b 1
-R57
-R64
-R65
+R51
+R62
+R63
 !i113 1
 R18
 R19
 Emain_register_file
-Z66 w1670442544
+Z64 w1670442544
 R4
 R8
 R9
 !i122 6
 R0
-Z67 8D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl
-Z68 FD:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl
+Z65 8D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl
+Z66 FD:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl
 l0
 L7 1
 Vf9eNj3d`3l4MfKz8Ra<W?1
 !s100 o]zaNn?^PZO]aLjzCJHdg2
 R13
 31
-R63
+R50
 !i10b 1
-R57
-Z69 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl|
-Z70 !s107 D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl|
+R51
+Z67 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl|
+Z68 !s107 D:/Desktop/GitHub/OOO-SuperScaler/Main_register_file.vhdl|
 !i113 1
 R18
 R19
@@ -461,16 +461,16 @@ Vo`eVW2DmYSE30gPUC=I@63
 !s100 D27jB[HfYT9XWPL`NdDRP0
 R13
 31
-R63
+R50
 !i10b 1
-R57
-R69
-R70
+R51
+R67
+R68
 !i113 1
 R18
 R19
 Emultiple_port_ram_vhdl
-Z71 w1670505296
+Z69 w1670523332
 R5
 R6
 R4
@@ -478,19 +478,19 @@ R8
 R9
 !i122 5
 R0
-Z72 8D:/Desktop/GitHub/OOO-SuperScaler/memory.vhd
-Z73 FD:/Desktop/GitHub/OOO-SuperScaler/memory.vhd
+Z70 8D:/Desktop/GitHub/OOO-SuperScaler/memory.vhd
+Z71 FD:/Desktop/GitHub/OOO-SuperScaler/memory.vhd
 l0
 L7 1
 VN3`OkPN<BR<n@:gJ9F>nL3
 !s100 CH_J>XN5^Jzh?BDgM>B=@1
 R13
 31
-R63
+R50
 !i10b 1
-R57
-Z74 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/memory.vhd|
-Z75 !s107 D:/Desktop/GitHub/OOO-SuperScaler/memory.vhd|
+R51
+Z72 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/memory.vhd|
+Z73 !s107 D:/Desktop/GitHub/OOO-SuperScaler/memory.vhd|
 !i113 1
 R18
 R19
@@ -504,39 +504,39 @@ DEx4 work 22 multiple_port_ram_vhdl 0 22 N3`OkPN<BR<n@:gJ9F>nL3
 !i122 5
 l54
 L27 65
-VgzELFLV[08SoEMEOecBCA2
-!s100 g2<nc4_UZ<Yb0GT0L`jGj3
+VzVUzhETadX=_J[MdOj>OC2
+!s100 >6QLk65D=XR2jAl9oC8o03
 R13
 31
-R63
+R50
 !i10b 1
-R57
-R74
-R75
+R51
+R72
+R73
 !i113 1
 R18
 R19
 Eoperand_translator
-Z76 w1670499796
+Z74 w1670499796
 R7
 R9
 R8
 R4
 !i122 4
 R0
-Z77 8D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd
-Z78 FD:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd
+Z75 8D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd
+Z76 FD:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd
 l0
 L8 1
 V6_;nTG0>cm5YlVoM479TZ2
 !s100 iRE]h7b;6kaXNY[hZe59>1
 R13
 31
-R63
+R50
 !i10b 1
-R57
-Z79 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd|
-Z80 !s107 D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd|
+R51
+Z77 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd|
+Z78 !s107 D:/Desktop/GitHub/OOO-SuperScaler/operand_translator.vhd|
 !i113 1
 R18
 R19
@@ -553,34 +553,34 @@ VzJh5h^5VG58dMh[10SF111
 !s100 l9]D9:c:;QD5keM>UONB^1
 R13
 31
-R63
+R50
 !i10b 1
-R57
-R79
-R80
+R51
+R77
+R78
 !i113 1
 R18
 R19
 Epc_buffer
-Z81 w1670491568
+Z79 w1670491568
 R4
 R8
 R9
 !i122 3
 R0
-Z82 8D:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd
-Z83 FD:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd
+Z80 8D:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd
+Z81 FD:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd
 l0
 L5 1
 VTKVbg85PbCG_<VVQRieA92
 !s100 d8Z@ATIdFVdG[b_]7SH731
 R13
 31
-R63
+R50
 !i10b 1
-R57
-Z84 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd|
-Z85 !s107 D:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd|
+R51
+Z82 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd|
+Z83 !s107 D:/Desktop/GitHub/OOO-SuperScaler/pc_buffer.vhd|
 !i113 1
 R18
 R19
@@ -596,16 +596,16 @@ VB5<U5e9]YWcRdD^ghF3^?1
 !s100 hdg]]jQVKMdX@^c8>gMz10
 R13
 31
-R63
+R50
 !i10b 1
-R57
-R84
-R85
+R51
+R82
+R83
 !i113 1
 R18
 R19
 Eres_station_updated
-Z86 w1670498699
+Z84 w1670533521
 R2
 R3
 R5
@@ -616,19 +616,19 @@ R8
 R4
 !i122 12
 R0
-Z87 8D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd
-Z88 FD:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd
+Z85 8D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd
+Z86 FD:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd
 l0
 L11 1
-V>X1Bc;lK[2VSCMXdCCZiW3
-!s100 HEg6FF_WUkdb9HFf4Mb]T0
+V[>;9YTGJI_?_7RSgmdVnf1
+!s100 Co6O]^]cT[SLzVV`FCR;k1
 R13
 31
 R29
 !i10b 1
 R15
-Z89 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd|
-Z90 !s107 D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd|
+Z87 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd|
+Z88 !s107 D:/Desktop/GitHub/OOO-SuperScaler/res_station_updated.vhd|
 !i113 1
 R18
 R19
@@ -641,24 +641,24 @@ R7
 R9
 R8
 R4
-DEx4 work 19 res_station_updated 0 22 >X1Bc;lK[2VSCMXdCCZiW3
+DEx4 work 19 res_station_updated 0 22 [>;9YTGJI_?_7RSgmdVnf1
 !i122 12
-l106
-L103 284
-VndoE^i]Raf?JMJ2cZM<P:2
-!s100 1NO2A3I3f`KFBKg^Jd^8B3
+l107
+L104 290
+V6VcT6B?nh9G>fb?7gQ3dJ1
+!s100 98ZOI[dK5AC14Ij@PMdEb3
 R13
 31
 R29
 !i10b 1
 R15
-R89
-R90
+R87
+R88
 !i113 1
 R18
 R19
 Erob
-Z91 w1670506892
+Z89 w1670532570
 R2
 R3
 R4
@@ -669,8 +669,8 @@ R8
 R9
 !i122 11
 R0
-Z92 8D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl
-Z93 FD:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl
+Z90 8D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl
+Z91 FD:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl
 l0
 L8 1
 VnlX1W5?PKhG@`1T06i3j81
@@ -680,8 +680,8 @@ R13
 R29
 !i10b 1
 R15
-Z94 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl|
-Z95 !s107 D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl|
+Z92 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl|
+Z93 !s107 D:/Desktop/GitHub/OOO-SuperScaler/ROB.vhdl|
 !i113 1
 R18
 R19
@@ -697,39 +697,39 @@ R9
 DEx4 work 3 rob 0 22 nlX1W5?PKhG@`1T06i3j81
 !i122 11
 l78
-L61 693
-V4kAF8cL_HIL<_lj:?>OO:3
-!s100 0U9;8:H;G_zlBR7TUX[4O1
+L61 737
+VnQ8]0ASj9Pd^Z;JoN`OEl0
+!s100 [BZibnA7fBM7;V]037oh12
 R13
 31
 R29
 !i10b 1
 R15
-R94
-R95
+R92
+R93
 !i113 1
 R18
 R19
 Ers_rob_translator
-Z96 w1670262678
+Z94 w1670262678
 R4
 R8
 R9
 !i122 2
 R0
-Z97 8D:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd
-Z98 FD:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd
+Z95 8D:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd
+Z96 FD:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd
 l0
 L6 1
 Vz2oOgbd4P2k=oCHIKm=9Z3
 !s100 ><C@moHHP9aAdPg^Uinb_2
 R13
 31
-R63
+R50
 !i10b 1
-R57
-Z99 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd|
-Z100 !s107 D:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd|
+R51
+Z97 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd|
+Z98 !s107 D:/Desktop/GitHub/OOO-SuperScaler/rs_rob_translator.vhd|
 !i113 1
 R18
 R19
@@ -745,22 +745,22 @@ Vn_YmRXX0?dT=cG]J2aTQk2
 !s100 o?T@jRUc<;UOB]Zo2FDOh1
 R13
 31
-R63
+R50
 !i10b 1
-R57
-R99
-R100
+R51
+R97
+R98
 !i113 1
 R18
 R19
 Etestbench
-Z101 w1670435217
+Z99 w1670435217
 R9
 R8
 !i122 17
 R0
-Z102 8D:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl
-Z103 FD:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl
+Z100 8D:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl
+Z101 FD:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl
 l0
 L7 1
 V]iKK_Z9L:G9B:i8c]3eFH0
@@ -770,27 +770,27 @@ R13
 R14
 !i10b 1
 R23
-Z104 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl|
-Z105 !s107 D:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl|
+Z102 !s90 -reportprogress|300|-93|-work|work|D:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl|
+Z103 !s107 D:/Desktop/GitHub/OOO-SuperScaler/Testbench.vhdl|
 !i113 1
 R18
 R19
 Abehave
 R9
 R8
-Z106 DEx4 work 9 testbench 0 22 ]iKK_Z9L:G9B:i8c]3eFH0
+Z104 DEx4 work 9 testbench 0 22 ]iKK_Z9L:G9B:i8c]3eFH0
 !i122 17
 l69
-Z107 L9 132
-Z108 VKR?:dTAlW7^LF8YJTna9>0
-Z109 !s100 F0^13IVE6QO[2h0;cziM20
+Z105 L9 132
+Z106 VKR?:dTAlW7^LF8YJTna9>0
+Z107 !s100 F0^13IVE6QO[2h0;cziM20
 R13
 31
 R14
 !i10b 1
 R23
-R104
-R105
+R102
+R103
 !i113 1
 R18
 R19

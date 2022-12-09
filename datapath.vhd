@@ -12,7 +12,7 @@ end datapath;
 
 architecture arch of datapath is
 
-signal fetch_enable, flush, reg_rename_en_1,reg_rename_en_2, flag_rename_en_1, flag_rename_en_2,
+signal dec_en1, dec_en2, fetch_enable, flush, reg_rename_en_1,reg_rename_en_2, flag_rename_en_1, flag_rename_en_2,
        rs_wr_en_1, rs_wr_en_2, rf_write_en_1, rf_write_en_2, rf_full, rf_clear,
 		 flag_write_en_a, flag_write_en_b, flag_rf_en, flag_rf_clear,flag_register_file, flag_rf_full,
 		 ram_wr_en_1, ram_wr_en_2, branch_predictor_read_en, branch_predictor_write_en1,
@@ -227,6 +227,7 @@ port(
  dest_in_2: in std_logic_vector(reg_file_op_size - 1 downto 0);
  flag_reg_in_1: in std_logic_vector(flag_reg_op_size - 1 downto 0);
  flag_reg_in_2: in std_logic_vector(flag_reg_op_size - 1 downto 0);
+ dec_en1, dec_en2: in std_logic;
  ----------------------------------------
  
  PC_1: in std_logic_vector(pc_size - 1 downto 0);
@@ -274,7 +275,9 @@ component fetch_buffer is
 		Din1: in std_logic_vector(31 downto 0);
 		Din2: in std_logic_vector(31 downto 0);
 		Dout: out std_logic_vector(31 downto 0);
-		PC : out std_logic_vector(31 downto 0)
+		PC : out std_logic_vector(31 downto 0);
+		dec_instr1: out std_logic;
+		dec_instr2: out std_logic
 		);
 end component fetch_buffer;
 
@@ -697,7 +700,7 @@ component res_station_updated is
 		unspeculate_en: in std_logic;
 		alu_en1, alu_en2, lw_sw_en1, lw_sw_en2, branch_en1, branch_en2: out std_logic;
 		opcode_alu_1, opcode_alu_2, opcode_lw_sw_1, opcode_lw_sw_2, opcode_branch1, opcode_branch2 : out std_logic_vector(3 downto 0);
-		
+		PC1_out, PC2_out, PC3_out, PC4_out, PC5_out, PC6_out: out std_logic_vector(15 downto 0); 
 		fetch_stall : out std_logic
 	  	
 	);
@@ -719,15 +722,20 @@ begin
 		report "ALU_1_OPR1" & ":" & to_string(opr1_alu1_out);
 		report "ALU1 result" & ":" & to_string(alu1_result);
 		report "IMM ALU 1" & ":" & to_string(imm_alu1);
-		report "Decoder OUT 1"& ": " & to_string(decode_out1);		
-		report "ALU1 Enable" & ": " & std_logic'image(alu1_en); 
+		report "Decoder OUT 1"& ": " & to_string(decode_out1);
+		report "ALU1 Enable" & ": " & std_logic'image(alu1_en); 		
+		report "ALU1 Enable OUT" & ": " & std_logic'image(alu_out_valid1);
+		report "RF data IN 1" & ": " & to_string(rf_data_in1);
+		report "PC 5 out" & ":" & to_string(pc5_out);
+		report "PC 6 out" & ":" & to_string(pc6_out);
+			
 		
 		end if;
 
 end process;
 
 fetch: fetch_buffer port map(clk => clk, ena => fetch_enable,clr => flush, Din1 => instr_word_1, 
-        Din2 => instr_word_2, Dout => instr_word_out, PC => fetch_PC);
+        Din2 => instr_word_2, Dout => instr_word_out, PC => fetch_PC, dec_instr1 =>dec_en1, dec_instr2 => dec_en2);
 
 decode: decoder port map(Instruction_Word => instr_word_out,
                clock => clk,
@@ -743,6 +751,7 @@ decode: decoder port map(Instruction_Word => instr_word_out,
 			      dest_in_2 => dest_in_1,
 			      flag_reg_in_1 => flag_reg_in_1,
 			      flag_reg_in_2 => flag_reg_in_2,
+					dec_en1 => dec_en1, dec_en2 => dec_en2,
 					PC_1 =>fetch_PC(15 downto 0) ,--check in branch predictor file
 					PC_2 => fetch_PC(31 downto 16), ------
 					reg_rename_en_1 => reg_rename_en_1,
@@ -1202,7 +1211,13 @@ reservation_station: res_station_updated port map(
 					opcode_lw_sw_1 => opcode3, 
 					opcode_lw_sw_2 => opcode4,
 					opcode_branch1 => opcode1,
-					opcode_branch2 => opcode2
+					opcode_branch2 => opcode2,
+					PC1_out => PC1_out,
+					PC2_out => PC2_out,
+					PC3_out => PC3_out,
+					PC4_out => PC4_out,
+					PC5_out => PC5_out,
+					PC6_out => PC6_out
 
 
 ); 

@@ -34,7 +34,7 @@ signal  PC1, PC2: std_logic_vector(15 downto 0);
 type RAM_ARRAY is array (0 to  63) of std_logic_vector (15 downto 0);
 -- initial values in the RAM
 signal RAM: RAM_ARRAY :=(
-   x"32AC",x"372C",x"0000",x"0000",-- 0x00: 
+   x"32AC",x"3729",x"002B",x"0000",-- 0x00: 
    x"0000",x"0000",x"0000",x"0000",-- 0x04: 
    x"0000",x"0000",x"0000",x"0000",-- 0x08: 
    x"0000",x"0000",x"0000",x"0000",-- 0x0C: 

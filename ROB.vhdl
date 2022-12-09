@@ -72,18 +72,19 @@ function to_string ( a: std_logic_vector) return string is
 		end function;
 	
 TYPE entry IS ARRAY(0 TO 50) OF std_logic_vector(word_width-1 DOWNTO 0);
-SIGNAL rob_entry : entry := (others=> (others => '0'));
+
 SIGNAL which_en, which_dest, which_load, which_store: std_logic_vector(1 downto 0);
 SIGNAL branch_flush: std_logic;
 begin	
 		mispred_flush <= branch_flush;
 		main: process(reset, clock)
-		variable head_pointer: integer := 0;
+		variable head_pointer: integer := 2;
 		variable tail_pointer: integer := 0;
 		variable full: std_logic := '1';
 		variable no_instr: integer := 0;
 		variable retire: integer := 0;
 		variable i: integer := 0;
+		variable rob_entry : entry := (others=> (others => '0'));
 		begin
 		
 		
@@ -92,9 +93,9 @@ begin
 			full := full and rob_entry(i)(0);
 		end loop;
 		if reset = '1' then
-			rob_entry <= (others=> (others=> '1'));
+			rob_entry := (others=> (75 downto 40=> '1', others=> '0'));
 
-			head_pointer := 0;
+			head_pointer := 2;
 			tail_pointer := 0;
 			branch_flush <='0';
 			no_instr := 0;
@@ -126,17 +127,18 @@ begin
 				end if;
 			end if;
 			
-			if (entry_write_1 = '1') then
-				rob_entry(tail_pointer)(word_width - 1 downto 2) <= entry_word_1;
-				rob_entry(tail_pointer)(0) <= '1';
+			if (entry_write_1 = '1' and full ='0') then
+				rob_entry(tail_pointer)(word_width - 1 downto 2) := entry_word_1;
+				rob_entry(tail_pointer)(0) := '1';
 				tail_pointer := tail_pointer + 1;
 				report " Tail Pointer1" & ":" & integer'image(tail_pointer);
+				report "ROB INSTR 1" & ":" & to_string(entry_word_1); 
 				
 			end if;
 			
-			if (entry_write_2 = '1') then
-				rob_entry(tail_pointer+1)(word_width - 1 downto 2) <= entry_word_2;
-				rob_entry(tail_pointer+1)(0) <= '1';
+			if (entry_write_2 = '1' and full ='0' and tail_pointer<50) then
+				rob_entry(tail_pointer+1)(word_width - 1 downto 2) := entry_word_2;
+				rob_entry(tail_pointer+1)(0) := '1';
 				tail_pointer := tail_pointer + 1;
 				report " Tail Pointer2" & ":" & integer'image(tail_pointer);
 				report "ROB INSTR 2" & ":" & to_string(entry_word_2); 
@@ -145,56 +147,68 @@ begin
 --				loop_ready: for i in 0 to 50 loop
 --					case 
 --					rob_entry(i)(1) <=  r0b_entry(i)(13) and rob_entry(i)(8) and not(rob_entry(i)(43));
+			report "PC1" & ":" & to_string(PC1);
+			report "PC2" & ":" & to_string(PC2);
+
+
 			loop1: for i in 0 to 50 loop
-				if (i >head_pointer-1 and i<tail_pointer+1) then
-					if (rob_entry(i) = PC1) then
+				if (i >head_pointer-1 and i<tail_pointer) then
+					if (rob_entry(i)(59 downto 44) = PC1 and rob_entry(i)(0) = '1') then
 						if (rob_entry(i)(9) = '0') then
-							rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val1;
-							rob_entry(i)(9) <= dest_ready_en1;
-							rob_entry(i)(4 downto 3) <= cz_data1;
-							rob_entry(i)(2) <= cz_en1;
-							report "ROB dest 1" & ":" & to_string(rob_entry(i)(word_width - 51 downto word_width - 66)); 
+							rob_entry(i)(word_width - 51 downto word_width - 66) := dest_ready_val1;
+							rob_entry(i)(9) := dest_ready_en1;
+							rob_entry(i)(4 downto 3) := cz_data1;
+							rob_entry(i)(2) := cz_en1;
+							report "ROB WORD" & ":" & to_string(rob_entry(i));
+							report "I during retire" & ";" & integer'image(i);
+							report "ROB dest 1" & ":" & to_string(rob_entry(i)(word_width - 51 downto word_width - 66));
+							report "ROB dest 1" & ":" & std_logic'image(rob_entry(i)(9));	
 							
 						end if;
 						
 						
-					elsif (rob_entry(i) = PC2) then
+					elsif (rob_entry(i)(59 downto 44) = PC2 and rob_entry(i)(0) = '1') then
 						if (rob_entry(i)(9) = '0') then
-							rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val2;
-							rob_entry(i)(9) <= dest_ready_en2;
-							rob_entry(i)(4 downto 3) <= cz_data2;
-							rob_entry(i)(2) <= cz_en2;
+							rob_entry(i)(word_width - 51 downto word_width - 66) := dest_ready_val2;
+							rob_entry(i)(9) := dest_ready_en2;
+							rob_entry(i)(4 downto 3) := cz_data2;
+							rob_entry(i)(2) := cz_en2;
 							report "ROB dest 2" & ":" & to_string(dest_ready_val2);
 						end if;
 						
-					elsif (rob_entry(i) = PC3) then
+					elsif (rob_entry(i)(59 downto 44) = PC3 and rob_entry(i)(0) = '1') then
 						if (rob_entry(i)(9) = '0') then
-							rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val3;
-							rob_entry(i)(9) <= dest_ready_en3;
-							rob_entry(i)(4 downto 3) <= cz_data3;
-							rob_entry(i)(2) <= cz_en3;
+							rob_entry(i)(word_width - 51 downto word_width - 66) := dest_ready_val3;
+							rob_entry(i)(9) := dest_ready_en3;
+							rob_entry(i)(4 downto 3) := cz_data3;
+							rob_entry(i)(2) := cz_en3;
+							report "ROB dest 3" & ":" & to_string(dest_ready_val3);
 						end if;
 
-					elsif (rob_entry(i) = PC4) then
+						
+					elsif (rob_entry(i)(59 downto 44) = PC4 and rob_entry(i)(0) = '1') then
 						if (rob_entry(i)(9) = '0') then
-							rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val4;
-							rob_entry(i)(9) <= dest_ready_en4;
-							rob_entry(i)(4 downto 3) <= cz_data4;
-							rob_entry(i)(2) <= cz_en4;
+							rob_entry(i)(word_width - 51 downto word_width - 66) := dest_ready_val4;
+							rob_entry(i)(9) := dest_ready_en4;
+							rob_entry(i)(4 downto 3) := cz_data4;
+							rob_entry(i)(2) := cz_en4;
+							report "ROB dest 4" & ":" & to_string(dest_ready_val4);
 						end if;
 						
-					elsif (rob_entry(i) = PC5) then
+					elsif (rob_entry(i)(59 downto 44) = PC5 and rob_entry(i)(0) = '1') then
 						if (rob_entry(i)(9) = '0') then
-							rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val5;
-							rob_entry(i)(9) <= dest_ready_en5;
-							rob_entry(i)(75 downto 60) <= targ_add5;
+							rob_entry(i)(word_width - 51 downto word_width - 66) := dest_ready_val5;
+							rob_entry(i)(9) := dest_ready_en5;
+							rob_entry(i)(75 downto 60) := targ_add5;
+							report "ROB dest 5" & ":" & to_string(dest_ready_val5);
 						end if;
 						
-					elsif (rob_entry(i) = PC6) then
+					elsif (rob_entry(i)(59 downto 44) = PC6 and rob_entry(i)(0) = '1') then
 						if (rob_entry(i)(9) = '0') then
-							rob_entry(i)(word_width - 51 downto word_width - 66) <= dest_ready_val6;
-							rob_entry(i)(9) <= dest_ready_en6;
-							rob_entry(i)(75 downto 60) <= targ_add6;
+							rob_entry(i)(word_width - 51 downto word_width - 66) := dest_ready_val6;
+							rob_entry(i)(9) := dest_ready_en6;
+							rob_entry(i)(75 downto 60) := targ_add6;
+							report "ROB dest 6" & ":" & to_string(dest_ready_val6);
 						end if;
 					end if;
 				end if;
@@ -203,27 +217,32 @@ begin
 			
 			ret_loop : for k in 0 to 1 loop	
 			i := head_pointer;
+			report "head pointer" & ":" & integer'image(i);
+			retire:= 0;
+			report "ROB Word" & ":" & to_string(rob_entry(i));
 			case rob_entry(head_pointer)(43 downto 40) is 
 				when "0001" | "0010" => 
-					rob_entry(i)(1) <=  rob_entry(i)(9) and rob_entry(i)(2) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and rob_entry(i)(2) and not(rob_entry(i)(39));
 					no_instr := no_instr + 1;
 					if (rob_entry(i)(1) = '1') then
 						if (no_instr <3) then
 							if (i = head_pointer) then
 								retire := retire + 1;
-								rob_entry(i)(0) <= '0';
+								rob_entry(i)(0) := '0';
 								if (which_dest = "00") then
 									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
-									dest_en1 <= '1';
+									dest_en1  <= '1';
 									which_dest <= "01";
+									report "ADD retire1";
 								elsif (which_dest = "01") then
 									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
+									report "ADD retire2";
 								end if;
 								
 								if which_en = "00" then
@@ -264,19 +283,24 @@ begin
 					
 					
 				when "0011" =>
-					rob_entry(i)(1) <=  rob_entry(i)(9) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and not(rob_entry(i)(39));
 					no_instr := no_instr + 1;
+					report "ADI OPCODE";
+					report "ADI INdex" & ":" & integer'image(i);
 					if (rob_entry(i)(1) = '1') then
+						report "ADI Ready";
 						if (no_instr <3) then
 							if (i = head_pointer) then
 								retire := retire + 1;
-								rob_entry(i)(0) <= '0';
+								rob_entry(i)(0) := '0';
 								if (which_dest = "00") then
 									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en1 <= '1';
 									which_dest <= "01";
+									report "Dest Val 1" & ":" & to_string(rob_entry(i)(word_width - 51 downto word_width - 66));
+									report "This is retire of ADI 1" & ":" & integer'image(retire);
 									
 								elsif (which_dest = "01") then
 									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
@@ -284,6 +308,9 @@ begin
 									dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
+									report "I during retire" & ";" & integer'image(i);
+									report "Dest Val 2" & ":" & to_string(rob_entry(i)(word_width - 51 downto word_width - 66));
+									report "This is retire of ADI 2" & ":" & integer'image(retire);
 									
 								end if;
 								
@@ -324,24 +351,26 @@ begin
 					end if;
 					
 				when "0000" =>
-					rob_entry(i)(1) <=  rob_entry(i)(9) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and not(rob_entry(i)(39));
 					no_instr := no_instr + 1;
 					if (rob_entry(i)(1) = '1') then
 						if (no_instr <3) then
 							retire := retire + 1;
-							rob_entry(i)(0) <= '0';
+							rob_entry(i)(0) := '0';
 							if (which_dest = "00") then
 								dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 								dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 								dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 								dest_en1 <= '1';
 								which_dest <= "01";
+								report"LHI retire 1 ";
 							elsif (which_dest = "01") then
 								dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 								dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 								dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 								dest_en2 <= '1';
 								which_dest <= "10";
+								report"LHI retire 2 ";
 							end if;
 							
 							if which_en = "00" then
@@ -380,25 +409,27 @@ begin
 					end if;
 				
 				when "0111" => 
-					rob_entry(i)(1) <=  rob_entry(i)(9) and rob_entry(i)(2) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and rob_entry(i)(2) and not(rob_entry(i)(39));
 					no_instr := no_instr + 1;
 					if (rob_entry(i)(1) = '1') then
 						if(no_instr < 3) then
 							if (which_store = "00") then
 								retire := retire + 1;
-								rob_entry(i)(0) <= '0';
+								rob_entry(i)(0) := '0';
 								if (which_dest = "00") then
 									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en1 <= '1';
 									which_dest <= "01";
+									report "Load Retire 1";
 								elsif (which_dest = "01") then
 									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									mem_add2  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
+									report "Load Retire 1";
 								end if;
 								
 								if which_en = "00" then
@@ -438,19 +469,21 @@ begin
 										which_store<= "01";
 									else
 										retire := retire + 1;
-										rob_entry(i)(0) <= '0';
+										rob_entry(i)(0) := '0';
 										if (which_dest = "00") then
 											dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 											dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 											mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 											dest_en1 <= '1';
 											which_dest <= "01";
+											report "Load Retire 3";
 										elsif (which_dest = "01") then
 											dest_ARF2 <= rob_entry(i)(word_width - 25 downto word_width - 29);
 											dest_RRF2 <= rob_entry(i)(word_width - 30 downto word_width - 34);
 											mem_add2  <= rob_entry(i)(word_width - 35 downto word_width - 50);
 											dest_en2 <= '1';
 											which_dest <= "10";
+											report "Load Retire 4";
 										end if;
 										
 										if which_en = "00" then
@@ -491,13 +524,13 @@ begin
 						end case;
 					end if;
 				when "0101" =>
-					rob_entry(i)(1) <=  rob_entry(i)(9) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and not(rob_entry(i)(39));
 					no_instr := no_instr + 1;
 					if(rob_entry(i)(1) = '1') then
 						if (no_instr <3) then
 							if (which_store = "00") then
 								retire := retire + 1;
-								rob_entry(i)(0) <= '0';
+								rob_entry(i)(0) := '0';
 								
 								if (which_dest = "00") then
 									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
@@ -505,12 +538,14 @@ begin
 									mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en1 <= '1';
 									which_dest <= "01";
+									report "Store Retire 1";
 								elsif (which_dest = "01") then
 									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									mem_add2  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
+									report "Store Retire 2";
 								end if;
 								
 								if which_en = "00" then
@@ -527,19 +562,21 @@ begin
 								which_store  <= "01";
 							elsif (which_store = "01") then
 								retire := retire + 1;
-								rob_entry(i)(0) <= '0';
+								rob_entry(i)(0) := '0';
 								if (which_dest = "00") then
 									dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									mem_add1  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en1 <= '1';
 									which_dest <= "01";
+									report "Store Retire 3";
 								elsif (which_dest = "01") then
 									dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 									dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 									mem_add2  <= rob_entry(i)(word_width - 51 downto word_width - 66);
 									dest_en2 <= '1';
 									which_dest <= "10";
+									report "Store Retire 4";
 								end if;
 								
 								if which_en = "00" then
@@ -560,20 +597,21 @@ begin
 			
 				when "1000" =>
 					no_instr := no_instr + 1;
-					rob_entry(i)(1) <=  rob_entry(i)(9) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and not(rob_entry(i)(39));
 					if (rob_entry(i)(1) = '1') then	
 						if (no_instr = 1 ) then
 							retire := retire + 1;
 							target_address <= rob_entry(i)(75 downto 60);
 							current_pc <= rob_entry(i)(59 downto 44);
 							branch_pred_en <= '1';
+							report "BEQ Retire 1";
 							if(to_integer(unsigned(rob_entry(i)(25 downto 10))) = 0) then
 								loop_spec : for j in 0 to 50 loop
 									if (j>i) then
 										if(rob_entry(j)(38 downto 36) = rob_entry(i)(38 downto 36)) then
 											mispred_tag <= rob_entry(head_pointer)(38 downto 36);
 											mispred_tag_en <= '1';
-											rob_entry(j)(39) <= '0';
+											rob_entry(j)(39) := '0';
 										else
 											exit;
 										end if;
@@ -586,24 +624,26 @@ begin
 					end if;
 					
 				when "1001" =>
-					rob_entry(i)(1) <=  rob_entry(i)(9) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and not(rob_entry(i)(39));
 					no_instr := no_instr + 1;
 					if (rob_entry(i)(1) = '1') then
 						if (no_instr <3) then
 							retire := retire + 1;
-							rob_entry(i)(0) <= '0';
+							rob_entry(i)(0) := '0';
 							if (which_dest = "00") then
 								dest_ARF1 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 								dest_RRF1 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 								dest_val1 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 								dest_en1 <= '1';
 								which_dest <= "01";
+								report "JAL Retire 1";
 							elsif (which_dest = "01") then
 								dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 								dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 								dest_val2 <= rob_entry(i)(word_width - 51 downto word_width - 66);
 								dest_en2 <= '1';
 								which_dest <= "10";
+								report "JAL Retire 2";
 							end if;
 							
 							if which_en = "00" then
@@ -642,11 +682,11 @@ begin
 					end if;
 				when "1010" =>
 					no_instr := no_instr + 1;
-					rob_entry(i)(1) <=  rob_entry(i)(9) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and not(rob_entry(i)(39));
 					if (rob_entry(i)(1) = '1') then	
 						if (no_instr = 1 ) then
 							retire := retire + 1;
-							rob_entry(i)(0) <= '0';
+							rob_entry(i)(0) := '0';
 							target_address <= rob_entry(i)(75 downto 60);
 							current_pc <= rob_entry(i)(59 downto 44);
 							branch_pred_en <= '1';
@@ -657,12 +697,14 @@ begin
 								dest_val1 <= rob_entry(i)(word_width - 17 downto word_width - 32) + x"0001";
 								dest_en1 <= '1';
 								which_dest <= "01";
+								report "JLR retire 1";
 							elsif (which_dest = "01") then
 								dest_ARF2 <= rob_entry(i)(word_width - 41 downto word_width - 45);
 								dest_RRF2 <= rob_entry(i)(word_width - 46 downto word_width - 50);
 								dest_val2 <= rob_entry(i)(word_width - 17 downto word_width - 32) + x"0001";
 								dest_en2 <= '1';
 								which_dest <= "10";
+								report "JLR retire 2";
 							end if;
 							
 							if which_en = "00" then
@@ -680,7 +722,7 @@ begin
 								loop_spec1 : for j in 0 to 50 loop
 									if (j>i-1) then
 										if(rob_entry(j)(38 downto 36) = rob_entry(head_pointer)(38 downto 36)) then
-											rob_entry(j)(39) <= '0';
+											rob_entry(j)(39) := '0';
 											mispred_tag <= rob_entry(head_pointer)(38 downto 36);
 											mispred_tag_en <= '1';
 										else
@@ -714,22 +756,23 @@ begin
 					end if;
 				when "1011" =>
 					no_instr := no_instr + 1;
-					rob_entry(i)(1) <=  rob_entry(i)(9) and not(rob_entry(i)(39));
+					rob_entry(i)(1) :=  rob_entry(i)(9) and not(rob_entry(i)(39));
 					if (rob_entry(i)(1) = '1') then	
 						if (no_instr = 1 ) then
 							retire := retire + 1;
-							rob_entry(i)(0) <= '0';
+							rob_entry(i)(0) := '0';
 							target_address <= rob_entry(i)(75 downto 60);
 							current_pc <= rob_entry(i)(59 downto 44);
 							branch_pred_en <= '1';
 							branch_instr_opcode <= rob_entry(i)(43 downto 40);
+							report "JRI Store";
 							if(to_integer(unsigned(rob_entry(i)(25 downto 10))) = 0) then
 								loop_spec2 : for j in 0 to 50 loop
 									if (j>i-1) then
 										if(rob_entry(j)(38 downto 36) = rob_entry(head_pointer)(38 downto 36)) then
 											mispred_tag <= rob_entry(head_pointer)(38 downto 36);
 											mispred_tag_en <= '1';
-											rob_entry(j)(39) <= '0';
+											rob_entry(j)(39) := '0';
 										else
 											exit;
 										end if;
@@ -741,7 +784,7 @@ begin
 						end if;
 					end if;
 				when others =>
-					
+					report "Mat aana yaha";
 			end case;
 			head_pointer := head_pointer + retire;
 			end loop;

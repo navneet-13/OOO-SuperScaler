@@ -92,6 +92,7 @@ entity res_station_updated is
 		alu_en1, alu_en2, lw_sw_en1, lw_sw_en2, branch_en1, branch_en2: out std_logic;
 		opcode_alu_1, opcode_alu_2, opcode_lw_sw_1, opcode_lw_sw_2, opcode_branch1, opcode_branch2 : out std_logic_vector(3 downto 0);
 		
+		PC1_out, PC2_out, PC3_out, PC4_out, PC5_out, PC6_out: out std_logic_vector(15 downto 0); 
 		unspeculate_tag: in std_logic_vector(2 downto 0);
 		unspeculate_en: in std_logic;
 		fetch_stall : out std_logic
@@ -230,6 +231,7 @@ BEGIN
 							cz_branch1 <= RS(i)(cz_high downto cz_low);
 							branch_en1 <='1';
 							opcode_branch1 <= RS(i)(opcode_high downto opcode_low);
+							PC1_out <= RS(i)(PC_high downto PC_low);
 							
 					
 					elsif(sent_branch = 1) then
@@ -239,6 +241,7 @@ BEGIN
 							cz_branch2 <= RS(i)(cz_high downto cz_low);
 							branch_en2 <='1';
 							opcode_branch2 <= RS(i)(opcode_high downto opcode_low);
+							PC2_out <= RS(i)(PC_high downto PC_low);
 							
 					end if;
 					sent_branch := sent_branch+1;
@@ -255,6 +258,7 @@ BEGIN
 							cz_lwsw1 <= RS(i)(cz_high downto cz_low);
 							lw_sw_en1 <='1';
 							opcode_lw_sw_1 <= RS(i)(opcode_high downto opcode_low);
+							PC3_out <= RS(i)(PC_high downto PC_low);
 					
 					elsif(sent_lwsw = 1) then
 					 
@@ -264,6 +268,7 @@ BEGIN
 							cz_lwsw2 <= RS(i)(cz_high downto cz_low);
 							lw_sw_en2 <='1';
 							opcode_lw_sw_2 <= RS(i)(opcode_high downto opcode_low);
+							PC4_out <= RS(i)(PC_high downto PC_low);
 					end if;
 					sent_lwsw := sent_lwsw+1;
 					end if;
@@ -277,6 +282,7 @@ BEGIN
 							cz_alu1 <= RS(i)(cz_high downto cz_low);
 							alu_en1 <='1';
 							opcode_alu_1 <= RS(i)(opcode_high downto opcode_low);
+							PC5_out <= RS(i)(PC_high downto PC_low);
 					
 					elsif(sent_alu = 1) then
 			      		opr1_alu2 <= RS(i)(opr1_high downto opr1_low);
@@ -285,6 +291,7 @@ BEGIN
 							cz_alu2 <= RS(i)(cz_high downto cz_low);
 							alu_en2 <='1';
 							opcode_alu_2 <= RS(i)(opcode_high downto opcode_low);
+							PC6_out <= RS(i)(PC_high downto PC_low);
 					end if;
 					sent_alu := sent_alu+1;
 					end if;

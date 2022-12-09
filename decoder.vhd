@@ -73,6 +73,7 @@ port(
  dest_in_2: in std_logic_vector(reg_file_op_size - 1 downto 0);
  flag_reg_in_1: in std_logic_vector(flag_reg_op_size - 1 downto 0);
  flag_reg_in_2: in std_logic_vector(flag_reg_op_size - 1 downto 0);
+ dec_en1, dec_en2: in std_logic;
  ----------------------------------------
  
  PC_1: in std_logic_vector(pc_size - 1 downto 0);
@@ -137,7 +138,8 @@ begin
 
  if(rising_edge(CLOCK)) then
  
- 
+ rs_wr_en_1 <= '0'; --we will always start with '0' write for rs
+ rs_wr_en_2 <= '0';
  Instr_OUT_1(spec) <= speculative_indicator;
  Instr_OUT_1(pc_h downto pc_l) <= PC_1;
  Instr_OUT_1(opcode_h downto opcode_l) <= Opcode1;
@@ -147,9 +149,13 @@ begin
  Instr_OUT_1(131 downto 116) <= predicted_addr1;
  Instr_OUT_2(131 downto 116) <= predicted_addr2;
  
+ if(dec_en1 = '1') then
+	rs_wr_en_1 <= '1';
+ end if;
+ if(dec_en2 = '1') then
+	rs_wr_en_2 <= '1';
+ end if;
  
- rs_wr_en_1 <= '1'; --we will always write first entry in rs
- rs_wr_en_2 <= '1'; --initialized
  if(Opcode1 = "1000" or Opcode1 = "1001" or Opcode1 = "1010" or Opcode1 = "1011") then
 	rs_wr_en_2 <= '0'; -- throw away second instr
 	Instr_OUT_2(rs_busy) <= '0'; --unbusy that entry
