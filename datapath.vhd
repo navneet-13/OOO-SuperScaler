@@ -1212,12 +1212,12 @@ reservation_station: res_station_updated port map(
 					opcode_lw_sw_2 => opcode4,
 					opcode_branch1 => opcode1,
 					opcode_branch2 => opcode2,
-					PC1_out => PC1_out,
-					PC2_out => PC2_out,
-					PC3_out => PC3_out,
-					PC4_out => PC4_out,
-					PC5_out => PC5_out,
-					PC6_out => PC6_out
+					PC1_out => PC1_in,
+					PC2_out => PC2_in,
+					PC3_out => PC3_in,
+					PC4_out => PC4_in,
+					PC5_out => PC5_in,
+					PC6_out => PC6_in
 
 
 ); 
